@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(dir /s /b .)",
+      "Bash(findstr /v \"node_modules\")",
+      "Bash(findstr /v \".next\")",
+      "Bash(Start-Process \"npm\" -ArgumentList \"run\",\"dev\" -WindowStyle Hidden)",
+      "Bash(Start-Sleep -Seconds 3)",
+      "Bash(Start-Process \"http://localhost:3000\")",
+      "PowerShell(Start-Process \"npm\" -ArgumentList \"run\",\"dev\" -WorkingDirectory \"C:\\\\Users\\\\Leicht\\\\Documents\\\\little-raccoon\" -WindowStyle Normal; Start-Sleep -Seconds 4; Start-Process \"http://localhost:3000\")",
+      "Bash(ren LOGO_HORIZONTAL.png.png LOGO_HORIZONTAL.png)",
+      "PowerShell(Rename-Item *)"
+    ]
+  }
+}
