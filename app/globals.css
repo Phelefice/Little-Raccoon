@@ -72,3 +72,67 @@ textarea:focus {
 a, button {
   transition: color 0.15s, background-color 0.15s, border-color 0.15s, opacity 0.15s;
 }
+
+/* Hero search placeholder */
+.hero-search-input::placeholder {
+  color: rgba(255, 248, 230, 0.62);
+  font-size: 15px;
+}
+
+/* ── Header: premium cinematic navbar ── */
+.site-header {
+  position: relative;
+  z-index: 40;
+}
+
+/* Gradient bleed — blends navbar into hero image below */
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(7, 12, 10, 0.38), rgba(7, 12, 10, 0));
+}
+
+/* Nav link hover — warm glow + animated underline */
+.nav-link {
+  position: relative;
+  transition: color 180ms ease, text-shadow 180ms ease;
+}
+
+.nav-link:hover {
+  color: rgba(245, 238, 220, 0.95) !important;
+  text-shadow: 0 0 10px rgba(93, 140, 88, 0.35);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(218, 190, 128, 0.75), transparent);
+  transition: width 180ms ease, left 180ms ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Subscribe button — lift + glow on hover */
+.subscribe-btn {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.subscribe-btn:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.34),
+    0 0 14px rgba(61, 126, 79, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
