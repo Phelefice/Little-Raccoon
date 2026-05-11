@@ -24,7 +24,7 @@ export default function Hero() {
       style={{
         backgroundColor: "#0B1411",
         borderBottom: "1px solid #1E3028",
-        backgroundImage: "url('/banner2.png')",
+        backgroundImage: "url('/banner2.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
