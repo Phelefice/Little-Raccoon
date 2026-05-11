@@ -1,254 +1,284 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
-const featured = {
-  tag: "Survival",
-  tagColor: "#9A5858",
-  tagBg: "#1A0E0E",
-  readTime: "12 min read",
-  title: "The Ultimate Survival Guide: From Day 1 to Netherite in 7 Days",
-  excerpt:
-    "Everything you need to know to go from a naked newbie to a fully armored Netherite warrior in just one week. We cover resource gathering, base building, mining strategies, and how to survive your first Nether run.",
-  author: "Steve Crafterson",
-  date: "May 7, 2026",
-  views: "24.3k",
-  slug: "/guides/ultimate-survival-7-days",
-  steps: [
-    "Gather essential resources",
-    "Build your first shelter",
-    "Set up a food source",
-    "Enter the Nether safely",
-  ],
+const hero = {
+  category: "Survival Guide",
+  categoryColor: "#D4924A",
+  title: "How to Build an Iron Farm",
+  subtitle: "Efficient, easy, and works in 1.21+",
+  description: "Step-by-step guide to building the most efficient iron farm in Minecraft. Works on Java and Bedrock, requires no complex redstone, and produces over 400 iron per hour.",
+  cta: "Read Guide →",
+  href: "/guides/iron-farm",
+  image: "/images/category-survival.png",
 };
 
-const secondary = [
+const minis = [
   {
-    tag: "Redstone",
-    tagColor: "#D6C7A1",
-    tagBg: "#1A1608",
-    readTime: "8 min",
-    title: "Compact Flying Machine That Fits in a 3×3 Space",
-    author: "Redstone Rita",
-    date: "May 5, 2026",
-    slug: "/guides/compact-flying-machine",
+    category: "Guide",
+    categoryColor: "#8A6840",
+    title: "Villager Trading Hall Step-by-Step",
+    href: "/guides/villager-trading-hall",
+    image: "/images/category-farms.png",
   },
   {
-    tag: "Builds",
-    tagColor: "#8A6840",
-    tagBg: "#1A1208",
-    readTime: "15 min",
-    title: "Medieval Castle: Full Blueprint for Beginners",
-    author: "BuildMaster Ben",
-    date: "May 3, 2026",
-    slug: "/guides/medieval-castle-blueprint",
+    category: "Tutorial",
+    categoryColor: "#6A8A5A",
+    title: "Best Starter House for Survival",
+    href: "/guides/starter-house",
+    image: "/images/category_builds.webp",
   },
   {
-    tag: "Farms",
-    tagColor: "#4A7A40",
-    tagBg: "#0C1A0C",
-    readTime: "10 min",
-    title: "Zero-Tick Sugar Cane Farm — 1,000 Per Hour",
-    author: "FarmQueen Fiona",
-    date: "May 1, 2026",
-    slug: "/guides/zero-tick-sugarcane-farm",
+    category: "Guide",
+    categoryColor: "#4A8AB0",
+    title: "How to Find Diamonds Fast",
+    href: "/guides/find-diamonds",
+    image: "/images/category-seeds.png",
   },
 ];
 
-function TagBadge({ tag, color, bg }: { tag: string; color: string; bg: string }) {
-  return (
-    <span
-      className="inline-block px-2.5 py-0.5 text-[10px] font-semibold uppercase"
-      style={{ backgroundColor: bg, color, letterSpacing: "0.12em", border: `1px solid ${color}25` }}
-    >
-      {tag}
-    </span>
-  );
-}
-
 export default function FeaturedGuide() {
   return (
-    <section style={{ backgroundColor: "#0F1F19", borderTop: "1px solid #1E3028", borderBottom: "1px solid #1E3028" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+    <section style={{ position: "relative", padding: "0", overflow: "hidden", background: "#0a110d" }}>
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "72px 40px 80px" }}>
+
         {/* Header */}
-        <div className="flex items-center gap-5 mb-10">
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "40px" }}>
           <div>
-            <p
-              className="text-[10px] font-semibold uppercase mb-1.5"
-              style={{ color: "#D6C7A1", letterSpacing: "0.22em" }}
-            >
-              Editor&apos;s Pick
+            <p style={{ fontSize: "10px", letterSpacing: "0.28em", textTransform: "uppercase", color: "#D4924A", fontWeight: 700, margin: "0 0 8px 0" }}>
+              ★ Editor&apos;s Pick
             </p>
-            <h2 style={{ color: "#EDE6D6" }}>Featured Guide</h2>
+            <h2 style={{ fontSize: "26px", fontWeight: 900, letterSpacing: "0.07em", color: "#EDE6D6", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>
+              Featured Guide
+            </h2>
           </div>
-          <div
-            className="flex-1 h-px"
-            style={{ background: "linear-gradient(90deg, #D6C7A130, transparent)" }}
-          />
+          <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, rgba(212,146,74,0.3), transparent)" }} />
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-5">
-          {/* Main featured */}
+        {/* Layout: hero left + minis right */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 320px", gap: "16px", alignItems: "start" }}>
+
+          {/* HERO FEATURED */}
           <Link
-            href={featured.slug}
-            className="lg:col-span-2 group flex flex-col"
+            href={hero.href}
             style={{
-              border: "1px solid #1E3028",
-              backgroundColor: "#132018",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+              position: "relative",
+              display: "block",
+              borderRadius: "14px",
+              overflow: "hidden",
+              border: "1px solid rgba(212,146,74,0.18)",
+              boxShadow: "0 8px 40px rgba(0,0,0,0.6)",
+              textDecoration: "none",
+              height: "480px",
+              transition: "transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.35s ease",
             }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#D6C7A125")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#1E3028")}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.transform = "translateY(-4px)";
+              el.style.boxShadow = "0 24px 60px rgba(0,0,0,0.7), 0 0 40px rgba(212,146,74,0.15)";
+              el.style.borderColor = "rgba(212,146,74,0.40)";
+              const img = el.querySelector(".hero-img") as HTMLElement;
+              if (img) img.style.transform = "scale(1.04)";
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget as HTMLElement;
+              el.style.transform = "translateY(0)";
+              el.style.boxShadow = "0 8px 40px rgba(0,0,0,0.6)";
+              el.style.borderColor = "rgba(212,146,74,0.18)";
+              const img = el.querySelector(".hero-img") as HTMLElement;
+              if (img) img.style.transform = "scale(1)";
+            }}
           >
-            {/* Image area — cinematic gradient */}
-            <div
-              className="relative h-56 sm:h-72 flex items-center justify-center overflow-hidden"
-              style={{
-                background: "linear-gradient(135deg, #1E3D26 0%, #0F1F19 55%, #0B1411 100%)",
-              }}
-            >
-              {/* Subtle grain overlay */}
-              <div
-                className="absolute inset-0 opacity-[0.04]"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(45deg, #EDE6D6 0px, transparent 1px, transparent 4px, #EDE6D6 5px)",
-                }}
-              />
-              <div className="relative text-center">
-                <div className="text-6xl mb-4 opacity-90">⛏️</div>
-                <div
-                  className="px-4 py-1.5 text-[10px] font-bold uppercase"
-                  style={{
-                    backgroundColor: "#D6C7A1",
-                    color: "#0B1411",
-                    letterSpacing: "0.18em",
-                    fontFamily: "var(--font-oswald)",
-                  }}
-                >
-                  Featured Article
-                </div>
+            {/* BG Image */}
+            <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+              <div className="hero-img" style={{ position: "absolute", inset: 0, transition: "transform 0.6s cubic-bezier(0.22,1,0.36,1)" }}>
+                <Image
+                  src={hero.image}
+                  alt={hero.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  style={{ objectFit: "cover", objectPosition: "center" }}
+                  priority
+                />
               </div>
             </div>
 
+            {/* Cinematic overlay */}
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(to right, rgba(4,8,4,0.97) 0%, rgba(4,8,4,0.80) 40%, rgba(4,8,4,0.20) 75%, rgba(4,8,4,0.05) 100%)",
+              zIndex: 1,
+            }} />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(to top, rgba(4,8,4,0.90) 0%, rgba(4,8,4,0.30) 40%, transparent 70%)",
+              zIndex: 1,
+            }} />
+
             {/* Content */}
-            <div className="p-7 flex flex-col flex-1">
-              <div className="flex items-center gap-3 mb-5">
-                <TagBadge tag={featured.tag} color={featured.tagColor} bg={featured.tagBg} />
-                <span className="text-xs" style={{ color: "#4A4440" }}>
-                  {featured.readTime}
+            <div style={{
+              position: "absolute", bottom: 0, left: 0,
+              padding: "40px 44px",
+              zIndex: 2,
+              maxWidth: "520px",
+            }}>
+              {/* Category badge */}
+              <div style={{ marginBottom: "16px" }}>
+                <span style={{
+                  fontSize: "9px", fontWeight: 700,
+                  letterSpacing: "0.22em", textTransform: "uppercase",
+                  color: hero.categoryColor,
+                  border: `1px solid ${hero.categoryColor}55`,
+                  borderRadius: "4px", padding: "4px 10px",
+                  background: "rgba(0,0,0,0.50)",
+                  backdropFilter: "blur(4px)",
+                }}>
+                  {hero.category}
                 </span>
               </div>
 
-              <h3
-                className="text-xl sm:text-2xl font-black mb-4 group-hover:opacity-80"
-                style={{ color: "#EDE6D6", lineHeight: "1.25", letterSpacing: "0.01em" }}
-              >
-                {featured.title}
+              {/* Title */}
+              <h3 style={{
+                fontSize: "32px", fontWeight: 900,
+                letterSpacing: "0.03em", textTransform: "uppercase",
+                color: "#EDE6D6", lineHeight: 1.15,
+                textShadow: "0 2px 16px rgba(0,0,0,0.9)",
+                margin: "0 0 10px 0",
+              }}>
+                {hero.title}
               </h3>
 
-              <p className="text-sm leading-relaxed mb-6" style={{ color: "#C0B89A", lineHeight: "1.75" }}>
-                {featured.excerpt}
+              {/* Subtitle */}
+              <p style={{
+                fontSize: "13px", fontStyle: "italic",
+                color: "#a09070", margin: "0 0 14px 0",
+                textShadow: "0 1px 6px rgba(0,0,0,0.8)",
+              }}>
+                {hero.subtitle}
               </p>
 
-              {/* Steps preview */}
-              <div
-                className="p-4 mb-6"
-                style={{ backgroundColor: "#0B1411", border: "1px solid #1E3028" }}
-              >
-                <p
-                  className="text-[10px] font-semibold uppercase mb-3"
-                  style={{ color: "#D6C7A1", letterSpacing: "0.18em" }}
-                >
-                  What you&apos;ll learn
-                </p>
-                <ul className="space-y-2">
-                  {featured.steps.map((step, i) => (
-                    <li key={i} className="flex items-center gap-2.5 text-sm" style={{ color: "#C0B89A" }}>
-                      <span style={{ color: "#D6C7A1", fontSize: "10px" }}>▶</span>
-                      {step}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {/* Description */}
+              <p style={{
+                fontSize: "13px", color: "#8a7e6a",
+                lineHeight: 1.65, margin: "0 0 28px 0",
+                textShadow: "0 1px 6px rgba(0,0,0,0.8)",
+              }}>
+                {hero.description}
+              </p>
 
-              <div className="mt-auto flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <div
-                    className="w-7 h-7 flex items-center justify-center text-sm"
-                    style={{ backgroundColor: "#1E3D26", border: "1px solid #2F5D3A" }}
-                  >
-                    🧑
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold" style={{ color: "#EDE6D6" }}>
-                      {featured.author}
-                    </p>
-                    <p className="text-[11px]" style={{ color: "#4A4440" }}>
-                      {featured.date} · {featured.views} views
-                    </p>
-                  </div>
-                </div>
-                <span
-                  className="text-[11px] font-bold uppercase px-4 py-2"
-                  style={{
-                    backgroundColor: "#2F5D3A",
-                    color: "#EDE6D6",
-                    letterSpacing: "0.1em",
-                    fontFamily: "var(--font-oswald)",
-                  }}
-                  onMouseEnter={(e) => ((e.target as HTMLElement).style.backgroundColor = "#3A7048")}
-                  onMouseLeave={(e) => ((e.target as HTMLElement).style.backgroundColor = "#2F5D3A")}
-                >
-                  Read Guide →
-                </span>
-              </div>
+              {/* CTA */}
+              <span style={{
+                display: "inline-block",
+                fontSize: "11px", fontWeight: 700,
+                letterSpacing: "0.16em", textTransform: "uppercase",
+                color: "#0a110d",
+                background: "linear-gradient(135deg, #D4924A, #C07A30)",
+                borderRadius: "8px", padding: "12px 24px",
+                boxShadow: "0 4px 16px rgba(212,146,74,0.35)",
+              }}>
+                {hero.cta}
+              </span>
             </div>
           </Link>
 
-          {/* Secondary articles */}
-          <div className="flex flex-col gap-4">
-            {secondary.map((article) => (
+          {/* MINI CARDS */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {minis.map((mini, i) => (
               <Link
-                key={article.slug}
-                href={article.slug}
-                className="group flex flex-col p-6 flex-1"
+                key={i}
+                href={mini.href}
                 style={{
-                  border: "1px solid #1E3028",
-                  backgroundColor: "#132018",
-                  boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
+                  position: "relative",
+                  display: "block",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  border: "1px solid rgba(212,146,74,0.14)",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.50)",
+                  textDecoration: "none",
+                  height: "148px",
+                  transition: "transform 0.32s cubic-bezier(0.22,1,0.36,1), box-shadow 0.32s ease, border-color 0.32s ease",
                 }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#D6C7A125")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#1E3028")}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.transform = "translateY(-3px)";
+                  el.style.boxShadow = "0 12px 32px rgba(0,0,0,0.60), 0 0 20px rgba(212,146,74,0.12)";
+                  el.style.borderColor = "rgba(212,146,74,0.35)";
+                  const img = el.querySelector(".mini-img") as HTMLElement;
+                  if (img) img.style.transform = "scale(1.06)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.transform = "translateY(0)";
+                  el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.50)";
+                  el.style.borderColor = "rgba(212,146,74,0.14)";
+                  const img = el.querySelector(".mini-img") as HTMLElement;
+                  if (img) img.style.transform = "scale(1)";
+                }}
               >
-                <div className="flex items-center gap-2.5 mb-3">
-                  <TagBadge tag={article.tag} color={article.tagColor} bg={article.tagBg} />
-                  <span className="text-[11px]" style={{ color: "#4A4440" }}>
-                    {article.readTime}
-                  </span>
-                </div>
-                <h3
-                  className="font-bold text-sm leading-snug mb-4 group-hover:opacity-75"
-                  style={{ color: "#EDE6D6", flex: 1 }}
-                >
-                  {article.title}
-                </h3>
-                <div className="flex items-center gap-2 mt-auto">
-                  <div
-                    className="w-5 h-5 flex items-center justify-center text-xs"
-                    style={{ backgroundColor: "#1E3D26" }}
-                  >
-                    🧑
+                {/* BG Image */}
+                <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+                  <div className="mini-img" style={{ position: "absolute", inset: 0, transition: "transform 0.55s cubic-bezier(0.22,1,0.36,1)" }}>
+                    <Image
+                      src={mini.image}
+                      alt={mini.title}
+                      fill
+                      sizes="320px"
+                      style={{ objectFit: "cover", objectPosition: "center" }}
+                    />
                   </div>
-                  <span className="text-[11px]" style={{ color: "#4A4440" }}>
-                    {article.author} · {article.date}
-                  </span>
+                </div>
+
+                {/* Overlay */}
+                <div style={{
+                  position: "absolute", inset: 0,
+                  background: "linear-gradient(to bottom, rgba(4,8,4,0.10) 0%, rgba(4,8,4,0.60) 50%, rgba(4,8,4,0.95) 100%)",
+                  zIndex: 1,
+                }} />
+
+                {/* Content */}
+                <div style={{
+                  position: "absolute", bottom: 0, left: 0, right: 0,
+                  padding: "14px 16px",
+                  zIndex: 2,
+                }}>
+                  <p style={{
+                    fontSize: "9px", fontWeight: 700,
+                    letterSpacing: "0.20em", textTransform: "uppercase",
+                    color: mini.categoryColor,
+                    margin: "0 0 5px 0",
+                    textShadow: "0 1px 4px rgba(0,0,0,0.8)",
+                  }}>
+                    {mini.category}
+                  </p>
+                  <p style={{
+                    fontSize: "12px", fontWeight: 800,
+                    letterSpacing: "0.04em", textTransform: "uppercase",
+                    color: "#EDE6D6", lineHeight: 1.25,
+                    textShadow: "0 2px 8px rgba(0,0,0,0.9)",
+                    margin: 0,
+                  }}>
+                    {mini.title}
+                  </p>
                 </div>
               </Link>
             ))}
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .featured-grid { grid-template-columns: 1fr !important; }
+          .featured-hero { height: 360px !important; }
+          .featured-minis { flex-direction: row !important; }
+          .featured-minis a { flex: 1 !important; height: 180px !important; }
+        }
+        @media (max-width: 640px) {
+          .featured-minis { flex-direction: column !important; }
+          .featured-minis a { height: 140px !important; }
+        }
+      `}</style>
     </section>
   );
 }
