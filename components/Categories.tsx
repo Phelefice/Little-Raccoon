@@ -29,7 +29,7 @@ const categories: Category[] = [
     gradient: "linear-gradient(135deg, #2a0e0e 0%, #1a0808 100%)",
     border: "rgba(192,82,74,0.22)",
     shimmer: "rgba(192,82,74,0.08)",
-    image: "/images/category-survival.jpg",
+    image: "/images/category-survival.png",
   },
   {
     icon: "⚙️",
@@ -42,7 +42,7 @@ const categories: Category[] = [
     gradient: "linear-gradient(135deg, #0e1f0a 0%, #081408 100%)",
     border: "rgba(90,158,72,0.22)",
     shimmer: "rgba(90,158,72,0.08)",
-    image: "/images/category-farms.jpg",
+    image: "/images/category-farms.png",
   },
   {
     icon: "🏰",
@@ -55,7 +55,7 @@ const categories: Category[] = [
     gradient: "linear-gradient(135deg, #221608 0%, #160e04 100%)",
     border: "rgba(200,148,74,0.22)",
     shimmer: "rgba(200,148,74,0.08)",
-    image: "/images/category-builds.jpg",
+    image: "/images/category-builds.webp",
   },
   {
     icon: "🌍",
@@ -68,7 +68,7 @@ const categories: Category[] = [
     gradient: "linear-gradient(135deg, #081828 0%, #040e1a 100%)",
     border: "rgba(74,138,176,0.22)",
     shimmer: "rgba(74,138,176,0.08)",
-    image: "/images/category-seeds.jpg",
+    image: "/images/category-seeds.png",
   },
   {
     icon: "⚡",
@@ -81,7 +81,7 @@ const categories: Category[] = [
     gradient: "linear-gradient(135deg, #200808 0%, #140404 100%)",
     border: "rgba(212,74,74,0.22)",
     shimmer: "rgba(212,74,74,0.08)",
-    image: "/images/category-redstone.jpg",
+    image: "/images/category-redstone.png",
   },
   {
     icon: "📖",
@@ -94,7 +94,7 @@ const categories: Category[] = [
     gradient: "linear-gradient(135deg, #120e24 0%, #0c0818 100%)",
     border: "rgba(138,120,200,0.22)",
     shimmer: "rgba(138,120,200,0.08)",
-    image: "/images/category-beginners.jpg",
+    image: "/images/category-guides.webp",
   },
 ];
 
