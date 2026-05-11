@@ -102,8 +102,8 @@ export default function Categories() {
           </Link>
         </div>
 
-        {/* Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "14px" }}>
+        {/* Grid — 6 colunas, cards baixos como na REF */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "12px" }}>
           {categories.map((cat, i) => (
             <Link
               key={cat.label}
@@ -111,18 +111,18 @@ export default function Categories() {
               style={{
                 position: "relative",
                 display: "block",
-                borderRadius: "12px",
+                borderRadius: "10px",
                 overflow: "hidden",
                 border: "1px solid " + cat.borderColor,
                 boxShadow: "0 4px 20px rgba(0,0,0,0.55)",
                 textDecoration: "none",
-                aspectRatio: "3/4",
+                height: "200px",
                 transition: "transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.35s ease",
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.transform = "translateY(-6px) scale(1.02)";
-                el.style.boxShadow = `0 20px 48px rgba(0,0,0,0.65), 0 0 32px ${cat.glowColor}`;
+                el.style.transform = "translateY(-5px)";
+                el.style.boxShadow = `0 16px 40px rgba(0,0,0,0.65), 0 0 28px ${cat.glowColor}`;
                 el.style.borderColor = cat.accentColor + "66";
                 const img = el.querySelector(".cat-img") as HTMLElement;
                 if (img) img.style.transform = "scale(1.07)";
@@ -131,7 +131,7 @@ export default function Categories() {
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.transform = "translateY(0) scale(1)";
+                el.style.transform = "translateY(0)";
                 el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.55)";
                 el.style.borderColor = cat.borderColor;
                 const img = el.querySelector(".cat-img") as HTMLElement;
@@ -148,59 +148,56 @@ export default function Categories() {
                     alt={cat.label}
                     fill
                     sizes="(max-width: 640px) 50vw, 17vw"
-                    style={{ objectFit: "cover", objectPosition: "center top" }}
+                    style={{ objectFit: "cover", objectPosition: "center" }}
                     priority={i < 2}
                   />
                 </div>
               </div>
 
-              {/* Cinematic overlay — escuro embaixo, leve em cima */}
+              {/* Overlay — leve no topo, escuro só na base */}
               <div style={{
                 position: "absolute", inset: 0,
-                background: "linear-gradient(to bottom, rgba(4,8,4,0.05) 0%, rgba(4,8,4,0.15) 30%, rgba(4,8,4,0.70) 60%, rgba(4,8,4,0.96) 100%)",
+                background: "linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0.75) 70%, rgba(0,0,0,0.95) 100%)",
                 zIndex: 1,
               }} />
 
-              {/* Vignette */}
-              <div style={{ position: "absolute", inset: 0, boxShadow: "inset 0 0 40px rgba(0,0,0,0.35)", zIndex: 2, borderRadius: "12px" }} />
-
-              {/* Shimmer top */}
+              {/* Shimmer topo */}
               <div className="cat-shimmer" style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: "2px",
                 background: `linear-gradient(90deg, transparent, ${cat.accentColor}99, transparent)`,
                 opacity: 0, transition: "opacity 0.35s ease", zIndex: 3,
               }} />
 
-              {/* Content — bottom left, ícone em cima do texto */}
+              {/* Content — ícone pequeno + texto, tudo no bottom-left */}
               <div style={{
                 position: "absolute",
                 bottom: 0, left: 0, right: 0,
-                padding: "14px 14px 16px",
+                padding: "12px 12px 14px",
                 zIndex: 4,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
-                gap: "6px",
+                gap: "4px",
               }}>
-                {/* Ícone */}
+                {/* Ícone pequeno no canto — igual à REF */}
                 <div style={{
-                  width: "40px", height: "40px",
+                  width: "32px", height: "32px",
                   borderRadius: "50%",
-                  background: "rgba(6,10,5,0.75)",
+                  background: "rgba(6,10,5,0.80)",
                   border: `1.5px solid ${cat.accentColor}55`,
                   display: "flex", alignItems: "center", justifyContent: "center",
                   backdropFilter: "blur(6px)",
-                  marginBottom: "2px",
+                  marginBottom: "4px",
                 }}>
-                  <Image src={cat.icon} alt="" width={24} height={24} style={{ objectFit: "contain" }} />
+                  <Image src={cat.icon} alt="" width={18} height={18} style={{ objectFit: "contain" }} />
                 </div>
 
                 {/* Título */}
                 <p style={{
-                  fontSize: "13px", fontWeight: 800,
-                  letterSpacing: "0.06em", textTransform: "uppercase",
-                  color: "#EDE6D6", lineHeight: 1.2,
-                  textShadow: "0 2px 8px rgba(0,0,0,0.9)",
+                  fontSize: "12px", fontWeight: 800,
+                  letterSpacing: "0.07em", textTransform: "uppercase",
+                  color: "#EDE6D6", lineHeight: 1.25,
+                  textShadow: "0 2px 6px rgba(0,0,0,0.9)",
                   margin: 0,
                 }}>
                   {cat.label}
@@ -236,11 +233,11 @@ export default function Categories() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
-          .cat-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        @media (max-width: 1024px) {
+          .cat-responsive { grid-template-columns: repeat(3, 1fr) !important; }
         }
-        @media (max-width: 400px) {
-          .cat-grid { grid-template-columns: 1fr !important; }
+        @media (max-width: 640px) {
+          .cat-responsive { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
     </section>
