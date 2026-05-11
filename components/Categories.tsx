@@ -86,200 +86,148 @@ const categories: Category[] = [
 
 export default function Categories() {
   return (
-    <section style={{ position: "relative", padding: "96px 0 104px", overflow: "hidden" }}>
-      {/* Background */}
+    <section style={{ position: "relative", padding: "80px 0 90px", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(18,30,14,0.97) 0%, rgba(8,12,6,0.99) 100%)", zIndex: 0 }} />
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 50% 40% at 20% 80%, rgba(40,80,25,0.07) 0%, transparent 70%)", zIndex: 0 }} />
 
       <div style={{ position: "relative", zIndex: 1, maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
 
         {/* Header */}
-        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "56px" }}>
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "40px" }}>
           <div>
-            <p style={{ fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#6a8a5a", marginBottom: "10px", fontWeight: 600 }}>
-              ✦ Browse
-            </p>
-            <h2 style={{ fontSize: "28px", fontWeight: 800, letterSpacing: "0.08em", color: "#EDE6D6", textTransform: "uppercase", lineHeight: 1 }}>
-              Explore Categories
-            </h2>
+            <p style={{ fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#6a8a5a", marginBottom: "10px", fontWeight: 600 }}>✦ Browse</p>
+            <h2 style={{ fontSize: "28px", fontWeight: 800, letterSpacing: "0.08em", color: "#EDE6D6", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>Explore Categories</h2>
           </div>
-          <Link href="/categories" style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#6a8a5a", textDecoration: "none", fontWeight: 600, display: "flex", alignItems: "center", gap: "6px" }}>
-            View All <span style={{ fontSize: "14px" }}>→</span>
+          <Link href="/categories" style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#6a8a5a", textDecoration: "none", fontWeight: 600 }}>
+            View All Categories →
           </Link>
         </div>
 
         {/* Grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(6, 1fr)",
-          gap: "14px",
-        }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "14px" }}>
           {categories.map((cat, i) => (
             <Link
               key={cat.label}
               href={cat.href}
-              className="cat-card"
               style={{
                 position: "relative",
                 display: "block",
-                borderRadius: "14px",
+                borderRadius: "12px",
                 overflow: "hidden",
                 border: "1px solid " + cat.borderColor,
-                boxShadow: "0 4px 24px rgba(0,0,0,0.55)",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.55)",
                 textDecoration: "none",
                 aspectRatio: "3/4",
                 transition: "transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.35s ease",
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.transform = "translateY(-8px) scale(1.02)";
-                el.style.boxShadow = `0 24px 56px rgba(0,0,0,0.65), 0 0 40px ${cat.glowColor}`;
+                el.style.transform = "translateY(-6px) scale(1.02)";
+                el.style.boxShadow = `0 20px 48px rgba(0,0,0,0.65), 0 0 32px ${cat.glowColor}`;
                 el.style.borderColor = cat.accentColor + "66";
                 const img = el.querySelector(".cat-img") as HTMLElement;
-                if (img) img.style.transform = "scale(1.08)";
-                const overlay = el.querySelector(".cat-overlay") as HTMLElement;
-                if (overlay) overlay.style.opacity = "0.85";
+                if (img) img.style.transform = "scale(1.07)";
                 const shimmer = el.querySelector(".cat-shimmer") as HTMLElement;
                 if (shimmer) shimmer.style.opacity = "1";
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement;
                 el.style.transform = "translateY(0) scale(1)";
-                el.style.boxShadow = "0 4px 24px rgba(0,0,0,0.55)";
+                el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.55)";
                 el.style.borderColor = cat.borderColor;
                 const img = el.querySelector(".cat-img") as HTMLElement;
                 if (img) img.style.transform = "scale(1)";
-                const overlay = el.querySelector(".cat-overlay") as HTMLElement;
-                if (overlay) overlay.style.opacity = "1";
                 const shimmer = el.querySelector(".cat-shimmer") as HTMLElement;
                 if (shimmer) shimmer.style.opacity = "0";
               }}
             >
-              {/* Image */}
+              {/* Background image */}
               <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-                <div
-                  className="cat-img"
-                  style={{ position: "absolute", inset: 0, transition: "transform 0.6s cubic-bezier(0.22,1,0.36,1)" }}
-                >
+                <div className="cat-img" style={{ position: "absolute", inset: 0, transition: "transform 0.6s cubic-bezier(0.22,1,0.36,1)" }}>
                   <Image
                     src={cat.image}
                     alt={cat.label}
                     fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 17vw"
-                    style={{ objectFit: "cover", objectPosition: "center" }}
+                    sizes="(max-width: 640px) 50vw, 17vw"
+                    style={{ objectFit: "cover", objectPosition: "center top" }}
                     priority={i < 2}
                   />
                 </div>
               </div>
 
               {/* Cinematic overlay */}
-              <div
-                className="cat-overlay"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: `linear-gradient(
-                    to bottom,
-                    rgba(4,8,4,0.08) 0%,
-                    rgba(4,8,4,0.15) 30%,
-                    rgba(4,8,4,0.55) 60%,
-                    rgba(4,8,4,0.93) 100%
-                  )`,
-                  transition: "opacity 0.35s ease",
-                  zIndex: 1,
-                }}
-              />
-
-              {/* Vignette */}
               <div style={{
-                position: "absolute",
-                inset: 0,
-                boxShadow: "inset 0 0 40px rgba(0,0,0,0.4)",
-                zIndex: 2,
-                borderRadius: "14px",
+                position: "absolute", inset: 0,
+                background: "linear-gradient(to bottom, rgba(4,8,4,0.05) 0%, rgba(4,8,4,0.2) 35%, rgba(4,8,4,0.75) 65%, rgba(4,8,4,0.97) 100%)",
+                zIndex: 1,
               }} />
 
-              {/* Shimmer top */}
-              <div
-                className="cat-shimmer"
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: "2px",
-                  background: `linear-gradient(90deg, transparent, ${cat.accentColor}99, transparent)`,
-                  opacity: 0,
-                  transition: "opacity 0.35s ease",
-                  zIndex: 3,
-                }}
-              />
+              {/* Vignette */}
+              <div style={{ position: "absolute", inset: 0, boxShadow: "inset 0 0 40px rgba(0,0,0,0.35)", zIndex: 2, borderRadius: "12px" }} />
 
-              {/* Content */}
+              {/* Shimmer */}
+              <div className="cat-shimmer" style={{
+                position: "absolute", top: 0, left: 0, right: 0, height: "2px",
+                background: `linear-gradient(90deg, transparent, ${cat.accentColor}99, transparent)`,
+                opacity: 0, transition: "opacity 0.35s ease", zIndex: 3,
+              }} />
+
+              {/* Content — ícone + texto lado a lado */}
               <div style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                padding: "20px 16px 18px",
+                position: "absolute", bottom: 0, left: 0, right: 0,
+                padding: "16px 14px",
                 zIndex: 4,
-                display: "flex",
-                flexDirection: "column",
-                gap: "6px",
               }}>
-                {/* Icon */}
-                <div style={{
-                  width: "44px", height: "44px", borderRadius: "50%",
-                  background: "rgba(4,8,4,0.65)",
-                  border: `1px solid ${cat.accentColor}44`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "22px",
-                  backdropFilter: "blur(4px)",
-                }}>
-                  {cat.icon.startsWith("/") ? <Image src={cat.icon} alt="" width={20} height={20} style={{objectFit:"contain"}} /> : cat.icon}
-                </div>
+                {/* Row: ícone + título */}
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px" }}>
+                  {/* Icon circle */}
+                  <div style={{
+                    flexShrink: 0,
+                    width: "36px", height: "36px",
+                    borderRadius: "50%",
+                    background: "rgba(8,12,6,0.80)",
+                    border: `1.5px solid ${cat.accentColor}66`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    backdropFilter: "blur(6px)",
+                  }}>
+                    {cat.icon.startsWith("/") ? (
+                      <Image src={cat.icon} alt="" width={20} height={20} style={{ objectFit: "contain" }} />
+                    ) : (
+                      <span style={{ fontSize: "17px", lineHeight: 1 }}>{cat.icon}</span>
+                    )}
+                  </div>
 
-                {/* Label */}
-                <p style={{
-                  fontSize: "15px", fontWeight: 800,
-                  letterSpacing: "0.07em",
-                  textTransform: "uppercase",
-                  color: "#EDE6D6",
-                  lineHeight: 1.2,
-                  textShadow: "0 2px 8px rgba(0,0,0,0.8)",
-                  margin: 0,
-                }}>
-                  {cat.label}
-                </p>
+                  {/* Title */}
+                  <p style={{
+                    fontSize: "13px", fontWeight: 800,
+                    letterSpacing: "0.06em", textTransform: "uppercase",
+                    color: "#EDE6D6", lineHeight: 1.2,
+                    textShadow: "0 2px 8px rgba(0,0,0,0.9)",
+                    margin: 0,
+                  }}>
+                    {cat.label}
+                  </p>
+                </div>
 
                 {/* Desc */}
                 <p style={{
-                  fontSize: "10px",
-                  color: "#a09080",
-                  fontStyle: "italic",
-                  margin: 0,
+                  fontSize: "10px", color: "#9a8870",
+                  fontStyle: "italic", margin: "0 0 8px 0",
                   textShadow: "0 1px 4px rgba(0,0,0,0.8)",
+                  paddingLeft: "2px",
                 }}>
                   {cat.desc}
                 </p>
 
-                {/* Count badge */}
+                {/* Badge */}
                 <span style={{
                   display: "inline-block",
-                  marginTop: "4px",
-                  fontSize: "9px",
-                  fontWeight: 700,
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
+                  fontSize: "9px", fontWeight: 700,
+                  letterSpacing: "0.14em", textTransform: "uppercase",
                   color: cat.accentColor,
                   border: `1px solid ${cat.accentColor}44`,
-                  borderRadius: "4px",
-                  padding: "3px 8px",
-                  background: "rgba(0,0,0,0.35)",
+                  borderRadius: "4px", padding: "3px 8px",
+                  background: "rgba(0,0,0,0.40)",
                   backdropFilter: "blur(4px)",
-                  alignSelf: "flex-start",
                 }}>
                   {cat.count} guides
                 </span>
@@ -289,11 +237,7 @@ export default function Categories() {
         </div>
       </div>
 
-      {/* Responsive styles */}
       <style>{`
-        @media (max-width: 1024px) {
-          .cat-card { aspect-ratio: 3/4 !important; }
-        }
         @media (max-width: 768px) {
           .cat-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
@@ -304,6 +248,3 @@ export default function Categories() {
     </section>
   );
 }
-
-
-
