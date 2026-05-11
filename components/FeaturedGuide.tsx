@@ -118,11 +118,11 @@ export default function FeaturedGuide() {
 
         {/* Container esverdeado com bordas arredondadas — como na REF */}
         <div style={{
-          background: "rgba(13,24,17,0.80)",
+          background: "rgba(13,28,18,0.92)",
           border: "1px solid rgba(255,255,255,0.07)",
           borderRadius: "18px",
           padding: "36px 36px 36px",
-          backdropFilter: "blur(6px)",
+          backdropFilter: "blur(0px)",
           boxShadow: "0 8px 48px rgba(0,0,0,0.50), inset 0 1px 0 rgba(255,255,255,0.04), inset 0 0 0 1px rgba(40,80,50,0.10)",
         }}>
 
@@ -244,5 +244,6 @@ export default function FeaturedGuide() {
     </div>
   );
 }
+
 
 
