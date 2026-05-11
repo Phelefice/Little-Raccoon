@@ -166,7 +166,7 @@ export default function Sidebar() {
         </div>
         <div style={{ padding: "14px 18px 16px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7px", position: "relative", zIndex: 1 }}>
           {socials.map((s) => (
-            
+            <a
               key={s.label}
               href={s.href}
               style={{
