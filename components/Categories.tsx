@@ -229,16 +229,13 @@ export default function Categories() {
               }}>
                 {/* Icon */}
                 <div style={{
-                  width: "32px",
-                  height: "32px",
-                  borderRadius: "8px",
+                  width: "44px", height: "44px", borderRadius: "50%",
                   background: "rgba(4,8,4,0.65)",
                   border: `1px solid ${cat.accentColor}44`,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "16px",
-                  marginBottom: "4px",
+                  fontSize: "22px",
                   backdropFilter: "blur(4px)",
                 }}>
                   {cat.icon.startsWith("/") ? <Image src={cat.icon} alt="" width={20} height={20} style={{objectFit:"contain"}} /> : cat.icon}
@@ -246,8 +243,7 @@ export default function Categories() {
 
                 {/* Label */}
                 <p style={{
-                  fontSize: "12px",
-                  fontWeight: 800,
+                  fontSize: "15px", fontWeight: 800,
                   letterSpacing: "0.07em",
                   textTransform: "uppercase",
                   color: "#EDE6D6",
@@ -308,5 +304,6 @@ export default function Categories() {
     </section>
   );
 }
+
 
 
