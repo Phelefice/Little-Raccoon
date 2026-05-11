@@ -12,43 +12,22 @@ const quickGuides = [
 ];
 
 const socials = [
-  {
-    label: "YouTube",
-    icon: "●",
-    href: "#", hoverColor: "#CC4444",
-  },
-  {
-    label: "Discord",
-    icon: "●",
-    href: "#", hoverColor: "#6070C8",
-  },
-  {
-    label: "Instagram",
-    icon: "●",
-    href: "#", hoverColor: "#C06080",
-  },
-  {
-    label: "Pinterest",
-    icon: "●",
-    href: "#", hoverColor: "#C04040",
-  },
-  {
-    label: "X",
-    icon: "●",
-    href: "#", hoverColor: "#C0B89A",
-  },
+  { label: "YouTube", href: "#", hoverColor: "#CC4444" },
+  { label: "Discord", href: "#", hoverColor: "#6070C8" },
+  { label: "Instagram", href: "#", hoverColor: "#C06080" },
+  { label: "Pinterest", href: "#", hoverColor: "#C04040" },
+  { label: "X", href: "#", hoverColor: "#C0B89A" },
 ];
 
-const widgetStyle = {
-  background: "rgba(13,24,17,0.80)",
+const widgetStyle: React.CSSProperties = {
+  background: "rgba(13,24,17,0.92)",
   border: "1px solid rgba(255,255,255,0.07)",
   borderRadius: "14px",
-  backdropFilter: "blur(6px)",
   boxShadow: "0 4px 24px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.04)",
   overflow: "hidden",
 };
 
-const headerStyle = {
+const headerStyle: React.CSSProperties = {
   display: "flex",
   alignItems: "center",
   gap: "8px",
@@ -62,11 +41,6 @@ export default function Sidebar() {
   const [subscribed, setSubscribed] = useState(false);
   const [hoveredGuide, setHoveredGuide] = useState<number | null>(null);
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) setSubscribed(true);
-  };
 
   return (
     <aside style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -86,8 +60,7 @@ export default function Sidebar() {
                 href={guide.slug}
                 style={{
                   display: "flex", alignItems: "center", gap: "12px",
-                  padding: "12px 18px",
-                  textDecoration: "none",
+                  padding: "12px 18px", textDecoration: "none",
                   background: hoveredGuide === i ? "rgba(255,255,255,0.03)" : "transparent",
                   transition: "background 0.25s ease",
                 }}
@@ -99,9 +72,7 @@ export default function Sidebar() {
                   fontSize: "12px", fontWeight: 500, lineHeight: 1.4, flex: 1,
                   color: hoveredGuide === i ? "#D6C7A1" : "#7a7060",
                   transition: "color 0.25s ease",
-                }}>
-                  {guide.title}
-                </span>
+                }}>{guide.title}</span>
                 <span style={{
                   fontSize: "11px", flexShrink: 0,
                   color: hoveredGuide === i ? "rgba(212,146,74,0.70)" : "rgba(255,255,255,0.10)",
@@ -148,7 +119,7 @@ export default function Sidebar() {
                   }}
                 />
                 <button
-                  onClick={handleSubscribe}
+                  onClick={() => { if (email) setSubscribed(true); }}
                   style={{
                     width: "100%", padding: "10px", fontSize: "10px",
                     fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase",
@@ -156,10 +127,7 @@ export default function Sidebar() {
                     color: "#D6C7A1",
                     border: "1px solid rgba(60,120,75,0.40)",
                     borderRadius: "6px", cursor: "pointer",
-                    transition: "opacity 0.25s ease",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
                 >
                   Subscribe →
                 </button>
@@ -190,14 +158,12 @@ export default function Sidebar() {
                 borderRadius: "8px", textDecoration: "none",
                 color: hoveredSocial === s.label ? s.hoverColor : "#6a6050",
                 transition: "all 0.25s ease",
+                fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em",
               }}
               onMouseEnter={() => setHoveredSocial(s.label)}
               onMouseLeave={() => setHoveredSocial(null)}
             >
-              <span style={{ color: hoveredSocial === s.label ? s.hoverColor : "#4a4440", transition: "color 0.25s ease" }}>
-                {s.icon}
-              </span>
-              <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em" }}>{s.label}</span>
+              {s.label}
             </a>
           ))}
         </div>
@@ -206,4 +172,3 @@ export default function Sidebar() {
     </aside>
   );
 }
-
