@@ -6,6 +6,7 @@ import Image from "next/image";
 interface Category {
   icon: string;
   label: string;
+  sublabel: string;
   desc: string;
   count: number;
   href: string;
@@ -17,92 +18,103 @@ interface Category {
 
 const categories: Category[] = [
   {
-    icon: "/images/icone_survival.png",
-    label: "Survival Essentials",
+    icon: "/images/icon_survival.png",
+    label: "Survival",
+    sublabel: "Essentials",
     desc: "Tips & strategies",
     count: 48,
     href: "/survival",
-    accentColor: "#E8845A",
-    glowColor: "rgba(232,132,90,0.35)",
-    borderColor: "rgba(232,132,90,0.25)",
+    accentColor: "#D4924A",
+    glowColor: "rgba(212,146,74,0.30)",
+    borderColor: "rgba(212,146,74,0.20)",
     image: "/images/category-survival.png",
   },
   {
-    icon: "/images/icone_farmsautomation.png",
-    label: "Farms & Automation",
+    icon: "/images/icon_farm.png",
+    label: "Farms &",
+    sublabel: "Automation",
     desc: "Automatic & manual",
     count: 36,
     href: "/farms",
-    accentColor: "#7BC67A",
-    glowColor: "rgba(123,198,122,0.30)",
-    borderColor: "rgba(123,198,122,0.22)",
+    accentColor: "#D4924A",
+    glowColor: "rgba(212,146,74,0.25)",
+    borderColor: "rgba(212,146,74,0.18)",
     image: "/images/category-farms.png",
   },
   {
-    icon: "/images/icone_buildsdesign.png",
-    label: "Builds & Designs",
+    icon: "/images/icon_builds.png",
+    label: "Builds &",
+    sublabel: "Designs",
     desc: "Houses & megabuilds",
     count: 62,
     href: "/builds",
-    accentColor: "#D4A96A",
-    glowColor: "rgba(212,169,106,0.30)",
-    borderColor: "rgba(212,169,106,0.22)",
+    accentColor: "#D4924A",
+    glowColor: "rgba(212,146,74,0.25)",
+    borderColor: "rgba(212,146,74,0.18)",
     image: "/images/category_builds.webp",
   },
   {
-    icon: "/images/icone_seeds.png",
-    label: "Seeds & Worlds",
+    icon: "/images/icon_seeds.png",
+    label: "Seeds &",
+    sublabel: "Worlds",
     desc: "Best world seeds",
     count: 29,
     href: "/seeds",
-    accentColor: "#6AAED4",
-    glowColor: "rgba(106,174,212,0.30)",
-    borderColor: "rgba(106,174,212,0.22)",
+    accentColor: "#D4924A",
+    glowColor: "rgba(212,146,74,0.25)",
+    borderColor: "rgba(212,146,74,0.18)",
     image: "/images/category-seeds.png",
   },
   {
-    icon: "/images/icone_redstone.png",
-    label: "Redstone & Mechanics",
+    icon: "/images/icon_redstone.png",
+    label: "Redstone &",
+    sublabel: "Mechanics",
     desc: "Circuits & machines",
     count: 41,
     href: "/redstone",
-    accentColor: "#D45A5A",
-    glowColor: "rgba(212,90,90,0.35)",
-    borderColor: "rgba(212,90,90,0.25)",
+    accentColor: "#D4924A",
+    glowColor: "rgba(212,146,74,0.30)",
+    borderColor: "rgba(212,146,74,0.20)",
     image: "/images/category-redstone.png",
   },
   {
-    icon: "/images/icone_guides.png",
-    label: "Guides for Beginners",
+    icon: "/images/icon_guides.png",
+    label: "Guides for",
+    sublabel: "Beginners",
     desc: "Start your journey",
     count: 24,
     href: "/beginners",
-    accentColor: "#A08ED4",
-    glowColor: "rgba(160,142,212,0.30)",
-    borderColor: "rgba(160,142,212,0.22)",
+    accentColor: "#D4924A",
+    glowColor: "rgba(212,146,74,0.25)",
+    borderColor: "rgba(212,146,74,0.18)",
     image: "/images/category_guides.webp",
   },
 ];
 
 export default function Categories() {
   return (
-    <section style={{ position: "relative", padding: "80px 0 90px", overflow: "hidden" }}>
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(18,30,14,0.97) 0%, rgba(8,12,6,0.99) 100%)", zIndex: 0 }} />
+    <section style={{ position: "relative", padding: "80px 0 96px", overflow: "hidden" }}>
+      {/* Background */}
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 90% 70% at 50% 50%, rgba(14,22,10,0.98) 0%, rgba(6,10,5,1) 100%)", zIndex: 0 }} />
 
-      <div style={{ position: "relative", zIndex: 1, maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
+      <div style={{ position: "relative", zIndex: 1, maxWidth: "1280px", margin: "0 auto", padding: "0 40px" }}>
 
-        {/* Header */}
-        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "40px" }}>
+        {/* Section header */}
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "44px" }}>
           <div>
-            <p style={{ fontSize: "10px", letterSpacing: "0.3em", textTransform: "uppercase", color: "#6a8a5a", marginBottom: "10px", fontWeight: 600 }}>✦ Browse</p>
-            <h2 style={{ fontSize: "28px", fontWeight: 800, letterSpacing: "0.08em", color: "#EDE6D6", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>Explore Categories</h2>
+            <p style={{ fontSize: "10px", letterSpacing: "0.28em", textTransform: "uppercase", color: "#5a7a4a", marginBottom: "10px", fontWeight: 700, margin: "0 0 10px 0" }}>
+              ✦ Browse
+            </p>
+            <h2 style={{ fontSize: "30px", fontWeight: 900, letterSpacing: "0.07em", color: "#EDE6D6", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>
+              Explore Categories
+            </h2>
           </div>
-          <Link href="/categories" style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#6a8a5a", textDecoration: "none", fontWeight: 600 }}>
-            View All Categories →
+          <Link href="/categories" style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5a7a4a", textDecoration: "none", fontWeight: 700, display: "flex", alignItems: "center", gap: "8px" }}>
+            View All Categories <span>→</span>
           </Link>
         </div>
 
-        {/* Grid — 6 colunas, cards baixos como na REF */}
+        {/* Grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: "12px" }}>
           {categories.map((cat, i) => (
             <Link
@@ -110,122 +122,139 @@ export default function Categories() {
               href={cat.href}
               style={{
                 position: "relative",
-                display: "block",
-                borderRadius: "10px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                borderRadius: "12px",
                 overflow: "hidden",
-                border: "1px solid " + cat.borderColor,
-                boxShadow: "0 4px 20px rgba(0,0,0,0.55)",
+                border: `1px solid ${cat.borderColor}`,
+                boxShadow: "0 2px 16px rgba(0,0,0,0.50)",
                 textDecoration: "none",
-                height: "200px",
-                transition: "transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.35s ease",
+                height: "220px",
+                transition: "transform 0.32s cubic-bezier(0.22,1,0.36,1), box-shadow 0.32s ease, border-color 0.32s ease",
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLElement;
-                el.style.transform = "translateY(-5px)";
-                el.style.boxShadow = `0 16px 40px rgba(0,0,0,0.65), 0 0 28px ${cat.glowColor}`;
-                el.style.borderColor = cat.accentColor + "66";
+                el.style.transform = "translateY(-6px)";
+                el.style.boxShadow = `0 18px 44px rgba(0,0,0,0.60), 0 0 28px ${cat.glowColor}`;
+                el.style.borderColor = cat.accentColor + "55";
                 const img = el.querySelector(".cat-img") as HTMLElement;
-                if (img) img.style.transform = "scale(1.07)";
-                const shimmer = el.querySelector(".cat-shimmer") as HTMLElement;
-                if (shimmer) shimmer.style.opacity = "1";
+                if (img) img.style.transform = "scale(1.06)";
+                const sh = el.querySelector(".cat-shimmer") as HTMLElement;
+                if (sh) sh.style.opacity = "1";
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLElement;
                 el.style.transform = "translateY(0)";
-                el.style.boxShadow = "0 4px 20px rgba(0,0,0,0.55)";
+                el.style.boxShadow = "0 2px 16px rgba(0,0,0,0.50)";
                 el.style.borderColor = cat.borderColor;
                 const img = el.querySelector(".cat-img") as HTMLElement;
                 if (img) img.style.transform = "scale(1)";
-                const shimmer = el.querySelector(".cat-shimmer") as HTMLElement;
-                if (shimmer) shimmer.style.opacity = "0";
+                const sh = el.querySelector(".cat-shimmer") as HTMLElement;
+                if (sh) sh.style.opacity = "0";
               }}
             >
-              {/* Background image */}
+              {/* BG image */}
               <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-                <div className="cat-img" style={{ position: "absolute", inset: 0, transition: "transform 0.6s cubic-bezier(0.22,1,0.36,1)" }}>
+                <div className="cat-img" style={{ position: "absolute", inset: 0, transition: "transform 0.55s cubic-bezier(0.22,1,0.36,1)" }}>
                   <Image
                     src={cat.image}
                     alt={cat.label}
                     fill
                     sizes="(max-width: 640px) 50vw, 17vw"
                     style={{ objectFit: "cover", objectPosition: "center" }}
-                    priority={i < 2}
+                    priority={i < 3}
                   />
                 </div>
               </div>
 
-              {/* Overlay — leve no topo, escuro só na base */}
+              {/* Gradient overlay */}
               <div style={{
                 position: "absolute", inset: 0,
-                background: "linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0.75) 70%, rgba(0,0,0,0.95) 100%)",
+                background: "linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.08) 35%, rgba(0,0,0,0.68) 62%, rgba(0,0,0,0.96) 100%)",
                 zIndex: 1,
               }} />
 
-              {/* Shimmer topo */}
+              {/* Shimmer */}
               <div className="cat-shimmer" style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: "2px",
-                background: `linear-gradient(90deg, transparent, ${cat.accentColor}99, transparent)`,
-                opacity: 0, transition: "opacity 0.35s ease", zIndex: 3,
+                background: `linear-gradient(90deg, transparent, ${cat.accentColor}88, transparent)`,
+                opacity: 0, transition: "opacity 0.32s ease", zIndex: 3,
               }} />
 
-              {/* Content — ícone pequeno + texto, tudo no bottom-left */}
+              {/* Content */}
               <div style={{
-                position: "absolute",
-                bottom: 0, left: 0, right: 0,
-                padding: "12px 12px 14px",
+                position: "relative",
                 zIndex: 4,
+                padding: "14px 14px 16px",
                 display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                gap: "4px",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "12px",
               }}>
-                {/* Ícone pequeno no canto — igual à REF */}
+                {/* Icon */}
                 <div style={{
-                  width: "32px", height: "32px",
+                  flexShrink: 0,
+                  width: "56px",
+                  height: "56px",
                   borderRadius: "50%",
-                  background: "rgba(6,10,5,0.80)",
-                  border: `1.5px solid ${cat.accentColor}55`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  backdropFilter: "blur(6px)",
-                  marginBottom: "4px",
+                  background: "rgba(4,8,3,0.70)",
+                  border: `1.5px solid rgba(212,146,74,0.35)`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backdropFilter: "blur(8px)",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.50)",
                 }}>
-                  <Image src={cat.icon} alt="" width={18} height={18} style={{ objectFit: "contain" }} />
+                  <Image
+                    src={cat.icon}
+                    alt={cat.sublabel}
+                    width={36}
+                    height={36}
+                    style={{ objectFit: "contain", filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.6))" }}
+                  />
                 </div>
 
-                {/* Título */}
-                <p style={{
-                  fontSize: "12px", fontWeight: 800,
-                  letterSpacing: "0.07em", textTransform: "uppercase",
-                  color: "#EDE6D6", lineHeight: 1.25,
-                  textShadow: "0 2px 6px rgba(0,0,0,0.9)",
-                  margin: 0,
-                }}>
-                  {cat.label}
-                </p>
+                {/* Text */}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  {/* Title 2 lines */}
+                  <p style={{
+                    fontSize: "13px",
+                    fontWeight: 900,
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    color: "#EDE6D6",
+                    lineHeight: 1.2,
+                    margin: "0 0 3px 0",
+                    textShadow: "0 2px 8px rgba(0,0,0,0.9)",
+                  }}>
+                    {cat.label}<br />{cat.sublabel}
+                  </p>
 
-                {/* Desc */}
-                <p style={{
-                  fontSize: "10px", color: "#9a8870",
-                  fontStyle: "italic", margin: 0,
-                  textShadow: "0 1px 4px rgba(0,0,0,0.8)",
-                }}>
-                  {cat.desc}
-                </p>
+                  {/* Desc */}
+                  <p style={{
+                    fontSize: "10px",
+                    color: "#8a7860",
+                    fontStyle: "italic",
+                    margin: "0 0 6px 0",
+                    textShadow: "0 1px 4px rgba(0,0,0,0.8)",
+                  }}>
+                    {cat.desc}
+                  </p>
 
-                {/* Badge */}
-                <span style={{
-                  display: "inline-block",
-                  fontSize: "9px", fontWeight: 700,
-                  letterSpacing: "0.14em", textTransform: "uppercase",
-                  color: cat.accentColor,
-                  border: `1px solid ${cat.accentColor}44`,
-                  borderRadius: "4px", padding: "3px 8px",
-                  background: "rgba(0,0,0,0.40)",
-                  backdropFilter: "blur(4px)",
-                  marginTop: "2px",
-                }}>
-                  {cat.count} guides
-                </span>
+                  {/* Count */}
+                  <p style={{
+                    fontSize: "9px",
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: cat.accentColor,
+                    margin: 0,
+                    textShadow: "0 1px 4px rgba(0,0,0,0.8)",
+                  }}>
+                    {cat.count} Guides
+                  </p>
+                </div>
               </div>
             </Link>
           ))}
@@ -233,11 +262,15 @@ export default function Categories() {
       </div>
 
       <style>{`
-        @media (max-width: 1024px) {
-          .cat-responsive { grid-template-columns: repeat(3, 1fr) !important; }
+        @media (max-width: 1100px) {
+          .cat-section-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
         @media (max-width: 640px) {
-          .cat-responsive { grid-template-columns: repeat(2, 1fr) !important; }
+          .cat-section-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .cat-section-grid a { height: 160px !important; }
+        }
+        @media (max-width: 400px) {
+          .cat-section-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>
