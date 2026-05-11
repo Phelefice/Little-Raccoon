@@ -28,7 +28,7 @@ const categories: Category[] = [
     image: "/images/category-survival.png",
   },
   {
-    icon: "⚙️",
+    icon: "/images/icone_farmsautomation.png",
     label: "Farms & Automation",
     desc: "Automatic & manual",
     count: 36,
@@ -39,7 +39,7 @@ const categories: Category[] = [
     image: "/images/category-farms.png",
   },
   {
-    icon: "🏰",
+    icon: "/images/icone_buildsdesign.png",
     label: "Builds & Designs",
     desc: "Houses & megabuilds",
     count: 62,
@@ -50,7 +50,7 @@ const categories: Category[] = [
     image: "/images/category_builds.webp",
   },
   {
-    icon: "🌍",
+    icon: "/images/icone_seeds.png",
     label: "Seeds & Worlds",
     desc: "Best world seeds",
     count: 29,
@@ -61,7 +61,7 @@ const categories: Category[] = [
     image: "/images/category-seeds.png",
   },
   {
-    icon: "⚡",
+    icon: "/images/icone_redstone.png",
     label: "Redstone & Mechanics",
     desc: "Circuits & machines",
     count: 41,
@@ -72,7 +72,7 @@ const categories: Category[] = [
     image: "/images/category-redstone.png",
   },
   {
-    icon: "📖",
+    icon: "/images/icone_guides.png",
     label: "Guides for Beginners",
     desc: "Start your journey",
     count: 24,
@@ -154,66 +154,63 @@ export default function Categories() {
                 </div>
               </div>
 
-              {/* Cinematic overlay */}
+              {/* Cinematic overlay — escuro embaixo, leve em cima */}
               <div style={{
                 position: "absolute", inset: 0,
-                background: "linear-gradient(to bottom, rgba(4,8,4,0.05) 0%, rgba(4,8,4,0.2) 35%, rgba(4,8,4,0.75) 65%, rgba(4,8,4,0.97) 100%)",
+                background: "linear-gradient(to bottom, rgba(4,8,4,0.05) 0%, rgba(4,8,4,0.15) 30%, rgba(4,8,4,0.70) 60%, rgba(4,8,4,0.96) 100%)",
                 zIndex: 1,
               }} />
 
               {/* Vignette */}
               <div style={{ position: "absolute", inset: 0, boxShadow: "inset 0 0 40px rgba(0,0,0,0.35)", zIndex: 2, borderRadius: "12px" }} />
 
-              {/* Shimmer */}
+              {/* Shimmer top */}
               <div className="cat-shimmer" style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: "2px",
                 background: `linear-gradient(90deg, transparent, ${cat.accentColor}99, transparent)`,
                 opacity: 0, transition: "opacity 0.35s ease", zIndex: 3,
               }} />
 
-              {/* Content — ícone + texto lado a lado */}
+              {/* Content — bottom left, ícone em cima do texto */}
               <div style={{
-                position: "absolute", bottom: 0, left: 0, right: 0,
-                padding: "16px 14px",
+                position: "absolute",
+                bottom: 0, left: 0, right: 0,
+                padding: "14px 14px 16px",
                 zIndex: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                gap: "6px",
               }}>
-                {/* Row: ícone + título */}
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px" }}>
-                  {/* Icon circle */}
-                  <div style={{
-                    flexShrink: 0,
-                    width: "36px", height: "36px",
-                    borderRadius: "50%",
-                    background: "rgba(8,12,6,0.80)",
-                    border: `1.5px solid ${cat.accentColor}66`,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    backdropFilter: "blur(6px)",
-                  }}>
-                    {cat.icon.startsWith("/") ? (
-                      <Image src={cat.icon} alt="" width={20} height={20} style={{ objectFit: "contain" }} />
-                    ) : (
-                      <span style={{ fontSize: "17px", lineHeight: 1 }}>{cat.icon}</span>
-                    )}
-                  </div>
-
-                  {/* Title */}
-                  <p style={{
-                    fontSize: "13px", fontWeight: 800,
-                    letterSpacing: "0.06em", textTransform: "uppercase",
-                    color: "#EDE6D6", lineHeight: 1.2,
-                    textShadow: "0 2px 8px rgba(0,0,0,0.9)",
-                    margin: 0,
-                  }}>
-                    {cat.label}
-                  </p>
+                {/* Ícone */}
+                <div style={{
+                  width: "40px", height: "40px",
+                  borderRadius: "50%",
+                  background: "rgba(6,10,5,0.75)",
+                  border: `1.5px solid ${cat.accentColor}55`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  backdropFilter: "blur(6px)",
+                  marginBottom: "2px",
+                }}>
+                  <Image src={cat.icon} alt="" width={24} height={24} style={{ objectFit: "contain" }} />
                 </div>
+
+                {/* Título */}
+                <p style={{
+                  fontSize: "13px", fontWeight: 800,
+                  letterSpacing: "0.06em", textTransform: "uppercase",
+                  color: "#EDE6D6", lineHeight: 1.2,
+                  textShadow: "0 2px 8px rgba(0,0,0,0.9)",
+                  margin: 0,
+                }}>
+                  {cat.label}
+                </p>
 
                 {/* Desc */}
                 <p style={{
                   fontSize: "10px", color: "#9a8870",
-                  fontStyle: "italic", margin: "0 0 8px 0",
+                  fontStyle: "italic", margin: 0,
                   textShadow: "0 1px 4px rgba(0,0,0,0.8)",
-                  paddingLeft: "2px",
                 }}>
                   {cat.desc}
                 </p>
@@ -228,6 +225,7 @@ export default function Categories() {
                   borderRadius: "4px", padding: "3px 8px",
                   background: "rgba(0,0,0,0.40)",
                   backdropFilter: "blur(4px)",
+                  marginTop: "2px",
                 }}>
                   {cat.count} guides
                 </span>
