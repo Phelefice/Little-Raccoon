@@ -1,4 +1,6 @@
-"use client";
+import { writeFileSync } from "fs";
+
+const content = `"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -77,3 +79,7 @@ export default function Hero() {
     </section>
   );
 }
+`;
+
+writeFileSync("components/Hero.tsx", content, "utf8");
+console.log("✅ Hero.tsx criado com sucesso!");
