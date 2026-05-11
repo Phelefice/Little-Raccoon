@@ -17,7 +17,7 @@ interface Category {
 
 const categories: Category[] = [
   {
-    icon: "🔥",
+    icon: "/images/icone_survival.png",
     label: "Survival Essentials",
     desc: "Tips & strategies",
     count: 48,
@@ -241,7 +241,7 @@ export default function Categories() {
                   marginBottom: "4px",
                   backdropFilter: "blur(4px)",
                 }}>
-                  {cat.icon}
+                  {cat.icon.startsWith("/") ? <Image src={cat.icon} alt="" width={20} height={20} style={{objectFit:"contain"}} /> : cat.icon}
                 </div>
 
                 {/* Label */}
@@ -308,3 +308,5 @@ export default function Categories() {
     </section>
   );
 }
+
+
