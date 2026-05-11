@@ -55,7 +55,7 @@ const categories: Category[] = [
     gradient: "linear-gradient(135deg, #221608 0%, #160e04 100%)",
     border: "rgba(200,148,74,0.22)",
     shimmer: "rgba(200,148,74,0.08)",
-    image: "/images/category-builds.webp",
+    image: "/images/category_builds.webp",
   },
   {
     icon: "🌍",
@@ -94,7 +94,7 @@ const categories: Category[] = [
     gradient: "linear-gradient(135deg, #120e24 0%, #0c0818 100%)",
     border: "rgba(138,120,200,0.22)",
     shimmer: "rgba(138,120,200,0.08)",
-    image: "/images/category-guides.webp",
+    image: "/images/category_guides.webp",
   },
 ];
 
