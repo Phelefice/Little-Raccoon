@@ -1,4 +1,6 @@
-"use client";
+import { writeFileSync } from "fs";
+
+const content = `"use client";
 
 import Link from "next/link";
 
@@ -63,3 +65,7 @@ export default function Categories() {
     </section>
   );
 }
+`;
+
+writeFileSync("components/Categories.tsx", content, "utf8");
+console.log("✅ Categories.tsx criado com sucesso!");
