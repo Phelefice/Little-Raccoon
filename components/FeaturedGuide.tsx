@@ -108,13 +108,13 @@ export default function FeaturedGuide() {
   const [heroHovered, setHeroHovered] = useState(false);
 
   return (
-    <section style={{ position: "relative", overflow: "hidden", background: "transparent", padding: "0 40px 0" }}>
+    <section style={{ position: "relative", overflow: "hidden", background: "transparent" }}>
 
       {/* Ambient blobs */}
       <div style={{ position: "absolute", top: "-60px", left: "-80px", width: "500px", height: "400px", background: "radial-gradient(ellipse, rgba(212,146,74,0.03) 0%, transparent 68%)", zIndex: 0, pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: "-40px", right: "10%", width: "400px", height: "300px", background: "radial-gradient(ellipse, rgba(90,150,80,0.02) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
 
-      <div style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto", padding: "48px 0 56px" }}>
+      <div style={{ position: "relative", zIndex: 1, padding: "0" }}>
 
         {/* Container esverdeado com bordas arredondadas — como na REF */}
         <div style={{
@@ -244,3 +244,4 @@ export default function FeaturedGuide() {
     </section>
   );
 }
+

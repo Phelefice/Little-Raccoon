@@ -13,10 +13,10 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Categories />
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "48px 40px", display: "grid", gridTemplateColumns: "1fr 340px", gap: "24px", alignItems: "start" }}>
+        <section style={{ maxWidth: "1200px", margin: "0 auto", padding: "48px 40px", display: "grid", gridTemplateColumns: "1fr 340px", gap: "24px", alignItems: "start" }}>
           <FeaturedGuide />
           <Sidebar />
-        </div>
+        </section>
         <LatestArticles />
       </main>
       <Footer />
