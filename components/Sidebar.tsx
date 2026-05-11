@@ -19,22 +19,31 @@ const socials = [
   { label: "X", emoji: "✕", href: "#", hoverColor: "#C0B89A" },
 ];
 
-const containerStyle: React.CSSProperties = {
+const container: React.CSSProperties = {
   background: "rgba(13,24,17,0.92)",
   border: "1px solid rgba(255,255,255,0.07)",
   borderRadius: "14px",
-  boxShadow: "0 4px 24px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.04)",
+  boxShadow: "0 4px 24px rgba(0,0,0,0.40)",
   overflow: "hidden",
   position: "relative",
 };
 
-const headerStyle: React.CSSProperties = {
+const header: React.CSSProperties = {
   display: "flex",
   alignItems: "center",
   gap: "8px",
   padding: "13px 18px",
   borderBottom: "1px solid rgba(255,255,255,0.05)",
   background: "rgba(6,12,8,0.70)",
+};
+
+const titleStyle: React.CSSProperties = {
+  fontSize: "10px",
+  fontWeight: 700,
+  letterSpacing: "0.22em",
+  textTransform: "uppercase",
+  color: "#D6C7A1",
+  margin: 0,
 };
 
 export default function Sidebar() {
@@ -46,18 +55,13 @@ export default function Sidebar() {
   return (
     <aside style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
 
-      {/* ── QUICK GUIDES ── */}
-      <div style={containerStyle}>
-        {/* Ambient glow */}
+      {/* QUICK GUIDES */}
+      <div style={container}>
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(212,146,74,0.30), transparent)", zIndex: 1 }} />
-
-        <div style={headerStyle}>
+        <div style={header}>
           <span style={{ fontSize: "11px", color: "#D4924A" }}>⚡</span>
-          <h3 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#D6C7A1", margin: 0 }}>
-            Quick Guides
-          </h3>
+          <h3 style={titleStyle}>Quick Guides</h3>
         </div>
-
         <ul style={{ margin: 0, padding: 0, listStyle: "none", position: "relative", zIndex: 1 }}>
           {quickGuides.map((guide, i) => (
             <li key={i} style={{ borderTop: i > 0 ? "1px solid rgba(255,255,255,0.04)" : "none" }}>
@@ -66,39 +70,29 @@ export default function Sidebar() {
                 style={{
                   display: "flex", alignItems: "center", gap: "12px",
                   padding: "11px 18px", textDecoration: "none",
-                  background: hoveredGuide === i
-                    ? "linear-gradient(90deg, rgba(212,146,74,0.06), transparent)"
-                    : "transparent",
+                  background: hoveredGuide === i ? "linear-gradient(90deg, rgba(212,146,74,0.06), transparent)" : "transparent",
                   transition: "background 0.30s ease",
                 }}
                 onMouseEnter={() => setHoveredGuide(i)}
                 onMouseLeave={() => setHoveredGuide(null)}
               >
-                {/* Icon */}
                 <span style={{
                   fontSize: "14px", flexShrink: 0, width: "28px", height: "28px",
                   display: "flex", alignItems: "center", justifyContent: "center",
                   background: hoveredGuide === i ? "rgba(212,146,74,0.10)" : "rgba(255,255,255,0.03)",
                   borderRadius: "6px",
-                  border: `1px solid ${hoveredGuide === i ? "rgba(212,146,74,0.25)" : "rgba(255,255,255,0.05)"}`,
+                  border: hoveredGuide === i ? "1px solid rgba(212,146,74,0.25)" : "1px solid rgba(255,255,255,0.05)",
                   transition: "all 0.30s ease",
                 }}>{guide.icon}</span>
-
-                {/* Title */}
                 <span style={{
                   fontSize: "11px", fontWeight: 500, lineHeight: 1.4, flex: 1,
                   color: hoveredGuide === i ? "#C8B898" : "#6a6050",
                   transition: "color 0.30s ease",
-                  letterSpacing: "0.01em",
                 }}>{guide.title}</span>
-
-                {/* Arrow */}
                 <span style={{
                   fontSize: "10px", flexShrink: 0,
                   color: hoveredGuide === i ? "rgba(212,146,74,0.60)" : "rgba(255,255,255,0.08)",
                   transition: "all 0.30s ease",
-                  transform: hoveredGuide === i ? "translateX(2px)" : "translateX(0)",
-                  display: "inline-block",
                 }}>→</span>
               </Link>
             </li>
@@ -106,20 +100,13 @@ export default function Sidebar() {
         </ul>
       </div>
 
-      {/* ── NEWSLETTER ── */}
-      <div style={{ ...containerStyle, background: "rgba(11,20,14,0.95)" }}>
-        {/* Top shimmer */}
+      {/* NEWSLETTER */}
+      <div style={{ ...container, background: "rgba(11,20,14,0.95)" }}>
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(212,146,74,0.25), transparent)", zIndex: 1 }} />
-        {/* Ambient glow */}
-        <div style={{ position: "absolute", bottom: 0, right: 0, width: "120px", height: "120px", background: "radial-gradient(ellipse, rgba(212,146,74,0.05) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
-
-        <div style={headerStyle}>
+        <div style={header}>
           <span style={{ fontSize: "11px", color: "#D4924A" }}>✉</span>
-          <h3 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#D6C7A1", margin: 0 }}>
-            Stay Updated
-          </h3>
+          <h3 style={titleStyle}>Stay Updated</h3>
         </div>
-
         <div style={{ padding: "20px 18px", position: "relative", zIndex: 1 }}>
           {subscribed ? (
             <div style={{ textAlign: "center", padding: "12px 0" }}>
@@ -128,8 +115,8 @@ export default function Sidebar() {
               <p style={{ fontSize: "10px", color: "#4A4440", margin: 0 }}>Check your inbox.</p>
             </div>
           ) : (
-            <>
-              <p style={{ fontSize: "11px", color: "#5a5040", lineHeight: 1.70, margin: "0 0 16px 0", letterSpacing: "0.01em" }}>
+            <div>
+              <p style={{ fontSize: "11px", color: "#5a5040", lineHeight: 1.70, margin: "0 0 16px 0" }}>
                 Get new tutorials and cozy updates straight to your inbox.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
@@ -144,7 +131,6 @@ export default function Sidebar() {
                     border: "1px solid rgba(255,255,255,0.07)",
                     borderRadius: "6px", color: "#EDE6D6", outline: "none",
                     boxSizing: "border-box",
-                    letterSpacing: "0.02em",
                   }}
                 />
                 <button
@@ -156,8 +142,6 @@ export default function Sidebar() {
                     color: "#C8B898",
                     border: "1px solid rgba(60,120,75,0.35)",
                     borderRadius: "6px", cursor: "pointer",
-                    boxShadow: "0 2px 12px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.05)",
-                    transition: "opacity 0.25s ease",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.80")}
                   onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
@@ -165,25 +149,21 @@ export default function Sidebar() {
                   Subscribe →
                 </button>
               </div>
-              <p style={{ fontSize: "9px", marginTop: "10px", textAlign: "center", color: "#3a3428", letterSpacing: "0.05em" }}>
+              <p style={{ fontSize: "9px", marginTop: "10px", textAlign: "center", color: "#3a3428" }}>
                 No spam. Unsubscribe anytime.
               </p>
-            </>
+            </div>
           )}
         </div>
       </div>
 
-      {/* ── FOLLOW US ── */}
-      <div style={containerStyle}>
+      {/* FOLLOW US */}
+      <div style={container}>
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(212,146,74,0.20), transparent)", zIndex: 1 }} />
-
-        <div style={headerStyle}>
+        <div style={header}>
           <span style={{ fontSize: "11px", color: "#D4924A" }}>🌿</span>
-          <h3 style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#D6C7A1", margin: 0 }}>
-            Follow the Raccoon
-          </h3>
+          <h3 style={titleStyle}>Follow the Raccoon</h3>
         </div>
-
         <div style={{ padding: "14px 18px 16px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7px", position: "relative", zIndex: 1 }}>
           {socials.map((s) => (
             
@@ -192,20 +172,17 @@ export default function Sidebar() {
               style={{
                 display: "flex", alignItems: "center", gap: "7px",
                 padding: "9px 11px",
-                background: hoveredSocial === s.label
-                  ? "rgba(255,255,255,0.04)"
-                  : "rgba(255,255,255,0.02)",
-                border: `1px solid ${hoveredSocial === s.label ? "rgba(255,255,255,0.10)" : "rgba(255,255,255,0.05)"}`,
+                background: hoveredSocial === s.label ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.02)",
+                border: hoveredSocial === s.label ? "1px solid rgba(255,255,255,0.10)" : "1px solid rgba(255,255,255,0.05)",
                 borderRadius: "8px", textDecoration: "none",
                 color: hoveredSocial === s.label ? s.hoverColor : "#5a5040",
                 transition: "all 0.28s ease",
-                fontSize: "11px", fontWeight: 600, letterSpacing: "0.05em",
-                boxShadow: hoveredSocial === s.label ? `0 0 12px ${s.hoverColor}18` : "none",
+                fontSize: "11px", fontWeight: 600,
               }}
               onMouseEnter={() => setHoveredSocial(s.label)}
               onMouseLeave={() => setHoveredSocial(null)}
             >
-              <span style={{ fontSize: "12px", transition: "color 0.28s ease" }}>{s.emoji}</span>
+              <span style={{ fontSize: "12px" }}>{s.emoji}</span>
               {s.label}
             </a>
           ))}
