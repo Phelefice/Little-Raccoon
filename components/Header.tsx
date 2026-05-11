@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { Fragment, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Guides",   href: "/guides" },
@@ -45,7 +46,7 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center">
-            {/* HOME — active item */}
+            {/* HOME â€” active item */}
             <Link
               href="/"
               className="px-4 py-1 flex flex-col items-center gap-0.5"
