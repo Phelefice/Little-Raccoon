@@ -45,7 +45,7 @@ const categories: Category[] = [
     icon: "/images/icon_builds.png",
     label: "Builds &",
     sublabel: "Designs",
-    desc: "Houses & megabuilds",
+    desc: "Architectural ideas",
     count: 62,
     href: "/builds",
     accentColor: "#D4924A",
@@ -271,3 +271,4 @@ export default function Categories() {
     </section>
   );
 }
+
