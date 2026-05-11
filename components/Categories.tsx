@@ -94,23 +94,18 @@ const categories: Category[] = [
 export default function Categories() {
   return (
     <section style={{ position: "relative", padding: "80px 0 96px", overflow: "hidden" }}>
-      {/* Background */}
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 90% 70% at 50% 50%, rgba(14,22,10,0.98) 0%, rgba(6,10,5,1) 100%)", zIndex: 0 }} />
 
       <div style={{ position: "relative", zIndex: 1, maxWidth: "1280px", margin: "0 auto", padding: "0 40px" }}>
 
-        {/* Section header */}
+        {/* Header */}
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "44px" }}>
           <div>
-            <p style={{ fontSize: "10px", letterSpacing: "0.28em", textTransform: "uppercase", color: "#5a7a4a", marginBottom: "10px", fontWeight: 700, margin: "0 0 10px 0" }}>
-              ✦ Browse
-            </p>
-            <h2 style={{ fontSize: "30px", fontWeight: 900, letterSpacing: "0.07em", color: "#EDE6D6", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>
-              Explore Categories
-            </h2>
+            <p style={{ fontSize: "10px", letterSpacing: "0.28em", textTransform: "uppercase", color: "#5a7a4a", fontWeight: 700, margin: "0 0 10px 0" }}>✦ Browse</p>
+            <h2 style={{ fontSize: "30px", fontWeight: 900, letterSpacing: "0.07em", color: "#EDE6D6", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>Explore Categories</h2>
           </div>
-          <Link href="/categories" style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5a7a4a", textDecoration: "none", fontWeight: 700, display: "flex", alignItems: "center", gap: "8px" }}>
-            View All Categories <span>→</span>
+          <Link href="/categories" style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5a7a4a", textDecoration: "none", fontWeight: 700 }}>
+            View All Categories →
           </Link>
         </div>
 
@@ -122,9 +117,7 @@ export default function Categories() {
               href={cat.href}
               style={{
                 position: "relative",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-end",
+                display: "block",
                 borderRadius: "12px",
                 overflow: "hidden",
                 border: `1px solid ${cat.borderColor}`,
@@ -171,7 +164,7 @@ export default function Categories() {
               {/* Gradient overlay */}
               <div style={{
                 position: "absolute", inset: 0,
-                background: "linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.08) 35%, rgba(0,0,0,0.68) 62%, rgba(0,0,0,0.96) 100%)",
+                background: "linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.65) 58%, rgba(0,0,0,0.97) 100%)",
                 zIndex: 1,
               }} />
 
@@ -182,78 +175,81 @@ export default function Categories() {
                 opacity: 0, transition: "opacity 0.32s ease", zIndex: 3,
               }} />
 
-              {/* Content */}
+              {/* Content — ícone solto + texto, alinhados ao topo do bloco */}
               <div style={{
-                position: "relative",
+                position: "absolute",
+                bottom: 0, left: 0, right: 0,
+                padding: "0 14px 18px",
                 zIndex: 4,
-                padding: "14px 14px 16px",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "12px",
               }}>
-                {/* Icon */}
+                {/* Row: ícone alinhado ao topo da primeira linha do título */}
                 <div style={{
-                  flexShrink: 0,
-                  width: "56px",
-                  height: "56px",
-                  borderRadius: "50%",
-                  background: "rgba(4,8,3,0.70)",
-                  border: `1.5px solid rgba(212,146,74,0.35)`,
                   display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backdropFilter: "blur(8px)",
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.50)",
+                  flexDirection: "row",
+                  alignItems: "flex-start",
+                  gap: "10px",
                 }}>
-                  <Image
-                    src={cat.icon}
-                    alt={cat.sublabel}
-                    width={36}
-                    height={36}
-                    style={{ objectFit: "contain", filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.6))" }}
-                  />
-                </div>
-
-                {/* Text */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  {/* Title 2 lines */}
-                  <p style={{
-                    fontSize: "13px",
-                    fontWeight: 900,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    color: "#EDE6D6",
-                    lineHeight: 1.2,
-                    margin: "0 0 3px 0",
-                    textShadow: "0 2px 8px rgba(0,0,0,0.9)",
+                  {/* Ícone sem moldura, solto, alinhado ao topo */}
+                  <div style={{
+                    flexShrink: 0,
+                    width: "52px",
+                    height: "52px",
+                    display: "flex",
+                    alignItems: "flex-start",
+                    justifyContent: "center",
+                    paddingTop: "2px",
+                    filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.7))",
                   }}>
-                    {cat.label}<br />{cat.sublabel}
-                  </p>
+                    <Image
+                      src={cat.icon}
+                      alt={cat.sublabel}
+                      width={48}
+                      height={48}
+                      style={{ objectFit: "contain" }}
+                    />
+                  </div>
 
-                  {/* Desc */}
-                  <p style={{
-                    fontSize: "10px",
-                    color: "#8a7860",
-                    fontStyle: "italic",
-                    margin: "0 0 6px 0",
-                    textShadow: "0 1px 4px rgba(0,0,0,0.8)",
-                  }}>
-                    {cat.desc}
-                  </p>
+                  {/* Texto */}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    {/* Título 2 linhas */}
+                    <p style={{
+                      fontSize: "13px",
+                      fontWeight: 900,
+                      letterSpacing: "0.06em",
+                      textTransform: "uppercase",
+                      color: "#EDE6D6",
+                      lineHeight: 1.25,
+                      margin: "0 0 5px 0",
+                      textShadow: "0 2px 8px rgba(0,0,0,0.95)",
+                    }}>
+                      {cat.label}<br />{cat.sublabel}
+                    </p>
 
-                  {/* Count */}
-                  <p style={{
-                    fontSize: "9px",
-                    fontWeight: 700,
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    color: cat.accentColor,
-                    margin: 0,
-                    textShadow: "0 1px 4px rgba(0,0,0,0.8)",
-                  }}>
-                    {cat.count} Guides
-                  </p>
+                    {/* Desc */}
+                    <p style={{
+                      fontSize: "10px",
+                      color: "#8a7860",
+                      fontStyle: "italic",
+                      margin: "0 0 7px 0",
+                      textShadow: "0 1px 4px rgba(0,0,0,0.8)",
+                      lineHeight: 1.3,
+                    }}>
+                      {cat.desc}
+                    </p>
+
+                    {/* Count */}
+                    <p style={{
+                      fontSize: "9px",
+                      fontWeight: 700,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: cat.accentColor,
+                      margin: 0,
+                      textShadow: "0 1px 4px rgba(0,0,0,0.8)",
+                    }}>
+                      {cat.count} Guides
+                    </p>
+                  </div>
                 </div>
               </div>
             </Link>
@@ -267,7 +263,6 @@ export default function Categories() {
         }
         @media (max-width: 640px) {
           .cat-section-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .cat-section-grid a { height: 160px !important; }
         }
         @media (max-width: 400px) {
           .cat-section-grid { grid-template-columns: 1fr !important; }
