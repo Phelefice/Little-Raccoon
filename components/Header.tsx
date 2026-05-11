@@ -40,7 +40,7 @@ export default function Header() {
 
           {/* Logo */}
           <Link href="/" className="py-2">
-            <img src="/LOGO_HORIZONTAL.png" alt="The Little Raccoon" width={200} height={60} />
+            <img src="/LOGO_HORIZONTAL.webp" alt="The Little Raccoon" width={200} height={60} />
           </Link>
 
           {/* Desktop nav */}
