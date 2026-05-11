@@ -122,6 +122,12 @@ export default function FeaturedGuide() {
       background: "linear-gradient(180deg, #060d08 0%, #09120d 40%, #060d08 100%)",
       borderTop: "1px solid rgba(255,255,255,0.035)",
     }}>
+      {/* Fade top */}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "180px", background: "linear-gradient(to bottom, rgba(8,14,10,0) 0%, transparent 100%)", zIndex: 0, pointerEvents: "none" }} />
+      {/* Fade bottom */}
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "180px", background: "linear-gradient(to top, rgba(8,14,10,0) 0%, transparent 100%)", zIndex: 0, pointerEvents: "none" }} />
+      {/* Dark bg subtle */}
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 100% 80% at 50% 50%, rgba(10,18,12,0.82) 0%, rgba(6,10,8,0.55) 60%, transparent 100%)", zIndex: 0, pointerEvents: "none" }} />
       {/* Ambient blobs */}
       <div style={{ position: "absolute", top: "-60px", left: "-80px", width: "500px", height: "400px", background: "radial-gradient(ellipse, rgba(212,146,74,0.035) 0%, transparent 68%)", zIndex: 0, pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: "-40px", right: "10%", width: "400px", height: "300px", background: "radial-gradient(ellipse, rgba(90,150,80,0.025) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
@@ -269,3 +275,4 @@ export default function FeaturedGuide() {
     </section>
   );
 }
+
