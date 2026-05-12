@@ -33,7 +33,7 @@ function QuickGuides() {
   return (
     <div style={card}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(200,168,75,0.35), transparent)" }} />
-      <div style={{ padding: "28px 28px 8px" }}>
+      <div style={{ padding: "20px 20px 6px" }}>
         <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#c8a84b", margin: "0 0 4px" }}>⚡ Quick Guides</p>
         <h3 style={{ fontSize: "22px", fontWeight: 700, color: "#e8d9a0", margin: 0 }}>Jump Into a Guide</h3>
       </div>
@@ -46,7 +46,7 @@ function QuickGuides() {
                 display: "flex",
                 alignItems: "center",
                 gap: "20px",
-                padding: "18px 28px",
+                padding: "12px 20px",
                 textDecoration: "none",
                 background: hovered === i ? "rgba(200,168,75,0.05)" : "transparent",
                 transition: "all 0.22s ease",
@@ -131,4 +131,6 @@ export default function Sidebar() {
     </aside>
   );
 }
+
+
 

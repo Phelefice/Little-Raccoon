@@ -61,8 +61,8 @@ function MiniCard({ mini, index }: { mini: typeof minis[0]; index: number }) {
         height: `${heights[index]}px`,
         transition: "transform 0.42s cubic-bezier(0.22,1,0.36,1), box-shadow 0.42s ease, border-color 0.42s ease",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
-        marginLeft: index === 1 ? "6px" : "0",
-        marginRight: index === 1 ? "-6px" : "0",
+        marginLeft: "0",
+        marginRight: "0",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -244,6 +244,9 @@ export default function FeaturedGuide() {
     </div>
   );
 }
+
+
+
 
 
 
