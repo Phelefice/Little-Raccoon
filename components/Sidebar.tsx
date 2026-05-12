@@ -34,8 +34,8 @@ function QuickGuides() {
     <div style={card}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(200,168,75,0.35), transparent)" }} />
       <div style={{ padding: "28px 28px 8px" }}>
-        <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#c8a84b", margin: "0 0 4px" }}>⚡ Quick Guides</p>
-        <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#e8d9a0", fontFamily: "Georgia, serif", margin: 0 }}>Jump Into a Guide</h3>
+        <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#c8a84b", margin: "0 0 4px" }}>⚡ Quick Guides</p>
+        <h3 style={{ fontSize: "22px", fontWeight: 700, color: "#e8d9a0", fontFamily: "Georgia, serif", margin: 0 }}>Jump Into a Guide</h3>
       </div>
       <ul style={{ margin: "16px 0 8px", padding: 0, listStyle: "none" }}>
         {quickGuides.map((g, i) => (
@@ -45,8 +45,8 @@ function QuickGuides() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "18px",
-                padding: "16px 28px",
+                gap: "20px",
+                padding: "18px 28px",
                 textDecoration: "none",
                 background: hovered === i ? "rgba(200,168,75,0.05)" : "transparent",
                 transition: "all 0.22s ease",
@@ -55,18 +55,18 @@ function QuickGuides() {
               onMouseLeave={() => setHovered(null)}
             >
               <div style={{
-                width: "64px", height: "64px", flexShrink: 0, borderRadius: "9999px",
+                width: "72px", height: "72px", flexShrink: 0, borderRadius: "9999px",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 background: hovered === i ? "rgba(200,168,75,0.12)" : "rgba(255,255,255,0.05)",
                 border: hovered === i ? "1px solid rgba(200,168,75,0.35)" : "1px solid rgba(255,255,255,0.08)",
-                boxShadow: hovered === i ? "0 0 16px rgba(200,168,75,0.18)" : "none",
+                boxShadow: hovered === i ? "0 0 20px rgba(200,168,75,0.20)" : "none",
                 transition: "all 0.22s ease",
               }}>
-                <Image src={g.icon} alt={g.title} width={42} height={42} style={{ objectFit: "contain", imageRendering: "pixelated", filter: hovered === i ? "drop-shadow(0 0 6px rgba(200,168,75,0.5)) brightness(1.2)" : "brightness(0.9)", transition: "filter 0.22s ease" }} />
+                <Image src={g.icon} alt={g.title} width={54} height={54} style={{ objectFit: "contain", imageRendering: "pixelated", filter: hovered === i ? "drop-shadow(0 0 6px rgba(200,168,75,0.5)) brightness(1.2)" : "brightness(0.9)", transition: "filter 0.22s ease" }} />
               </div>
               <div style={{ flex: 1 }}>
-                <p style={{ fontSize: "14px", fontWeight: 700, color: hovered === i ? "#e8d9a0" : "#a89660", margin: "0 0 2px", transition: "color 0.22s ease", lineHeight: 1.3 }}>{g.title}</p>
-                <p style={{ fontSize: "11px", color: "#4a4228", margin: 0 }}>Read guide →</p>
+                <p style={{ fontSize: "17px", fontWeight: 700, color: hovered === i ? "#e8d9a0" : "#a89660", margin: "0 0 4px", transition: "color 0.22s ease", lineHeight: 1.3 }}>{g.title}</p>
+                <p style={{ fontSize: "13px", color: "#4a4228", margin: 0 }}>Read guide →</p>
               </div>
             </Link>
           </li>
