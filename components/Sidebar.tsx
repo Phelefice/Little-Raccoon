@@ -1,194 +1,75 @@
-"use client";
-
+﻿"use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const quickGuides = [
-  { icon: "🏮", title: "How to Make a Lantern", slug: "/guides/lantern" },
-  { icon: "🧪", title: "Brewing Guide", slug: "/guides/brewing" },
-  { icon: "✨", title: "Enchanting Explained", slug: "/guides/enchanting" },
-  { icon: "🍖", title: "Food Guide", slug: "/guides/food" },
-  { icon: "🐄", title: "Mob Farming 101", slug: "/guides/mob-farming" },
+  { icon: "/images/lantern.png",     title: "How to Make a Lantern", slug: "/guides/lantern"     },
+  { icon: "/images/brewing.png",     title: "Brewing Guide",         slug: "/guides/brewing"     },
+  { icon: "/images/enchanting.png",  title: "Enchanting Explained",  slug: "/guides/enchanting"  },
+  { icon: "/images/food.png",        title: "Food Guide",            slug: "/guides/food"        },
+  { icon: "/images/mob_farming.png", title: "Mob Farming 101",       slug: "/guides/mob-farming" },
 ];
 
-const socials = [
-  { label: "YouTube", emoji: "▶", href: "#", hoverColor: "#CC4444" },
-  { label: "Discord", emoji: "💬", href: "#", hoverColor: "#6070C8" },
-  { label: "Instagram", emoji: "📷", href: "#", hoverColor: "#C06080" },
-  { label: "Pinterest", emoji: "📌", href: "#", hoverColor: "#C04040" },
-  { label: "X", emoji: "✕", href: "#", hoverColor: "#C0B89A" },
-];
-
-const container: React.CSSProperties = {
-  background: "rgba(13,24,17,0.92)",
-  border: "1px solid rgba(255,255,255,0.07)",
-  borderRadius: "14px",
-  boxShadow: "0 4px 24px rgba(0,0,0,0.40)",
+const card: React.CSSProperties = {
+  background: "rgba(14,18,12,0.92)",
+  border: "1px solid rgba(200,168,75,0.12)",
+  borderRadius: "24px",
   overflow: "hidden",
   position: "relative",
+  boxShadow: "0 8px 32px rgba(0,0,0,0.45)",
 };
 
-const header: React.CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  gap: "8px",
-  padding: "13px 18px",
-  borderBottom: "1px solid rgba(255,255,255,0.05)",
-  background: "rgba(6,12,8,0.70)",
-};
+function QuickGuides() {
+  const [hovered, setHovered] = useState<number | null>(null);
+  return (
+    <div style={card}>
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(200,168,75,0.35), transparent)" }} />
+      <div style={{ padding: "20px 20px 6px" }}>
+        <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#c8a84b", margin: "0 0 4px", display: "flex", alignItems: "center", gap: "6px" }}>
+          <span>Quick Guides</span>
+        </p>
+        <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#e8d9a0", margin: "0 0 8px" }}>Jump Into a Guide</h3>
+      </div>
+      <ul style={{ margin: "0 0 10px", padding: 0, listStyle: "none" }}>
+        {quickGuides.map((g, i) => (
+          <li key={i} style={{ borderTop: i > 0 ? "1px solid rgba(255,255,255,0.04)" : "none" }}>
+            <Link href={g.slug} style={{ display: "flex", alignItems: "center", gap: "16px", padding: "12px 20px", textDecoration: "none", background: hovered === i ? "rgba(200,168,75,0.05)" : "transparent", transition: "all 0.22s ease" }} onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)}>
+              <div style={{ width: "52px", height: "52px", flexShrink: 0, borderRadius: "9999px", display: "flex", alignItems: "center", justifyContent: "center", background: hovered === i ? "rgba(200,168,75,0.12)" : "rgba(255,255,255,0.05)", border: hovered === i ? "1px solid rgba(200,168,75,0.35)" : "1px solid rgba(255,255,255,0.08)", boxShadow: hovered === i ? "0 0 16px rgba(200,168,75,0.18)" : "none", transition: "all 0.22s ease" }}>
+                <Image src={g.icon} alt={g.title} width={38} height={38} style={{ objectFit: "contain", imageRendering: "pixelated", filter: hovered === i ? "drop-shadow(0 0 6px rgba(200,168,75,0.5)) brightness(1.2)" : "brightness(0.9)", transition: "filter 0.22s ease" }} />
+              </div>
+              <span style={{ fontSize: "14px", fontWeight: 600, flex: 1, color: hovered === i ? "#e8d9a0" : "#a89660", transition: "color 0.22s ease" }}>{g.title}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
-const titleStyle: React.CSSProperties = {
-  fontSize: "10px",
-  fontWeight: 700,
-  letterSpacing: "0.22em",
-  textTransform: "uppercase",
-  color: "#D6C7A1",
-  margin: 0,
-};
+function NewHere() {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div style={{ background: "rgba(10,20,12,0.95)", border: "1px solid rgba(60,100,50,0.35)", borderRadius: "16px", position: "relative", overflow: "visible", marginTop: "16px" }}>
+      <div style={{ position: "absolute", right: "0px", top: "-70px", width: "150px", height: "190px", zIndex: 10, pointerEvents: "none" }}>
+        <Image src="/images/New_here.png" alt="Raccoon mascot" fill style={{ objectFit: "contain", objectPosition: "bottom right" }} />
+      </div>
+      <div style={{ padding: "22px 18px 22px", position: "relative", zIndex: 1 }}>
+        <h3 style={{ fontSize: "20px", fontWeight: 900, color: "#e8d9a0", textTransform: "uppercase", letterSpacing: "0.04em", lineHeight: 1.1, margin: "0 0 10px", maxWidth: "155px" }}>New Here?</h3>
+        <p style={{ fontSize: "12px", color: "#7a6e4a", lineHeight: 1.6, margin: "0 0 18px", maxWidth: "165px" }}>Start your adventure with our Beginner Guides!</p>
+        <Link href="/beginner-guides" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "10px 20px", borderRadius: "8px", background: hovered ? "rgba(60,100,50,0.6)" : "rgba(45,80,38,0.5)", border: "1px solid rgba(80,130,60,0.5)", color: "#c8d89a", fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none", transition: "all 0.22s ease" }} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+          Get Started
+        </Link>
+      </div>
+    </div>
+  );
+}
 
 export default function Sidebar() {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-  const [hoveredGuide, setHoveredGuide] = useState<number | null>(null);
-  const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
-
   return (
     <aside style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-
-      {/* QUICK GUIDES */}
-      <div style={container}>
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(212,146,74,0.30), transparent)", zIndex: 1 }} />
-        <div style={header}>
-          <span style={{ fontSize: "11px", color: "#D4924A" }}>⚡</span>
-          <h3 style={titleStyle}>Quick Guides</h3>
-        </div>
-        <ul style={{ margin: 0, padding: 0, listStyle: "none", position: "relative", zIndex: 1 }}>
-          {quickGuides.map((guide, i) => (
-            <li key={i} style={{ borderTop: i > 0 ? "1px solid rgba(255,255,255,0.04)" : "none" }}>
-              <Link
-                href={guide.slug}
-                style={{
-                  display: "flex", alignItems: "center", gap: "12px",
-                  padding: "11px 18px", textDecoration: "none",
-                  background: hoveredGuide === i ? "linear-gradient(90deg, rgba(212,146,74,0.06), transparent)" : "transparent",
-                  transition: "background 0.30s ease",
-                }}
-                onMouseEnter={() => setHoveredGuide(i)}
-                onMouseLeave={() => setHoveredGuide(null)}
-              >
-                <span style={{
-                  fontSize: "14px", flexShrink: 0, width: "28px", height: "28px",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  background: hoveredGuide === i ? "rgba(212,146,74,0.10)" : "rgba(255,255,255,0.03)",
-                  borderRadius: "6px",
-                  border: hoveredGuide === i ? "1px solid rgba(212,146,74,0.25)" : "1px solid rgba(255,255,255,0.05)",
-                  transition: "all 0.30s ease",
-                }}>{guide.icon}</span>
-                <span style={{
-                  fontSize: "11px", fontWeight: 500, lineHeight: 1.4, flex: 1,
-                  color: hoveredGuide === i ? "#C8B898" : "#6a6050",
-                  transition: "color 0.30s ease",
-                }}>{guide.title}</span>
-                <span style={{
-                  fontSize: "10px", flexShrink: 0,
-                  color: hoveredGuide === i ? "rgba(212,146,74,0.60)" : "rgba(255,255,255,0.08)",
-                  transition: "all 0.30s ease",
-                }}>→</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* NEWSLETTER */}
-      <div style={{ ...container, background: "rgba(11,20,14,0.95)" }}>
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(212,146,74,0.25), transparent)", zIndex: 1 }} />
-        <div style={header}>
-          <span style={{ fontSize: "11px", color: "#D4924A" }}>✉</span>
-          <h3 style={titleStyle}>Stay Updated</h3>
-        </div>
-        <div style={{ padding: "20px 18px", position: "relative", zIndex: 1 }}>
-          {subscribed ? (
-            <div style={{ textAlign: "center", padding: "12px 0" }}>
-              <div style={{ fontSize: "24px", marginBottom: "8px" }}>🎉</div>
-              <p style={{ fontWeight: 700, fontSize: "12px", color: "#D6C7A1", margin: "0 0 4px 0" }}>You&apos;re in!</p>
-              <p style={{ fontSize: "10px", color: "#4A4440", margin: 0 }}>Check your inbox.</p>
-            </div>
-          ) : (
-            <div>
-              <p style={{ fontSize: "11px", color: "#5a5040", lineHeight: 1.70, margin: "0 0 16px 0" }}>
-                Get new tutorials and cozy updates straight to your inbox.
-              </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email"
-                  style={{
-                    width: "100%", padding: "9px 12px", fontSize: "11px",
-                    background: "rgba(4,8,5,0.80)",
-                    border: "1px solid rgba(255,255,255,0.07)",
-                    borderRadius: "6px", color: "#EDE6D6", outline: "none",
-                    boxSizing: "border-box",
-                  }}
-                />
-                <button
-                  onClick={() => { if (email) setSubscribed(true); }}
-                  style={{
-                    width: "100%", padding: "10px", fontSize: "9px",
-                    fontWeight: 700, letterSpacing: "0.20em", textTransform: "uppercase",
-                    background: "linear-gradient(135deg, rgba(45,95,58,0.95), rgba(30,68,42,0.95))",
-                    color: "#C8B898",
-                    border: "1px solid rgba(60,120,75,0.35)",
-                    borderRadius: "6px", cursor: "pointer",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.80")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-                >
-                  Subscribe →
-                </button>
-              </div>
-              <p style={{ fontSize: "9px", marginTop: "10px", textAlign: "center", color: "#3a3428" }}>
-                No spam. Unsubscribe anytime.
-              </p>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* FOLLOW US */}
-      <div style={container}>
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(212,146,74,0.20), transparent)", zIndex: 1 }} />
-        <div style={header}>
-          <span style={{ fontSize: "11px", color: "#D4924A" }}>🌿</span>
-          <h3 style={titleStyle}>Follow the Raccoon</h3>
-        </div>
-        <div style={{ padding: "14px 18px 16px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7px", position: "relative", zIndex: 1 }}>
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              style={{
-                display: "flex", alignItems: "center", gap: "7px",
-                padding: "9px 11px",
-                background: hoveredSocial === s.label ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.02)",
-                border: hoveredSocial === s.label ? "1px solid rgba(255,255,255,0.10)" : "1px solid rgba(255,255,255,0.05)",
-                borderRadius: "8px", textDecoration: "none",
-                color: hoveredSocial === s.label ? s.hoverColor : "#5a5040",
-                transition: "all 0.28s ease",
-                fontSize: "11px", fontWeight: 600,
-              }}
-              onMouseEnter={() => setHoveredSocial(s.label)}
-              onMouseLeave={() => setHoveredSocial(null)}
-            >
-              <span style={{ fontSize: "12px" }}>{s.emoji}</span>
-              {s.label}
-            </a>
-          ))}
-        </div>
-      </div>
-
+      <QuickGuides />
+      <NewHere />
     </aside>
   );
 }
