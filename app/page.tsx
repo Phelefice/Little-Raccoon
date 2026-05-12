@@ -15,7 +15,7 @@ export default function Home() {
         <Categories />
         <section style={{ maxWidth: "1200px", margin: "0 auto", padding: "48px 40px", display: "grid", gridTemplateColumns: "1fr 340px", gap: "24px", alignItems: "start" }}>
           <FeaturedGuide />
-          {/* <Sidebar /> */}
+          <Sidebar />
         </section>
         <LatestArticles />
       </main>
@@ -23,4 +23,5 @@ export default function Home() {
     </>
   );
 }
+
 

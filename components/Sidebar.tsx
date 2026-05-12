@@ -126,11 +126,12 @@ export default function Sidebar() {
   return (
     <aside style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
       <QuickGuides />
-      <Newsletter />
-      <FollowUs />
+      {/* <Newsletter /> */}
+      {/* <FollowUs /> */}
     </aside>
   );
 }
+
 
 
 
