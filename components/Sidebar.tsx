@@ -53,7 +53,7 @@ function NewHere() {
         <Image src="/images/NH_background.png" alt="Background" fill style={{ objectFit: "cover", objectPosition: "center" }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(4,12,6,0.90) 40%, rgba(4,12,6,0.3) 100%)" }} />
       </div>
-      <div style={{ position: "absolute", right: "-10px", top: "-270px", width: "360px", height: "460px", zIndex: 2, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", right: "-40px", top: "-270px", width: "360px", height: "460px", zIndex: 2, pointerEvents: "none" }}>
         <Image src="/images/NH_raccoon.png" alt="Raccoon" fill style={{ objectFit: "contain", objectPosition: "bottom right" }} />
       </div>
       <div style={{ position: "relative", zIndex: 3, padding: "24px 18px 24px" }}>
@@ -75,6 +75,7 @@ export default function Sidebar() {
     </aside>
   );
 }
+
 
 
 
