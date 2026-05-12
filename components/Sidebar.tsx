@@ -1,22 +1,22 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
 
 const quickGuides = [
-  { icon: "🏮", title: "How to Make a Lantern", slug: "/guides/lantern" },
-  { icon: "🧪", title: "Brewing Guide", slug: "/guides/brewing" },
-  { icon: "✨", title: "Enchanting Explained", slug: "/guides/enchanting" },
-  { icon: "🍖", title: "Food Guide", slug: "/guides/food" },
-  { icon: "🐄", title: "Mob Farming 101", slug: "/guides/mob-farming" },
+  { icon: "ðŸ®", title: "How to Make a Lantern", slug: "/guides/lantern" },
+  { icon: "ðŸ§ª", title: "Brewing Guide", slug: "/guides/brewing" },
+  { icon: "âœ¨", title: "Enchanting Explained", slug: "/guides/enchanting" },
+  { icon: "ðŸ–", title: "Food Guide", slug: "/guides/food" },
+  { icon: "ðŸ„", title: "Mob Farming 101", slug: "/guides/mob-farming" },
 ];
 
 const socials = [
-  { label: "YouTube", emoji: "▶", href: "#", hoverColor: "#CC4444" },
-  { label: "Discord", emoji: "💬", href: "#", hoverColor: "#6070C8" },
-  { label: "Instagram", emoji: "📷", href: "#", hoverColor: "#C06080" },
-  { label: "Pinterest", emoji: "📌", href: "#", hoverColor: "#C04040" },
-  { label: "X", emoji: "✕", href: "#", hoverColor: "#C0B89A" },
+  { label: "YouTube", emoji: "â–¶", href: "#", hoverColor: "#CC4444" },
+  { label: "Discord", emoji: "ðŸ’¬", href: "#", hoverColor: "#6070C8" },
+  { label: "Instagram", emoji: "ðŸ“·", href: "#", hoverColor: "#C06080" },
+  { label: "Pinterest", emoji: "ðŸ“Œ", href: "#", hoverColor: "#C04040" },
+  { label: "X", emoji: "âœ•", href: "#", hoverColor: "#C0B89A" },
 ];
 
 const container: React.CSSProperties = {
@@ -46,6 +46,22 @@ const titleStyle: React.CSSProperties = {
   margin: 0,
 };
 
+function NewHere() {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div style={{ background: "rgba(10,20,12,0.95)", border: "1px solid rgba(60,100,50,0.35)", borderRadius: "16px", overflow: "visible", position: "relative", marginTop: "8px" }}>
+      <div style={{ position: "absolute", right: "8px", top: "-60px", width: "140px", height: "180px", zIndex: 10, pointerEvents: "none" }}>
+        <Image src="/images/New_here.png" alt="Raccoon" fill style={{ objectFit: "contain", objectPosition: "bottom" }} />
+      </div>
+      <div style={{ padding: "20px 18px", position: "relative", zIndex: 1 }}>
+        <h3 style={{ fontSize: "22px", fontWeight: 900, color: "#e8d9a0", textTransform: "uppercase", letterSpacing: "0.04em", lineHeight: 1.1, margin: "0 0 10px", maxWidth: "160px" }}>New Here?</h3>
+        <p style={{ fontSize: "12px", color: "#7a6e4a", lineHeight: 1.6, margin: "0 0 18px", maxWidth: "170px" }}>Start your adventure with our Beginner Guides!</p>
+        <a href="/beginner-guides" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "10px 20px", borderRadius: "8px", background: hovered ? "rgba(60,100,50,0.6)" : "rgba(45,80,38,0.5)", border: "1px solid rgba(80,130,60,0.5)", color: "#c8d89a", fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none", transition: "all 0.22s ease" }} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>Get Started →</a>
+      </div>
+    </div>
+  );
+}
+
 export default function Sidebar() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -59,7 +75,7 @@ export default function Sidebar() {
       <div style={container}>
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(212,146,74,0.30), transparent)", zIndex: 1 }} />
         <div style={header}>
-          <span style={{ fontSize: "11px", color: "#D4924A" }}>⚡</span>
+          <span style={{ fontSize: "11px", color: "#D4924A" }}>âš¡</span>
           <h3 style={titleStyle}>Quick Guides</h3>
         </div>
         <ul style={{ margin: 0, padding: 0, listStyle: "none", position: "relative", zIndex: 1 }}>
@@ -93,7 +109,7 @@ export default function Sidebar() {
                   fontSize: "10px", flexShrink: 0,
                   color: hoveredGuide === i ? "rgba(212,146,74,0.60)" : "rgba(255,255,255,0.08)",
                   transition: "all 0.30s ease",
-                }}>→</span>
+                }}>â†’</span>
               </Link>
             </li>
           ))}
@@ -104,13 +120,13 @@ export default function Sidebar() {
       <div style={{ ...container, background: "rgba(11,20,14,0.95)" }}>
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(212,146,74,0.25), transparent)", zIndex: 1 }} />
         <div style={header}>
-          <span style={{ fontSize: "11px", color: "#D4924A" }}>✉</span>
+          <span style={{ fontSize: "11px", color: "#D4924A" }}>âœ‰</span>
           <h3 style={titleStyle}>Stay Updated</h3>
         </div>
         <div style={{ padding: "20px 18px", position: "relative", zIndex: 1 }}>
           {subscribed ? (
             <div style={{ textAlign: "center", padding: "12px 0" }}>
-              <div style={{ fontSize: "24px", marginBottom: "8px" }}>🎉</div>
+              <div style={{ fontSize: "24px", marginBottom: "8px" }}>ðŸŽ‰</div>
               <p style={{ fontWeight: 700, fontSize: "12px", color: "#D6C7A1", margin: "0 0 4px 0" }}>You&apos;re in!</p>
               <p style={{ fontSize: "10px", color: "#4A4440", margin: 0 }}>Check your inbox.</p>
             </div>
@@ -146,7 +162,7 @@ export default function Sidebar() {
                   onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.80")}
                   onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
                 >
-                  Subscribe →
+                  Subscribe â†’
                 </button>
               </div>
               <p style={{ fontSize: "9px", marginTop: "10px", textAlign: "center", color: "#3a3428" }}>
@@ -161,7 +177,7 @@ export default function Sidebar() {
       <div style={container}>
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(212,146,74,0.20), transparent)", zIndex: 1 }} />
         <div style={header}>
-          <span style={{ fontSize: "11px", color: "#D4924A" }}>🌿</span>
+          <span style={{ fontSize: "11px", color: "#D4924A" }}>ðŸŒ¿</span>
           <h3 style={titleStyle}>Follow the Raccoon</h3>
         </div>
         <div style={{ padding: "14px 18px 16px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7px", position: "relative", zIndex: 1 }}>
@@ -192,3 +208,6 @@ export default function Sidebar() {
     </aside>
   );
 }
+
+
+
