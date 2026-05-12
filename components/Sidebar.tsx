@@ -55,7 +55,7 @@ function QuickGuides() {
               onMouseLeave={() => setHovered(null)}
             >
               <div style={{
-                width: "72px", height: "72px", flexShrink: 0, borderRadius: "9999px",
+                width: "52px", height: "52px", flexShrink: 0, borderRadius: "9999px",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 background: hovered === i ? "rgba(200,168,75,0.12)" : "rgba(255,255,255,0.05)",
                 border: hovered === i ? "1px solid rgba(200,168,75,0.35)" : "1px solid rgba(255,255,255,0.08)",
@@ -131,6 +131,8 @@ export default function Sidebar() {
     </aside>
   );
 }
+
+
 
 
 
