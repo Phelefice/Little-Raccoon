@@ -26,9 +26,7 @@ function QuickGuides() {
     <div style={card}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(200,168,75,0.35), transparent)" }} />
       <div style={{ padding: "20px 20px 6px" }}>
-        <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#c8a84b", margin: "0 0 4px", display: "flex", alignItems: "center", gap: "6px" }}>
-          <span>Quick Guides</span>
-        </p>
+        <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#c8a84b", margin: "0 0 4px" }}>Quick Guides</p>
         <h3 style={{ fontSize: "20px", fontWeight: 700, color: "#e8d9a0", margin: "0 0 8px" }}>Jump Into a Guide</h3>
       </div>
       <ul style={{ margin: "0 0 10px", padding: 0, listStyle: "none" }}>
@@ -50,14 +48,18 @@ function QuickGuides() {
 function NewHere() {
   const [hovered, setHovered] = useState(false);
   return (
-    <div style={{ background: "rgba(10,20,12,0.95)", border: "1px solid rgba(60,100,50,0.35)", borderRadius: "16px", position: "relative", overflow: "hidden", marginTop: "16px" }}>
-      <div style={{ position: "absolute", right: "0px", bottom: "0px", width: "55%", height: "110%", zIndex: 2, pointerEvents: "none" }}>
-        <Image src="/images/New_here.png" alt="Raccoon mascot" fill style={{ objectFit: "contain", objectPosition: "bottom right" }} />
+    <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", marginTop: "10px", minHeight: "190px" }}>
+      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+        <Image src="/images/NH_background.png" alt="Background" fill style={{ objectFit: "cover", objectPosition: "center" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(4,12,6,0.90) 40%, rgba(4,12,6,0.3) 100%)" }} />
       </div>
-      <div style={{ padding: "24px 18px 24px", position: "relative", zIndex: 1 }}>
+      <div style={{ position: "absolute", right: "-5px", top: "-35px", width: "155px", height: "225px", zIndex: 2, pointerEvents: "none" }}>
+        <Image src="/images/NH_raccoon.png" alt="Raccoon" fill style={{ objectFit: "contain", objectPosition: "bottom right" }} />
+      </div>
+      <div style={{ position: "relative", zIndex: 3, padding: "24px 18px 24px" }}>
         <h3 style={{ fontSize: "20px", fontWeight: 900, color: "#e8d9a0", textTransform: "uppercase", letterSpacing: "0.04em", lineHeight: 1.1, margin: "0 0 10px", maxWidth: "140px" }}>New Here?</h3>
-        <p style={{ fontSize: "12px", color: "#7a6e4a", lineHeight: 1.6, margin: "0 0 18px", maxWidth: "150px" }}>Start your adventure with our Beginner Guides!</p>
-        <Link href="/beginner-guides" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "10px 20px", borderRadius: "8px", background: hovered ? "rgba(60,100,50,0.6)" : "rgba(45,80,38,0.5)", border: "1px solid rgba(80,130,60,0.5)", color: "#c8d89a", fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none", transition: "all 0.22s ease" }} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <p style={{ fontSize: "12px", color: "#c8b898", lineHeight: 1.6, margin: "0 0 18px", maxWidth: "150px" }}>Start your adventure with our Beginner Guides!</p>
+        <Link href="/beginner-guides" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "10px 20px", borderRadius: "8px", background: hovered ? "rgba(60,100,50,0.8)" : "rgba(45,80,38,0.7)", border: "1px solid rgba(80,130,60,0.6)", color: "#c8d89a", fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none", transition: "all 0.22s ease" }} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
           Get Started
         </Link>
       </div>
@@ -73,12 +75,3 @@ export default function Sidebar() {
     </aside>
   );
 }
-
-
-
-
-
-
-
-
-
