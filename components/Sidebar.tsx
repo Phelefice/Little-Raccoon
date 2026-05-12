@@ -35,7 +35,7 @@ function QuickGuides() {
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(90deg, transparent, rgba(200,168,75,0.35), transparent)" }} />
       <div style={{ padding: "28px 28px 8px" }}>
         <p style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#c8a84b", margin: "0 0 4px" }}>⚡ Quick Guides</p>
-        <h3 style={{ fontSize: "22px", fontWeight: 700, color: "#e8d9a0", fontFamily: "Georgia, serif", margin: 0 }}>Jump Into a Guide</h3>
+        <h3 style={{ fontSize: "22px", fontWeight: 700, color: "#e8d9a0", margin: 0 }}>Jump Into a Guide</h3>
       </div>
       <ul style={{ margin: "16px 0 8px", padding: 0, listStyle: "none" }}>
         {quickGuides.map((g, i) => (
@@ -131,3 +131,4 @@ export default function Sidebar() {
     </aside>
   );
 }
+

@@ -44,7 +44,7 @@ const minis = [
 
 function MiniCard({ mini, index }: { mini: typeof minis[0]; index: number }) {
   const [hovered, setHovered] = useState(false);
-  const heights = [152, 144, 152];
+  const heights = [152, 152, 152];
   return (
     <Link
       href={mini.href}
@@ -244,6 +244,7 @@ export default function FeaturedGuide() {
     </div>
   );
 }
+
 
 
 
