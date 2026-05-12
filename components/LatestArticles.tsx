@@ -1,16 +1,16 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
-import Sidebar from "./Sidebar";
+
 
 const articles = [
   {
     tag: "Survival",
     tagColor: "#9A5858",
     tagBg: "#1A0E0E",
-    icon: "⚔️",
+    icon: "âš”ï¸",
     title: "How to Get Full Netherite Armor Without Dying in the Nether",
-    excerpt: "A step-by-step approach to gathering ancient debris while keeping your life points — and your sanity.",
+    excerpt: "A step-by-step approach to gathering ancient debris while keeping your life points â€” and your sanity.",
     author: "Steve Crafterson",
     date: "May 8, 2026",
     readTime: "7 min",
@@ -21,7 +21,7 @@ const articles = [
     tag: "Farms",
     tagColor: "#4A7A40",
     tagBg: "#0C1A0C",
-    icon: "🌾",
+    icon: "ðŸŒ¾",
     title: "AFK Fish Farm: Still Works in 1.21? Full Setup Guide",
     excerpt: "We tested every AFK fish farm design after the latest patch. Here's what actually still gives you treasure.",
     author: "FarmQueen Fiona",
@@ -34,7 +34,7 @@ const articles = [
     tag: "Seeds",
     tagColor: "#486888",
     tagBg: "#081420",
-    icon: "🌍",
+    icon: "ðŸŒ",
     title: "Top 10 Seeds With Massive Structures at Spawn (Java 1.21)",
     excerpt: "We hand-tested over 200 seeds so you don't have to. These are the best worlds to start your adventure.",
     author: "SeedFinder Sam",
@@ -47,7 +47,7 @@ const articles = [
     tag: "Redstone",
     tagColor: "#D6C7A1",
     tagBg: "#1A1608",
-    icon: "⚡",
+    icon: "âš¡",
     title: "Automatic Sorting System for Any Base Size",
     excerpt: "Never organize your chest room manually again. This scalable sorter handles up to 54 item types out of the box.",
     author: "Redstone Rita",
@@ -94,7 +94,7 @@ function ArticleCard({ article }: { article: (typeof articles)[0] }) {
             {article.tag}
           </span>
           <span className="text-[11px]" style={{ color: "#4A4440" }}>
-            {article.readTime} · {article.views} views
+            {article.readTime} Â· {article.views} views
           </span>
         </div>
 
@@ -114,10 +114,10 @@ function ArticleCard({ article }: { article: (typeof articles)[0] }) {
             className="w-5 h-5 flex items-center justify-center text-xs"
             style={{ backgroundColor: "#1E3D26" }}
           >
-            🧑
+            ðŸ§‘
           </div>
           <span className="text-[11px]" style={{ color: "#4A4440" }}>
-            {article.author} · {article.date}
+            {article.author} Â· {article.date}
           </span>
         </div>
       </div>
@@ -141,10 +141,10 @@ function ArticleCard({ article }: { article: (typeof articles)[0] }) {
 
 export default function LatestArticles() {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-      <div className="grid lg:grid-cols-3 gap-10">
+    <section style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px 48px" }}>
+      <div>
         {/* Articles column */}
-        <div className="lg:col-span-2">
+        <div>
           <div className="flex items-center gap-5 mb-8">
             <div>
               <p
@@ -164,7 +164,7 @@ export default function LatestArticles() {
               className="text-[10px] font-semibold uppercase hidden sm:block"
               style={{ color: "#D6C7A1", letterSpacing: "0.14em" }}
             >
-              View all →
+              View all â†’
             </Link>
           </div>
 
@@ -200,12 +200,8 @@ export default function LatestArticles() {
             </button>
           </div>
         </div>
-
-        {/* Sidebar */}
-        <div>
-          <Sidebar />
-        </div>
       </div>
     </section>
   );
 }
+
