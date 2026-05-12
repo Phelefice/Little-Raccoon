@@ -64,7 +64,7 @@ function ArticleCard({ article }: { article: (typeof articles)[0] }) {
       href={article.slug}
       className="group flex gap-5 p-5"
       style={{
-        border: "1px solid #1E3028",
+        border: "1px solid #1E3028", borderRadius: "12px",
         backgroundColor: "#132018",
         boxShadow: "0 2px 12px rgba(0,0,0,0.3)",
       }}
@@ -179,7 +179,7 @@ export default function LatestArticles() {
             <button
               className="px-8 py-3 text-[11px] font-bold uppercase"
               style={{
-                border: "1px solid #1E3028",
+                border: "1px solid #1E3028", borderRadius: "12px",
                 color: "#D6C7A1",
                 backgroundColor: "transparent",
                 letterSpacing: "0.16em",
@@ -204,4 +204,5 @@ export default function LatestArticles() {
     </section>
   );
 }
+
 
