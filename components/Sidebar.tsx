@@ -62,11 +62,10 @@ function QuickGuides() {
                 boxShadow: hovered === i ? "0 0 20px rgba(200,168,75,0.20)" : "none",
                 transition: "all 0.22s ease",
               }}>
-                <Image src={g.icon} alt={g.title} width={54} height={54} style={{ objectFit: "contain", imageRendering: "pixelated", filter: hovered === i ? "drop-shadow(0 0 6px rgba(200,168,75,0.5)) brightness(1.2)" : "brightness(0.9)", transition: "filter 0.22s ease" }} />
+                <Image src={g.icon} alt={g.title} width={62} height={62} style={{ objectFit: "contain", imageRendering: "pixelated", filter: hovered === i ? "drop-shadow(0 0 6px rgba(200,168,75,0.5)) brightness(1.2)" : "brightness(0.9)", transition: "filter 0.22s ease" }} />
               </div>
               <div style={{ flex: 1 }}>
-                <p style={{ fontSize: "17px", fontWeight: 700, color: hovered === i ? "#e8d9a0" : "#a89660", margin: "0 0 4px", transition: "color 0.22s ease", lineHeight: 1.3 }}>{g.title}</p>
-                <p style={{ fontSize: "13px", color: "#4a4228", margin: 0 }}>Read guide →</p>
+                <p style={{ fontSize: "17px", fontWeight: 700, color: hovered === i ? "#e8d9a0" : "#a89660", margin: 0, transition: "color 0.22s ease", lineHeight: 1.3 }}>{g.title}</p>
               </div>
             </Link>
           </li>
