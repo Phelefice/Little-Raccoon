@@ -51,10 +51,10 @@ function NewHere() {
   const [hovered, setHovered] = useState(false);
   return (
     <div style={{ background: "rgba(10,20,12,0.95)", border: "1px solid rgba(60,100,50,0.35)", borderRadius: "16px", position: "relative", overflow: "visible", marginTop: "16px" }}>
-      <div style={{ position: "absolute", right: "0px", top: "-70px", width: "150px", height: "190px", zIndex: 10, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", right: "-10px", top: "-80px", width: "180px", height: "220px", zIndex: 10, pointerEvents: "none" }}>
         <Image src="/images/New_here.png" alt="Raccoon mascot" fill style={{ objectFit: "contain", objectPosition: "bottom right" }} />
       </div>
-      <div style={{ padding: "22px 18px 22px", position: "relative", zIndex: 1 }}>
+      <div style={{ padding: "24px 18px 24px", position: "relative", zIndex: 1 }}>
         <h3 style={{ fontSize: "20px", fontWeight: 900, color: "#e8d9a0", textTransform: "uppercase", letterSpacing: "0.04em", lineHeight: 1.1, margin: "0 0 10px", maxWidth: "155px" }}>New Here?</h3>
         <p style={{ fontSize: "12px", color: "#7a6e4a", lineHeight: 1.6, margin: "0 0 18px", maxWidth: "165px" }}>Start your adventure with our Beginner Guides!</p>
         <Link href="/beginner-guides" style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "10px 20px", borderRadius: "8px", background: hovered ? "rgba(60,100,50,0.6)" : "rgba(45,80,38,0.5)", border: "1px solid rgba(80,130,60,0.5)", color: "#c8d89a", fontSize: "11px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textDecoration: "none", transition: "all 0.22s ease" }} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
@@ -73,3 +73,5 @@ export default function Sidebar() {
     </aside>
   );
 }
+
+
