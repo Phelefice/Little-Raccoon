@@ -48,8 +48,8 @@ function QuickGuides() {
 function NewHere() {
   const [hovered, setHovered] = useState(false);
   return (
-    <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", marginTop: "10px", minHeight: "190px" }}>
-      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+    <div style={{ position: "relative", borderRadius: "16px", overflow: "visible", marginTop: "10px", minHeight: "190px" }}>
+      <div style={{ position: "absolute", inset: 0, zIndex: 0, borderRadius: "16px", overflow: "hidden" }}>
         <Image src="/images/NH_background.png" alt="Background" fill style={{ objectFit: "cover", objectPosition: "center" }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(4,12,6,0.90) 40%, rgba(4,12,6,0.3) 100%)" }} />
       </div>
@@ -75,4 +75,6 @@ export default function Sidebar() {
     </aside>
   );
 }
+
+
 
