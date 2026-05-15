@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -14,7 +14,7 @@ export default function Footer() {
 
         {/* Logo image no lugar do texto */}
         <div style={{ marginBottom: 16 }}>
-          <Image src="/images/LOGO_HORIZONTAL.png" alt="The Little Raccoon" width={280} height={70} style={{ objectFit: "contain", opacity: 0.92 }} />
+          <Image src="/images/TLR.png" alt="The Little Raccoon" width={280} height={70} style={{ objectFit: "contain", opacity: 0.92 }} />
         </div>
 
         <p style={{ margin: "0 0 2px", textAlign: "center", fontSize: 13, color: "#8A7840" }}>Minecraft Guides &amp; Cozy Adventures</p>
