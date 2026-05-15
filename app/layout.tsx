@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${oswald.variable} ${bebasNeue.variable} h-full`}>
+    <html lang="en"><head><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5219702409402620" crossorigin="anonymous"></script></head> className={`${geist.variable} ${oswald.variable} ${bebasNeue.variable} h-full`}>
       <body
         className="min-h-full flex flex-col antialiased"
         style={{ backgroundColor: "#0B1411", color: "#EDE6D6" }}
@@ -43,4 +43,5 @@ export default function RootLayout({
     </html>
   );
 }
+
 
