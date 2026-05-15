@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import { Oswald } from "next/font/google";
 import { Bebas_Neue } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const geist = Geist({
   variable: "--font-sans",
@@ -33,8 +34,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en"><head><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5219702409402620" crossorigin="anonymous"></script></head> className={`${geist.variable} ${oswald.variable} ${bebasNeue.variable} h-full`}>
-      <body
+    <html lang="en"> className={`${geist.variable} ${oswald.variable} ${bebasNeue.variable} h-full`}>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5219702409402620" crossorigin="anonymous" strategy="afterInteractive" />
+        <body
         className="min-h-full flex flex-col antialiased"
         style={{ backgroundColor: "#0B1411", color: "#EDE6D6" }}
       >
@@ -43,5 +45,6 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 
