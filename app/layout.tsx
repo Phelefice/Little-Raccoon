@@ -21,9 +21,7 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  verification: {
-    google: "ca-pub-5219702409402620",
-  },
+  other: { "google-adsense-account": "ca-pub-5219702409402620" },
   title: "The Little Raccoon - Minecraft Guide",
   description: "Your ultimate Minecraft guide. Survival tips, farm designs, epic builds, seeds, and Redstone tutorials all in one place.",
   keywords: ["minecraft", "guide", "survival", "builds", "redstone", "farms", "seeds"],
@@ -51,4 +49,5 @@ export default function RootLayout({
     </html>
   );
 }
+
 
