@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Oswald } from "next/font/google";
 import { Bebas_Neue } from "next/font/google";
@@ -22,7 +22,7 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "The Little Raccoon — Minecraft Guide",
+  title: "The Little Raccoon â€” Minecraft Guide",
   description: "Your ultimate Minecraft guide. Survival tips, farm designs, epic builds, seeds, and Redstone tutorials all in one place.",
   keywords: ["minecraft", "guide", "survival", "builds", "redstone", "farms", "seeds"],
 };
@@ -43,3 +43,4 @@ export default function RootLayout({
     </html>
   );
 }
+

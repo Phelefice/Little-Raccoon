@@ -1,60 +1,40 @@
 ﻿"use client";
 
 import Link from "next/link";
-
+import Image from "next/image";
 
 const articles = [
   {
+    tag: "Seeds",
+    tagColor: "#7A9A50",
+    slug: "/seeds/top-10-survival-1-21",
+    title: "Top 10 Survival Seeds in 1.21",
+    date: "May 12, 2024",
+    image: "",
+  },
+  {
+    tag: "Build",
+    tagColor: "#8A7A50",
+    slug: "/guides/cozy-cabin-build",
+    title: "Cozy Cabin Build Tutorial",
+    date: "May 10, 2024",
+    image: "",
+  },
+  {
+    tag: "Guide",
+    tagColor: "#5A8A70",
+    slug: "/guides/complete-villager-guide",
+    title: "Complete Guide to Villagers",
+    date: "May 8, 2024",
+    image: "",
+  },
+  {
     tag: "Survival",
     tagColor: "#9A5858",
-    tagBg: "#1A0E0E",
-    icon: "âš”ï¸",
-    title: "How to Get Full Netherite Armor Without Dying in the Nether",
-    excerpt: "A step-by-step approach to gathering ancient debris while keeping your life points â€” and your sanity.",
-    author: "Steve Crafterson",
-    date: "May 8, 2026",
-    readTime: "7 min",
-    views: "8.1k",
-    slug: "/guides/netherite-armor-safe",
-  },
-  {
-    tag: "Farms",
-    tagColor: "#4A7A40",
-    tagBg: "#0C1A0C",
-    icon: "ðŸŒ¾",
-    title: "AFK Fish Farm: Still Works in 1.21? Full Setup Guide",
-    excerpt: "We tested every AFK fish farm design after the latest patch. Here's what actually still gives you treasure.",
-    author: "FarmQueen Fiona",
-    date: "May 6, 2026",
-    readTime: "9 min",
-    views: "12.4k",
-    slug: "/guides/afk-fish-farm-1-21",
-  },
-  {
-    tag: "Seeds",
-    tagColor: "#486888",
-    tagBg: "#081420",
-    icon: "ðŸŒ",
-    title: "Top 10 Seeds With Massive Structures at Spawn (Java 1.21)",
-    excerpt: "We hand-tested over 200 seeds so you don't have to. These are the best worlds to start your adventure.",
-    author: "SeedFinder Sam",
-    date: "May 4, 2026",
-    readTime: "5 min",
-    views: "31.7k",
-    slug: "/seeds/top-10-java-1-21",
-  },
-  {
-    tag: "Redstone",
-    tagColor: "#D6C7A1",
-    tagBg: "#1A1608",
-    icon: "âš¡",
-    title: "Automatic Sorting System for Any Base Size",
-    excerpt: "Never organize your chest room manually again. This scalable sorter handles up to 54 item types out of the box.",
-    author: "Redstone Rita",
-    date: "May 2, 2026",
-    readTime: "11 min",
-    views: "15.9k",
-    slug: "/guides/automatic-sorting-system",
+    slug: "/guides/stay-safe-at-night",
+    title: "How to Stay Safe at Night",
+    date: "May 6, 2024",
+    image: "",
   },
 ];
 
@@ -62,78 +42,65 @@ function ArticleCard({ article }: { article: (typeof articles)[0] }) {
   return (
     <Link
       href={article.slug}
-      className="group flex gap-5 p-5"
+      className="group"
       style={{
-        border: "1px solid #1E3028", borderRadius: "12px",
-        backgroundColor: "#132018",
-        boxShadow: "0 2px 12px rgba(0,0,0,0.3)",
+        display: "flex",
+        flexDirection: "column",
+        borderRadius: 10,
+        overflow: "hidden",
+        border: "1px solid #1A2E1A",
+        backgroundColor: "#0C1810",
+        textDecoration: "none",
+        transition: "border-color 0.2s, transform 0.2s",
+        cursor: "pointer",
       }}
-      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#D6C7A125")}
-      onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#1E3028")}
+      onMouseEnter={(e) => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.borderColor = "#C4B47E40";
+        el.style.transform = "translateY(-3px)";
+      }}
+      onMouseLeave={(e) => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.borderColor = "#1A2E1A";
+        el.style.transform = "translateY(0)";
+      }}
     >
-      {/* Icon */}
-      <div
-        className="flex-shrink-0 w-14 h-14 flex items-center justify-center text-2xl self-start"
-        style={{ backgroundColor: article.tagBg, border: `1px solid ${article.tagColor}25` }}
-      >
-        {article.icon}
+      {/* Thumbnail */}
+      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", backgroundColor: "#0E1A10", overflow: "hidden" }}>
+        {article.image ? (
+          <Image src={article.image} alt={article.title} fill style={{ objectFit: "cover" }} />
+        ) : (
+          <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg, #0E1A10 0%, #162410 50%, #0A1410 100%)" }} />
+        )}
+        {/* Category badge */}
+        <div style={{ position: "absolute", top: 10, left: 10 }}>
+          <span style={{
+            display: "inline-block",
+            padding: "3px 8px",
+            fontSize: 9,
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "0.14em",
+            color: article.tagColor,
+            backgroundColor: "#0A1208CC",
+            border: `1px solid ${article.tagColor}50`,
+            borderRadius: 4,
+          }}>{article.tag}</span>
+        </div>
       </div>
 
       {/* Content */}
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 mb-2 flex-wrap">
-          <span
-            className="px-2.5 py-0.5 text-[10px] font-semibold uppercase"
-            style={{
-              backgroundColor: article.tagBg,
-              color: article.tagColor,
-              letterSpacing: "0.12em",
-              border: `1px solid ${article.tagColor}25`,
-            }}
-          >
-            {article.tag}
-          </span>
-          <span className="text-[11px]" style={{ color: "#4A4440" }}>
-            {article.readTime} Â· {article.views} views
-          </span>
-        </div>
-
-        <h3
-          className="font-black text-sm sm:text-base leading-snug mb-2 group-hover:opacity-80"
-          style={{ color: "#EDE6D6" }}
-        >
-          {article.title}
-        </h3>
-
-        <p className="text-xs sm:text-sm leading-relaxed mb-3" style={{ color: "#8A8268", lineHeight: "1.65" }}>
-          {article.excerpt}
-        </p>
-
-        <div className="flex items-center gap-1.5">
-          <div
-            className="w-5 h-5 flex items-center justify-center text-xs"
-            style={{ backgroundColor: "#1E3D26" }}
-          >
-            ðŸ§‘
-          </div>
-          <span className="text-[11px]" style={{ color: "#4A4440" }}>
-            {article.author} Â· {article.date}
-          </span>
-        </div>
-      </div>
-
-      <div className="flex-shrink-0 self-center hidden sm:block" style={{ color: "#1E3028" }}>
-        <svg
-          width="15"
-          height="15"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          className="group-hover:stroke-[#D6C7A1]"
-        >
-          <path d="m9 18 6-6-6-6" />
-        </svg>
+      <div style={{ padding: "14px 16px 16px", display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
+        <h3 style={{
+          margin: 0,
+          fontFamily: "var(--font-oswald)",
+          fontSize: "0.95rem",
+          fontWeight: 700,
+          color: "#EDE6D6",
+          lineHeight: 1.3,
+          letterSpacing: "0.02em",
+        }}>{article.title}</h3>
+        <p style={{ margin: 0, fontSize: 11, color: "#3A3425", marginTop: "auto" }}>{article.date}</p>
       </div>
     </Link>
   );
@@ -141,69 +108,54 @@ function ArticleCard({ article }: { article: (typeof articles)[0] }) {
 
 export default function LatestArticles() {
   return (
-    <section style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px 48px" }}>
-      <div>
-        {/* Articles column */}
+    <section style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 56px" }}>
+      {/* Header */}
+      <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 28 }}>
         <div>
-          <div className="flex items-center gap-5 mb-8">
-            <div>
-              <p
-                className="text-[10px] font-semibold uppercase mb-1.5"
-                style={{ color: "#D6C7A1", letterSpacing: "0.22em" }}
-              >
-                Fresh Content
-              </p>
-              <h2 style={{ color: "#EDE6D6" }}>Latest Articles</h2>
-            </div>
-            <div
-              className="flex-1 h-px"
-              style={{ background: "linear-gradient(90deg, #D6C7A130, transparent)" }}
-            />
-            <Link
-              href="/articles"
-              className="text-[10px] font-semibold uppercase hidden sm:block"
-              style={{ color: "#D6C7A1", letterSpacing: "0.14em" }}
-            >
-              View all â†’
-            </Link>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            {articles.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </div>
-
-          {/* Load more */}
-          <div className="mt-10 text-center">
-            <button
-              className="px-8 py-3 text-[11px] font-bold uppercase"
-              style={{
-                border: "1px solid #1E3028", borderRadius: "12px",
-                color: "#D6C7A1",
-                backgroundColor: "transparent",
-                letterSpacing: "0.16em",
-                fontFamily: "var(--font-oswald)",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = "#D6C7A140";
-                el.style.backgroundColor = "#132018";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = "#1E3028";
-                el.style.backgroundColor = "transparent";
-              }}
-            >
-              Load More Articles
-            </button>
-          </div>
+          <p style={{ margin: 0, fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.22em", color: "#C4B47E", marginBottom: 6, opacity: 0.8 }}>Fresh Content</p>
+          <h2 style={{ margin: 0, color: "#EDE6D6", fontFamily: "var(--font-oswald)", fontSize: "1.6rem", letterSpacing: "0.04em" }}>Latest Articles</h2>
         </div>
+        <div style={{ flex: 1, height: 1, background: "linear-gradient(90deg, #C4B47E20, transparent)" }} />
+        <Link href="/articles" style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.16em", color: "#C4B47E", textDecoration: "none", opacity: 0.8 }}>View all articles &#x2192;</Link>
+      </div>
+
+      {/* 4-column grid */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
+        {articles.map((article) => (
+          <ArticleCard key={article.slug} article={article} />
+        ))}
+      </div>
+
+      {/* View all button */}
+      <div style={{ marginTop: 32, textAlign: "center" }}>
+        <Link
+          href="/articles"
+          style={{
+            display: "inline-block",
+            padding: "12px 36px",
+            fontSize: 10,
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "0.18em",
+            color: "#C4B47E",
+            border: "1px solid #1A2E1A",
+            borderRadius: 8,
+            textDecoration: "none",
+            fontFamily: "var(--font-oswald)",
+            transition: "border-color 0.2s, background-color 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            const el = e.currentTarget as HTMLElement;
+            el.style.borderColor = "#C4B47E40";
+            el.style.backgroundColor = "#0C1810";
+          }}
+          onMouseLeave={(e) => {
+            const el = e.currentTarget as HTMLElement;
+            el.style.borderColor = "#1A2E1A";
+            el.style.backgroundColor = "transparent";
+          }}
+        >View All Articles &#x2192;</Link>
       </div>
     </section>
   );
 }
-
-
-
