@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return { title: article.title + " | The Little Raccoon", description: article.description };
 }
 
-const tagColors = { Build:"#8A7A50",Guide:"#5A8A70",Survival:"#9A5858",Seeds:"#7A9A50",Redstone:"#8A5A5A",Tips:"#6A7A8A",Farms:"#7A8A5A" };
+const tagColors: Record<string, string> = { Build:"#8A7A50",Guide:"#5A8A70",Survival:"#9A5858",Seeds:"#7A9A50",Redstone:"#8A5A5A",Tips:"#6A7A8A",Farms:"#7A8A5A" };
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

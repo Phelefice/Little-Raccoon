@@ -1,0 +1,1 @@
+const fs=require("fs"); let c=fs.readFileSync("app/articles/[slug]/page.tsx","utf8"); c=c.replace("const tagColors = {","const tagColors: Record<string, string> = {"); fs.writeFileSync("app/articles/[slug]/page.tsx",c,"utf8"); console.log("OK");
