@@ -1,0 +1,1 @@
+const fs=require("fs"); let c=fs.readFileSync("app/layout.tsx","utf8"); c=c.replace("import Footer from","import Header from \"@/components/Header\";\nimport Footer from"); c=c.replace("{children}","<Header />\n        {children}"); fs.writeFileSync("app/layout.tsx",c,"utf8"); console.log("OK!");
