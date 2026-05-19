@@ -1,0 +1,1 @@
+const fs=require("fs"); let c=fs.readFileSync("app/articles/[slug]/page.tsx","utf8"); c=c.replace("\\\"\\\\25b8\\\"","\\\"\\u25b8\\\""); fs.writeFileSync("app/articles/[slug]/page.tsx",c,"utf8"); const c2=fs.readFileSync("app/articles/[slug]/page.tsx","utf8"); console.log(c2.split("\n")[69].includes("25b8") ? "ainda tem 25b8" : "OK substituido");
