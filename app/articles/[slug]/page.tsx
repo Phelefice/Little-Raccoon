@@ -66,7 +66,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       </div>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 40px 80px", display: "grid", gridTemplateColumns: "1fr 300px", gap: 48, alignItems: "start" }}>
         <div>
-          <style>{".article-body h2{font-family:var(--font-oswald);font-size:1.5rem;font-weight:700;color:#EDE6D6;margin:2.5rem 0 1rem;padding-bottom:10px;border-bottom:1px solid #1A2E1A}.article-body p{margin:0 0 1.2rem;color:#BDB5A0;line-height:1.85}.article-body li{margin-bottom:.5rem;color:#BDB5A0;padding-left:20px;position:relative}.article-body li::before{content:"x";position:absolute;left:0;color:#C4B47E;font-weight:700}.article-body strong{color:#EDE6D6}"}</style>
+          
           <div className="article-body"><MDXRemote source={article.content} /></div>
           <div style={{ marginTop: 48, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             {prevArticle ? (<Link href={"/articles/"+prevArticle.slug} style={{ padding:"16px 20px", border:"1px solid #1A2E1A", borderRadius:8, textDecoration:"none", backgroundColor:"#0C1810" }}><p style={{ margin:"0 0 4px", fontSize:10, fontWeight:700, textTransform:"uppercase", color:"#5A6A55" }}>Previous</p><p style={{ margin:0, fontSize:13, color:"#EDE6D6", fontFamily:"var(--font-oswald)" }}>{prevArticle.title}</p></Link>) : <div />}
