@@ -60,7 +60,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   return (
     <main style={{ minHeight: '100vh', backgroundColor: '#0B1410' }}>
 
-      <div style={{maxWidth:1200,margin:"0 auto",padding:"16px 40px 0"}}><Link href="/" style={{fontSize:11,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.18em",color:"#C4B47E",textDecoration:"none",opacity:0.7}}>? Home</Link></div>
+      <div style={{maxWidth:1200,margin:"0 auto",padding:"16px 40px 0"}}><Link href="/" style={{fontSize:11,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.18em",color:"#C4B47E",textDecoration:"none",opacity:0.7}}>← Home</Link></div>
 
       {/* HERO */}
       <div style={{ position: 'relative', width: '100%', minHeight: 420, overflow: 'hidden' }}>

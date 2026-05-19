@@ -1,0 +1,1 @@
+const fs=require("fs"); let c=fs.readFileSync("app/articles/[slug]/page.tsx","utf8"); c=c.replace("? Home","\u2190 Home"); fs.writeFileSync("app/articles/[slug]/page.tsx",c,"utf8"); console.log("OK");
