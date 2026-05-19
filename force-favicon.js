@@ -1,0 +1,1 @@
+const fs=require("fs"); const img=fs.readFileSync("public/images/favicon.png"); fs.writeFileSync("public/favicon.png",img); fs.writeFileSync("app/icon.png",img); console.log("Tamanho do arquivo:",img.length,"bytes");
