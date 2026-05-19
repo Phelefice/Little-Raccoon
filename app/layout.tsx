@@ -11,7 +11,7 @@ const oswald = Oswald({ variable: "--font-oswald", subsets: ["latin"], weight: [
 const bebasNeue = Bebas_Neue({ variable: "--font-bebas", subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
-  icons: { icon: "/images/TLR.png" },
+  icons: { icon: "/favicon.png" },
   title: "The Little Raccoon - Minecraft Guide",
   description: "Your ultimate Minecraft guide. Survival tips, farm designs, epic builds, seeds, and Redstone tutorials all in one place.",
   keywords: ["minecraft", "guide", "survival", "builds", "redstone", "farms", "seeds"],

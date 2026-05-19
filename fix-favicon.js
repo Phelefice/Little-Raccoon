@@ -1,0 +1,1 @@
+const fs=require("fs"); let l=fs.readFileSync("app/layout.tsx","utf8"); l=l.replace("icons: { icon: \"/images/TLR.png\" }","icons: { icon: \"/favicon.png\" }"); fs.writeFileSync("app/layout.tsx",l,"utf8"); console.log("OK!");
