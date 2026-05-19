@@ -1,1 +1,0 @@
-const fs=require("fs"),path=require("path"); let c=fs.readFileSync(path.join("app","articles","[slug]","page.tsx"),"utf8"); c=c.replace(/<style>.*?<\/style>/s,""); fs.writeFileSync(path.join("app","articles","[slug]","page.tsx"),c,"utf8"); console.log("CSS removido!");
