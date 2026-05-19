@@ -1,1 +1,0 @@
-const fs=require("fs"); let c=fs.readFileSync("app/articles/[slug]/page.tsx","utf8"); c=c.replace("generateMetadata({ params })","generateMetadata({ params }: { params: Promise<{ slug: string }> })").replace("ArticlePage({ params })","ArticlePage({ params }: { params: Promise<{ slug: string }> })"); fs.writeFileSync("app/articles/[slug]/page.tsx",c,"utf8"); console.log("OK");

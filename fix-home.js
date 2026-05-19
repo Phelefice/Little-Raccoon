@@ -1,1 +1,0 @@
-const fs=require("fs"); let c=fs.readFileSync("app/articles/[slug]/page.tsx","utf8"); console.log(c.includes("href=\"/\"") ? "OK - href=/ encontrado" : "PROBLEMA - href=/ nao encontrado"); console.log(c.includes("Home") ? "OK - texto Home encontrado" : "PROBLEMA - texto Home nao encontrado");

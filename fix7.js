@@ -1,1 +1,0 @@
-const fs=require("fs"); let c=fs.readFileSync("content/articles/starter-house-mistakes.mdx","utf8"); c=c.replace("image: \"\"","image: \"/images/house.png\""); fs.writeFileSync("content/articles/starter-house-mistakes.mdx",c,"utf8"); console.log("OK");
