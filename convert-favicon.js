@@ -1,1 +1,0 @@
-const sharp=require("sharp"); sharp("public/images/favicon.png").resize(32,32).toFile("app/favicon.ico",()=>{ console.log("favicon.ico criado!"); require("child_process").exec("git add -f app/favicon.ico && git commit -m fix:favicon-ico && git push origin main"); });
