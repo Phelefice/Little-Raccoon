@@ -55,7 +55,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           {article.description && <p style={{ margin: "0 0 24px", fontSize: "1.05rem", color: "#BDB5A0", maxWidth: 640, lineHeight: 1.6 }}>{article.description}</p>}
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <div style={{ width: 32, height: 32, borderRadius: "50%", overflow: "hidden", border: "2px solid #C4B47E40", position: "relative", flexShrink: 0 }}>
-              <Image src="/images/TLR.png" alt="The Little Raccoon" fill style={{ objectFit: "cover" }} />
+              <Image src="/favicon.png" alt="The Little Raccoon" fill style={{ objectFit: "cover" }} />
             </div>
             <span style={{ fontSize: 12, color: "#BDB5A0" }}>By <strong style={{ color: "#C4B47E" }}>Little Raccoon</strong></span>
             <span style={{ color: "#3A4A35", fontSize: 12 }}>|</span>
