@@ -1,0 +1,112 @@
+---
+title: "How to Build an Auto-Smelter in Minecraft"
+date: "2024-05-25"
+tag: "Redstone"
+description: "Build a fully automatic smelting system with hoppers and multiple furnaces. Input your ores, fuel loads automatically, and output collects itself."
+image: ""
+---
+
+Smelting in Minecraft gets tedious fast. Manually loading furnaces with ores and fuel every time you come back from mining is a chore. An auto-smelter fixes that completely.
+
+This guide covers two versions: a simple 1-furnace auto-input setup, and a full multi-furnace auto-smelter that handles large batches automatically.
+
+## How the Hopper System Works
+
+Hoppers can transfer items in two ways:
+- **Into a container** — A hopper drops items into any container it points at (furnace, chest, another hopper).
+- **Pulling from a container** — A hopper underneath or to the side of a container pulls items out of it.
+
+Furnaces have three slots:
+1. **Input slot** (top) — receives items to smelt
+2. **Fuel slot** (side) — receives fuel
+3. **Output slot** (bottom) — holds smelted results
+
+This means:
+- A hopper on **top** of a furnace feeds raw materials in.
+- A hopper on the **side** of a furnace feeds fuel in.
+- A hopper on the **bottom** of a furnace pulls finished items out.
+
+## Simple Single-Furnace Auto-Smelter
+
+This takes about 5 minutes to build:
+
+### Materials:
+- 1 Furnace
+- 3 Hoppers
+- 3 Chests
+
+### Build:
+1. Place the furnace.
+2. Place a hopper on top of the furnace (Shift+right-click) — this feeds the input slot.
+3. Place a hopper on the side of the furnace — this feeds the fuel slot.
+4. Place a hopper under the furnace — this collects the output.
+5. Place a chest on top of the first hopper — this is your input chest for ores.
+6. Place a chest on the side hopper — this is your fuel chest (load with coal, wood, etc.).
+7. Place a chest at the end of the bottom hopper — this is where your finished items go.
+
+Load ores in the top chest, fuel in the side chest, and everything happens automatically. Come back when it's done.
+
+## Multi-Furnace Auto-Smelter
+
+For large batches of ores, a bank of furnaces connected to a shared hopper input is much faster. More furnaces running in parallel means more items smelted per minute.
+
+### Why Multiple Furnaces?
+
+One furnace smelts 1 item every 10 seconds (using coal, which burns 8 items per piece). With 5 furnaces running simultaneously, you smelt 5 items every 10 seconds — 5x the throughput.
+
+### 5-Furnace Design
+
+**Materials:**
+- 5 Furnaces (or Blast Furnaces for ores, Smokers for food)
+- 15 Hoppers
+- 7 Chests (or more for storage)
+
+**Build steps:**
+
+1. Place 5 furnaces in a horizontal row.
+2. Place a hopper on top of each furnace (5 total — input hoppers).
+3. Place hoppers on the side of each furnace facing outward (5 total — fuel hoppers).
+4. Place hoppers underneath each furnace pointing toward a shared collection chest (5 bottom hoppers).
+
+**For the input system:**
+- Place a chest above the first input hopper.
+- Chain the input hoppers together horizontally with a hopper pointing into the next furnace's input hopper. This creates a distribution chain that fills furnaces in sequence as they empty.
+
+**For fuel:**
+- Place a single chest connected to a hopper chain feeding all five fuel slots in sequence.
+
+**For output:**
+- All bottom hoppers point toward a central collection chest or a hopper minecart rail below.
+
+### Blast Furnace Optimization
+
+**Blast Furnaces** smelt ores and metals twice as fast as regular furnaces. Use them exclusively for:
+- Iron ore / raw iron
+- Gold ore / raw gold
+- Copper ore / raw copper
+- Ancient debris (for netherite)
+
+Use **Smokers** for food — twice as fast as regular furnaces for cooking.
+
+Use regular furnaces for everything else (sand, clay, wood, stone).
+
+A 5-furnace bank with 3 blast furnaces and 2 smokers covers almost every smelting need.
+
+## Fuel Efficiency Tips
+
+- **Coal blocks** are 9 times as efficient as individual coal pieces (burn 80 items instead of 8). Use them for large batches.
+- **Bamboo** provides unlimited renewable fuel — bamboo farms produce it faster than you can use it.
+- **Kelp blocks** (dried and crafted) are a highly efficient and renewable fuel source.
+- **Lava buckets** smelt 100 items each and are the most efficient single fuel item in the game.
+
+## Adding a Hopper Minecart Output
+
+For the most efficient large-scale auto-smelter, replace the bottom hopper row with a **hopper minecart** on a powered rail loop.
+
+The minecart moves under each furnace, pulling output continuously, and dumps it all into a central hopper leading to a chest. This eliminates hopper lag in very large setups.
+
+## Final Thoughts
+
+An auto-smelter is one of the best quality-of-life builds in Minecraft. Even the single-furnace version saves hours of manual item loading over the course of a survival run.
+
+Build the simple version first. Once you have more resources and a larger ore operation going, upgrade to the multi-furnace bank. Your furnace room will go from a chore to a system that runs itself.
