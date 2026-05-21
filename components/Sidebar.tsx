@@ -4,11 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 const quickGuides = [
-  { icon: "/images/lantern.png",     title: "How to Make a Lantern", slug: "/guides/lantern"     },
-  { icon: "/images/brewing.png",     title: "Brewing Guide",         slug: "/guides/brewing"     },
-  { icon: "/images/enchanting.png",  title: "Enchanting Explained",  slug: "/guides/enchanting"  },
-  { icon: "/images/food.png",        title: "Food Guide",            slug: "/guides/food"        },
-  { icon: "/images/mob_farming.png", title: "Mob Farming 101",       slug: "/guides/mob-farming" },
+  { icon: "/images/articles/how-to-make-a-lantern.png",       title: "How to Make a Lantern", slug: "/articles/how-to-make-a-lantern"       },
+  { icon: "/images/articles/brewing-guide-potions.png",       title: "Brewing Guide",         slug: "/articles/brewing-guide-potions"       },
+  { icon: "/images/articles/complete-enchanting-guide.png",   title: "Enchanting Explained",  slug: "/articles/complete-enchanting-guide"   },
+  { icon: "/images/articles/food-guide-best-food-sources.png",title: "Food Guide",            slug: "/articles/food-guide-best-food-sources"},
+  { icon: "/images/articles/mob-farming-101.png",             title: "Mob Farming 101",       slug: "/articles/mob-farming-101"             },
 ];
 
 const card: React.CSSProperties = {
@@ -64,24 +64,3 @@ function NewHere() {
         </Link>
       </div>
     </div>
-  );
-}
-
-export default function Sidebar() {
-  return (
-    <aside style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-      <QuickGuides />
-      <NewHere />
-    </aside>
-  );
-}
-
-
-
-
-
-
-
-
-
-

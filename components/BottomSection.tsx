@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
+import NewsletterForm from "./NewsletterForm";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -149,16 +149,6 @@ function QuickGuidesPanel() {
 // ─── Newsletter Panel ──────────────────────────────────────────────────────────
 
 function NewsletterPanel() {
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
-
-  function handleSubmit() {
-    if (email.trim()) {
-      setSent(true);
-      setEmail("");
-    }
-  }
-
   return (
     <div
       style={{
@@ -176,125 +166,21 @@ function NewsletterPanel() {
       }}
     >
       {/* Warm glow */}
-      <div style={{
-        position: "absolute",
-        top: "-40px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: "200px",
-        height: "120px",
-        background: "radial-gradient(ellipse, rgba(200,168,75,0.12) 0%, transparent 70%)",
-        pointerEvents: "none",
-      }} />
+      <div style={{ position: "absolute", top: "-40px", left: "50%", transform: "translateX(-50%)", width: "200px", height: "120px", background: "radial-gradient(ellipse, rgba(200,168,75,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
 
       {/* Content */}
       <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", gap: "16px" }}>
-        {/* Icon + title */}
         <div>
           <div style={{ fontSize: "28px", marginBottom: "10px" }}>🦝</div>
-          <p style={{
-            fontSize: "10px",
-            fontWeight: 700,
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "#c8a84b",
-            marginBottom: "6px",
-          }}>
-            Stay Updated
-          </p>
-          <h3 style={{
-            fontSize: "18px",
-            fontWeight: 700,
-            color: "#e8d9a0",
-            fontFamily: "Georgia, serif",
-            lineHeight: 1.2,
-            marginBottom: "8px",
-          }}>
+          <p style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#c8a84b", marginBottom: "6px" }}>Stay Updated</p>
+          <h3 style={{ fontSize: "18px", fontWeight: 700, color: "#e8d9a0", fontFamily: "Georgia, serif", lineHeight: 1.2, marginBottom: "8px" }}>
             Cozy Updates,<br />Every Week
           </h3>
-          <p style={{
-            fontSize: "13px",
-            color: "#7a6e44",
-            lineHeight: 1.6,
-          }}>
+          <p style={{ fontSize: "13px", color: "#7a6e44", lineHeight: 1.6 }}>
             New guides, seed picks and survival tips straight to your inbox. No spam, unsubscribe anytime.
           </p>
         </div>
-
-        {/* Form */}
-        {sent ? (
-          <div style={{
-            padding: "14px 18px",
-            borderRadius: "14px",
-            background: "rgba(200,168,75,0.1)",
-            border: "1px solid rgba(200,168,75,0.3)",
-            color: "#c8a84b",
-            fontSize: "13px",
-            fontWeight: 600,
-            textAlign: "center",
-          }}>
-            ✓ You're in! Welcome to the den.
-          </div>
-        ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-              style={{
-                width: "100%",
-                padding: "13px 16px",
-                borderRadius: "12px",
-                border: "1px solid rgba(200,168,75,0.2)",
-                background: "rgba(255,255,255,0.04)",
-                color: "#e8d9a0",
-                fontSize: "13px",
-                outline: "none",
-                transition: "border-color 0.2s",
-                boxSizing: "border-box",
-              }}
-              onFocus={(e) => { e.target.style.borderColor = "rgba(200,168,75,0.5)"; }}
-              onBlur={(e) => { e.target.style.borderColor = "rgba(200,168,75,0.2)"; }}
-            />
-            <button
-              onClick={handleSubmit}
-              style={{
-                width: "100%",
-                padding: "13px 16px",
-                borderRadius: "12px",
-                border: "1px solid rgba(200,168,75,0.4)",
-                background: "rgba(200,168,75,0.12)",
-                color: "#c8a84b",
-                fontSize: "13px",
-                fontWeight: 700,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget;
-                el.style.background = "rgba(200,168,75,0.22)";
-                el.style.borderColor = "rgba(200,168,75,0.7)";
-                el.style.color = "#e8d9a0";
-                el.style.transform = "translateY(-1px)";
-                el.style.boxShadow = "0 4px 20px rgba(200,168,75,0.15)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget;
-                el.style.background = "rgba(200,168,75,0.12)";
-                el.style.borderColor = "rgba(200,168,75,0.4)";
-                el.style.color = "#c8a84b";
-                el.style.transform = "translateY(0)";
-                el.style.boxShadow = "none";
-              }}
-            >
-              Subscribe →
-            </button>
-          </div>
-        )}
+        <NewsletterForm />
       </div>
     </div>
   );
@@ -432,3 +318,4 @@ export default function BottomSection() {
     </section>
   );
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          

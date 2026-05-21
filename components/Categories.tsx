@@ -23,7 +23,7 @@ const categories: Category[] = [
     sublabel: "Essentials",
     desc: "Tips & strategies",
     count: 48,
-    href: "/survival",
+    href: "/category/survival",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.30)",
     borderColor: "rgba(212,146,74,0.20)",
@@ -35,7 +35,7 @@ const categories: Category[] = [
     sublabel: "Automation",
     desc: "Automatic & manual",
     count: 36,
-    href: "/farms",
+    href: "/category/farms",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.25)",
     borderColor: "rgba(212,146,74,0.18)",
@@ -47,7 +47,7 @@ const categories: Category[] = [
     sublabel: "Designs",
     desc: "Architectural ideas",
     count: 62,
-    href: "/builds",
+    href: "/category/build",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.25)",
     borderColor: "rgba(212,146,74,0.18)",
@@ -59,7 +59,7 @@ const categories: Category[] = [
     sublabel: "Worlds",
     desc: "Best world seeds",
     count: 29,
-    href: "/seeds",
+    href: "/category/seeds",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.25)",
     borderColor: "rgba(212,146,74,0.18)",
@@ -71,7 +71,7 @@ const categories: Category[] = [
     sublabel: "Mechanics",
     desc: "Circuits & machines",
     count: 41,
-    href: "/redstone",
+    href: "/category/redstone",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.30)",
     borderColor: "rgba(212,146,74,0.20)",
@@ -83,7 +83,7 @@ const categories: Category[] = [
     sublabel: "Beginners",
     desc: "Start your journey",
     count: 24,
-    href: "/beginners",
+    href: "/category/guide",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.25)",
     borderColor: "rgba(212,146,74,0.18)",
@@ -266,9 +266,4 @@ export default function Categories() {
         }
         @media (max-width: 400px) {
           .cat-section-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
-    </section>
-  );
-}
-
+   

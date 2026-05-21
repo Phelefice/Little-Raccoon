@@ -13,7 +13,7 @@ export default async function LatestArticles() {
           <h2 style={{ margin: 0, color: "#EDE6D6", fontFamily: "var(--font-oswald)", fontSize: "1.6rem", letterSpacing: "0.04em" }}>Latest Articles</h2>
         </div>
         <div style={{ flex: 1, height: 1, background: "linear-gradient(90deg, #C4B47E20, transparent)" }} />
-        <Link href="/" style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.16em", color: "#C4B47E", textDecoration: "none", opacity: 0.8 }}>View all articles</Link>
+        <Link href="/articles" style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.16em", color: "#C4B47E", textDecoration: "none", opacity: 0.8 }}>View all articles</Link>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
         {articles.map((article) => (
@@ -30,8 +30,6 @@ export default async function LatestArticles() {
         ))}
       </div>
       <div style={{ marginTop: 32, textAlign: "center" }}>
-        <Link href="/" style={{ display: "inline-block", padding: "12px 36px", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.18em", color: "#C4B47E", border: "1px solid #1A2E1A", borderRadius: 8, textDecoration: "none", fontFamily: "var(--font-oswald)" }}>View All Articles</Link>
+        <Link href="/articles" style={{ display: "inline-block", padding: "12px 36px", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.18em", color: "#C4B47E", border: "1px solid #1A2E1A", borderRadius: 8, textDecoration: "none", fontFamily: "var(--font-oswald)" }}>View All Articles</Link>
       </div>
-    </section>
-  );
-}
+    <

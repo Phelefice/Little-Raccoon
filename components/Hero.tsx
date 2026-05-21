@@ -1,20 +1,109 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+const tagColors: Record<string, string> = {
+  Build: "#8A7A50", Guide: "#5A8A70", Survival: "#9A5858",
+  Seeds: "#7A9A50", Redstone: "#8A5A5A", Tips: "#6A7A8A", Farms: "#7A8A5A",
+};
+
+interface ArticleResult {
+  slug: string;
+  title: string;
+  tag: string;
+  description: string;
+  image: string;
+}
 
 const popularTags = [
-  { label: "Mob Farms",        href: "/farms?tag=mob-farms" },
-  { label: "Starter House",    href: "/builds?tag=starter-house" },
-  { label: "Iron Farm",        href: "/farms?tag=iron-farm" },
-  { label: "Nether Portal",    href: "/survival?tag=nether-portal" },
-  { label: "Enchanting",       href: "/guides?tag=enchanting" },
-  { label: "Villager Trading", href: "/guides?tag=villager-trading" },
-  { label: "Automatic Farm",   href: "/farms?tag=automatic-farm" },
+  { label: "Mob Farms",        href: "/category/farms" },
+  { label: "Starter House",    href: "/category/build" },
+  { label: "Iron Farm",        href: "/articles/how-to-build-an-iron-farm" },
+  { label: "Enchanting",       href: "/articles/complete-enchanting-guide" },
+  { label: "Villager Trading", href: "/articles/villager-trading-hall-guide" },
+  { label: "Redstone",         href: "/category/redstone" },
+  { label: "Seeds",            href: "/category/seeds" },
 ];
 
 export default function Hero() {
   const [query, setQuery] = useState("");
+  const [results, setResults] = useState<ArticleResult[]>([]);
+  const [allArticles, setAllArticles] = useState<ArticleResult[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+
+  // Load article data once on mount
+  useEffect(() => {
+    fetch("/api/search")
+      .then((r) => r.json())
+      .then((data: ArticleResult[]) => setAllArticles(data))
+      .catch(() => {});
+  }, []);
+
+  // Filter on query change
+  useEffect(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) {
+      setResults([]);
+      setIsOpen(false);
+      setActiveIndex(-1);
+      return;
+    }
+    const filtered = allArticles
+      .filter(
+        (a) =>
+          a.title.toLowerCase().includes(q) ||
+          a.tag.toLowerCase().includes(q) ||
+          a.description.toLowerCase().includes(q)
+      )
+      .slice(0, 6);
+    setResults(filtered);
+    setIsOpen(filtered.length > 0);
+    setActiveIndex(-1);
+  }, [query, allArticles]);
+
+  // Close on outside click
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (!isOpen) return;
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setActiveIndex((i) => Math.min(i + 1, results.length - 1));
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setActiveIndex((i) => Math.max(i - 1, -1));
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        if (activeIndex >= 0 && results[activeIndex]) {
+          router.push(`/articles/${results[activeIndex].slug}`);
+          setIsOpen(false);
+          setQuery("");
+        } else if (query.trim()) {
+          router.push(`/articles?q=${encodeURIComponent(query.trim())}`);
+          setIsOpen(false);
+        }
+      } else if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    },
+    [isOpen, activeIndex, results, query, router]
+  );
 
   return (
     <section
@@ -43,37 +132,4 @@ export default function Hero() {
           <span style={{ color: "#D6C7A1" }}>Starts Here</span>
         </h1>
 
-        <p className="text-base sm:text-lg mb-12 max-w-xl mx-auto" style={{ color: "rgba(245,238,220,0.78)", fontWeight: 400, fontSize: "1.1rem", lineHeight: "1.8", letterSpacing: "0.01em", textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}>
-          Survival strategies, mega builds, hidden seeds, Redstone contraptions and more — everything a true crafter needs.
-        </p>
-
-        <div className="max-w-lg mx-auto mb-8">
-          <div className="flex overflow-hidden" style={{ border: "1px solid rgba(245,238,220,0.12)", backgroundColor: "rgba(12,18,14,0.82)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", borderRadius: "20px", boxShadow: "0 8px 24px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.05)" }}>
-            <div className="flex items-center pl-4" style={{ color: "rgba(255,248,230,0.68)" }}>
-              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
-              </svg>
-            </div>
-            <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search guides, builds, seeds..." className="hero-search-input flex-1 px-4 py-3.5 bg-transparent text-sm" style={{ color: "#EDE6D6", outline: "none", letterSpacing: "0.01em" }} />
-            <button className="px-6 py-3.5 text-[11px] font-bold uppercase" style={{ backgroundColor: "#2F5D3A", color: "#EDE6D6", minWidth: "88px", letterSpacing: "0.12em", fontFamily: "var(--font-oswald)", borderRadius: "0 16px 16px 0", boxShadow: "0 4px 18px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08)" }} onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#3A7048")} onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#2F5D3A")}>
-              Search
-            </button>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-2 items-center">
-          <span className="text-[10px] uppercase" style={{ color: "#4A4440", letterSpacing: "0.16em", textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>Popular:</span>
-          {popularTags.map((tag) => (
-            <Link key={tag.label} href={tag.href} className="px-4 py-1 text-[10px] font-semibold uppercase" style={{ backgroundColor: "rgba(20,28,18,0.55)", color: "#8A8268", border: "1px solid rgba(214,199,161,0.2)", borderRadius: "20px", letterSpacing: "0.1em", textShadow: "0 1px 4px rgba(0,0,0,0.8)", textDecoration: "none" }}
-              onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.color = "#D6C7A1"; el.style.borderColor = "#D6C7A140"; }}
-              onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.color = "#8A8268"; el.style.borderColor = "rgba(214,199,161,0.2)"; }}
-            >
-              {tag.label}
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+        <p className="text-base sm:text-lg mb-12 max-w-xl mx-auto" style={{ color: "rgba(245,238,220,0.78)", fontWeight: 400, fontSize: "1.1rem", lineHeight: "1.8", letterSpacing: "0.01em", textShadow: "0 1px 8px rgba(0
