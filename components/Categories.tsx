@@ -104,8 +104,8 @@ export default function Categories() {
             <p style={{ fontSize: "10px", letterSpacing: "0.28em", textTransform: "uppercase", color: "#5a7a4a", fontWeight: 700, margin: "0 0 10px 0" }}>✦ Browse</p>
             <h2 style={{ fontSize: "30px", fontWeight: 900, letterSpacing: "0.07em", color: "#EDE6D6", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>Explore Categories</h2>
           </div>
-          <Link href="/categories" style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5a7a4a", textDecoration: "none", fontWeight: 700 }}>
-            View All Categories →
+          <Link href="/articles" style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#5a7a4a", textDecoration: "none", fontWeight: 700 }}>
+            View All Articles →
           </Link>
         </div>
 
@@ -266,4 +266,9 @@ export default function Categories() {
         }
         @media (max-width: 400px) {
           .cat-section-grid { grid-template-columns: 1fr !important; }
-   
+        }
+      `}</style>
+    </section>
+  );
+}
+

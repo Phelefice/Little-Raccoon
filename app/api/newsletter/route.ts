@@ -82,7 +82,6 @@ export async function POST(req: NextRequest) {
 
     const normalizedEmail = email.toLowerCase();
 
-    // Try Mailchimp first if configured
     const mailchimpConfigured =
       !!process.env.MAILCHIMP_API_KEY && !!process.env.MAILCHIMP_LIST_ID;
 
@@ -101,11 +100,9 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
       }
 
-      // If Mailchimp fails for another reason, fall through to local fallback
       console.error("Mailchimp error:", result.error);
     }
 
-    // Fallback: save locally to subscribers.json
     const data = readSubscribers();
     const alreadyExists = data.subscribers.some(
       (s) => s.email.toLowerCase() === normalizedEmail

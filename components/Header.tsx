@@ -5,12 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Guides",   href: "/guides" },
-  { label: "Builds",   href: "/builds" },
-  { label: "Survival", href: "/survival" },
-  { label: "Seeds",    href: "/seeds" },
-  { label: "Tools",    href: "/tools" },
-  { label: "About",    href: "/about" },
+  { label: "Guides",   href: "/category/guide" },
+  { label: "Builds",   href: "/category/build" },
+  { label: "Survival", href: "/category/survival" },
+  { label: "Seeds",    href: "/category/seeds" },
+  { label: "Farms",    href: "/category/farms" },
+  { label: "Redstone", href: "/category/redstone" },
 ];
 
 function HomeIcon() {

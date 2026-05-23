@@ -11,7 +11,7 @@ const hero = {
   subtitle: "Efficient, easy, and works in 1.21+",
   description: "Step-by-step guide to building the most efficient iron farm in Minecraft. Works on Java and Bedrock, no complex redstone required.",
   cta: "Read Guide",
-  href: "/guides/iron-farm",
+  href: "/articles/how-to-build-an-iron-farm",
   image: "/images/category-survival.png",
 };
 
@@ -19,7 +19,7 @@ const minis = [
   {
     category: "Guide",
     title: "Villager Trading Hall Step-by-Step",
-    href: "/guides/villager-trading-hall",
+    href: "/articles/villager-trading-hall-guide",
     image: "/images/category-farms.png",
     objectPosition: "center top",
     overlayStrength: "rgba(4,8,4,0.92)",
@@ -27,7 +27,7 @@ const minis = [
   {
     category: "Tutorial",
     title: "Best Starter House for Survival",
-    href: "/guides/starter-house",
+    href: "/articles/best-starter-house-survival",
     image: "/images/category_builds.webp",
     objectPosition: "center",
     overlayStrength: "rgba(4,8,4,0.88)",
@@ -35,7 +35,7 @@ const minis = [
   {
     category: "Guide",
     title: "How to Find Diamonds Fast",
-    href: "/guides/find-diamonds",
+    href: "/articles/how-to-find-diamonds",
     image: "/images/category-seeds.png",
     objectPosition: "center bottom",
     overlayStrength: "rgba(4,8,4,0.90)",
@@ -137,7 +137,7 @@ export default function FeaturedGuide() {
               </h2>
             </div>
             <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, rgba(212,146,74,0.18), transparent)" }} />
-            <Link href="/guides" style={{ fontSize: "9px", letterSpacing: "0.20em", textTransform: "uppercase", color: "rgba(212,146,74,0.55)", textDecoration: "none", fontWeight: 700 }}>
+            <Link href="/articles" style={{ fontSize: "9px", letterSpacing: "0.20em", textTransform: "uppercase", color: "rgba(212,146,74,0.55)", textDecoration: "none", fontWeight: 700 }}>
               All Guides →
             </Link>
           </div>
