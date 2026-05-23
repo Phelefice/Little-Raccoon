@@ -5,16 +5,41 @@ import { Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import Header from "../components/Header";
+import Analytics from "../components/Analytics";
 
 const geist = Geist({ variable: "--font-sans", subsets: ["latin"] });
 const oswald = Oswald({ variable: "--font-oswald", subsets: ["latin"], weight: ["500", "600", "700"] });
 const bebasNeue = Bebas_Neue({ variable: "--font-bebas", subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
-  icons: { icon: "/favicon.png" },
-  title: "The Little Raccoon - Minecraft Guide",
-  description: "Your ultimate Minecraft guide. Survival tips, farm designs, epic builds, seeds, and Redstone tutorials all in one place.",
-  keywords: ["minecraft", "guide", "survival", "builds", "redstone", "farms", "seeds"],
+  metadataBase: new URL("https://thelittleraccoon.com"),
+  title: {
+    default: "The Little Raccoon | Minecraft Guides & Cozy Adventures",
+    template: "%s | The Little Raccoon",
+  },
+  description: "In-depth Minecraft guides, tutorials, and tips to help you explore, build and survive every adventure.",
+  keywords: ["minecraft", "guide", "survival", "builds", "redstone", "farms", "seeds", "tutorials", "tips"],
+  icons: { icon: "/favicon.ico" },
+  openGraph: {
+    type: "website",
+    siteName: "The Little Raccoon",
+    title: "The Little Raccoon | Minecraft Guides & Cozy Adventures",
+    description: "In-depth Minecraft guides, tutorials, and tips to help you explore, build and survive every adventure.",
+    images: [
+      {
+        url: "/images/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "The Little Raccoon — Minecraft Guides & Cozy Adventures",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Little Raccoon | Minecraft Guides & Cozy Adventures",
+    description: "In-depth Minecraft guides, tutorials, and tips to help you explore, build and survive every adventure.",
+    images: ["/images/og-default.png"],
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -24,6 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <meta name="google-adsense-account" content="ca-pub-5219702409402620" />
       </head>
       <body className="min-h-full flex flex-col antialiased" style={{ backgroundColor: "#0B1411", color: "#EDE6D6" }}>
+        <Analytics />
         <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5219702409402620" crossOrigin="anonymous" strategy="afterInteractive" />
         <Header />
         {children}

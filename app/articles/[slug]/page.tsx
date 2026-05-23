@@ -13,10 +13,34 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) return {};
+  const ogImage = `/images/articles/${slug}.png`;
   return {
-    title: article.title + " | The Little Raccoon",
+    title: article.title,
     description: article.description,
-    openGraph: { images: article.image ? [article.image] : [] },
+    alternates: {
+      canonical: `https://thelittleraccoon.com/articles/${slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: article.title,
+      description: article.description,
+      url: `https://thelittleraccoon.com/articles/${slug}`,
+      publishedTime: article.date,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.description,
+      images: [ogImage],
+    },
   };
 }
 
@@ -24,6 +48,41 @@ const tagColors: Record<string, string> = {
   Build: "#8A7A50", Guide: "#5A8A70", Survival: "#9A5858",
   Seeds: "#7A9A50", Redstone: "#8A5A5A", Tips: "#6A7A8A", Farms: "#7A8A5A",
 };
+
+function ArticleJsonLd({ article, slug }: { article: NonNullable<ReturnType<typeof getArticleBySlug>>; slug: string }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    image: `https://thelittleraccoon.com/images/articles/${slug}.png`,
+    datePublished: article.date,
+    dateModified: article.date,
+    author: {
+      "@type": "Organization",
+      name: "The Little Raccoon",
+      url: "https://thelittleraccoon.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "The Little Raccoon",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://thelittleraccoon.com/favicon.ico",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://thelittleraccoon.com/articles/${slug}`,
+    },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -45,6 +104,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   return (
     <main style={{ minHeight: "100vh", backgroundColor: "#0B1410" }}>
+      <ArticleJsonLd article={article} slug={slug} />
 
       {/* Breadcrumb */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "20px 40px 0", display: "flex", alignItems: "center", gap: 8 }}>
@@ -136,4 +196,62 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                     <p style={{ margin: 0, fontSize: 10, color: "#3A4A35" }}>
                       {new Date(a.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                     </p>
-                  </d
+                  </div>
+                </Link>
+              ))}
+              <Link href={`/category/${article.tag.toLowerCase()}`} style={{ display: "block", marginTop: 4, fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "#5A6A55", textDecoration: "none" }}>
+                More {article.tag} articles →
+              </Link>
+            </div>
+          )}
+
+          {/* Newsletter */}
+          <div style={{ backgroundColor: "#0C1810", border: "1px solid #1A2E1A", borderRadius: 10, padding: 20, textAlign: "center" }}>
+            <h3 style={{ margin: "0 0 8px", fontFamily: "var(--font-oswald)", fontSize: "1.1rem", color: "#EDE6D6" }}>Stay Updated</h3>
+            <p style={{ margin: "0 0 16px", fontSize: 12, color: "#8A9A85", lineHeight: 1.5 }}>Get the best Minecraft guides straight to your inbox.</p>
+            <NewsletterForm />
+          </div>
+
+          {/* Browse categories */}
+          <div style={{ backgroundColor: "#0C1810", border: "1px solid #1A2E1A", borderRadius: 10, padding: 20 }}>
+            <h3 style={{ margin: "0 0 16px", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.18em", color: "#C4B47E" }}>Browse Categories</h3>
+            {[
+              { name: "Survival", slug: "survival" },
+              { name: "Farms", slug: "farms" },
+              { name: "Builds", slug: "build" },
+              { name: "Seeds", slug: "seeds" },
+              { name: "Redstone", slug: "redstone" },
+              { name: "Guides", slug: "guide" },
+            ].map((cat) => (
+              <Link key={cat.slug} href={`/category/${cat.slug}`} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 0", borderBottom: "1px solid #1A2E1A20", textDecoration: "none" }}>
+                <span style={{ fontSize: 13, color: cat.slug === article.tag.toLowerCase() ? "#C4B47E" : "#BDB5A0" }}>{cat.name}</span>
+                <span style={{ fontSize: 9, color: "#3A4A35", backgroundColor: "#0A1208", padding: "2px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.1em" }}>View →</span>
+              </Link>
+            ))}
+          </div>
+        </aside>
+      </div>
+    </main>
+  );
+}
+
+// Inline client component for newsletter form in sidebar
+function NewsletterForm() {
+  return (
+    <form action="/api/newsletter" method="POST" style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <input
+        type="email"
+        name="email"
+        placeholder="Your email address"
+        required
+        style={{ width: "100%", padding: "10px 12px", backgroundColor: "#0A1208", border: "1px solid #1A2E1A", borderRadius: 6, color: "#BDB5A0", fontSize: 12, boxSizing: "border-box", outline: "none" }}
+      />
+      <button
+        type="submit"
+        style={{ width: "100%", padding: 10, backgroundColor: "#C4B47E", color: "#0B1410", fontSize: 11, fontWeight: 700, textTransform: "uppercase", border: "none", borderRadius: 6, cursor: "pointer" }}
+      >
+        Subscribe
+      </button>
+    </form>
+  );
+}
