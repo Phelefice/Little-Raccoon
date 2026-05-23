@@ -9,8 +9,8 @@ const navLinks = [
   { label: "Builds",   href: "/category/build" },
   { label: "Survival", href: "/category/survival" },
   { label: "Seeds",    href: "/category/seeds" },
-  { label: "Farms",    href: "/category/farms" },
-  { label: "Redstone", href: "/category/redstone" },
+  { label: "Tools",    href: "/articles" },
+  { label: "About",    href: "/about" },
 ];
 
 function HomeIcon() {
