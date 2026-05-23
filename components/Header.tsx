@@ -9,7 +9,6 @@ const navLinks = [
   { label: "Builds",   href: "/category/build" },
   { label: "Survival", href: "/category/survival" },
   { label: "Seeds",    href: "/category/seeds" },
-  { label: "Tools",    href: "/articles" },
   { label: "About",    href: "/about" },
 ];
 
