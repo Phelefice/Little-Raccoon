@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Oswald } from "next/font/google";
 import { Bebas_Neue } from "next/font/google";
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/images/og-default.png",
         width: 1200,
         height: 630,
-        alt: "The Little Raccoon — Minecraft Guides & Cozy Adventures",
+        alt: "The Little Raccoon \u2014 Minecraft Guides & Cozy Adventures",
       },
     ],
   },
@@ -47,6 +47,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={`${geist.variable} ${oswald.variable} ${bebasNeue.variable} h-full`}>
       <head>
         <meta name="google-adsense-account" content="ca-pub-5219702409402620" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5219702409402620" crossOrigin="anonymous"></script>
       </head>
       <body className="min-h-full flex flex-col antialiased" style={{ backgroundColor: "#0B1411", color: "#EDE6D6" }}>
         <Analytics />
