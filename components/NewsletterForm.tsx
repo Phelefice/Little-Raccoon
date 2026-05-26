@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 
@@ -40,7 +40,7 @@ export default function NewsletterForm({ compact = false }: Props) {
   if (status === "success") {
     return (
       <div style={{ padding: compact ? "12px" : "20px", textAlign: "center", backgroundColor: "#0A1208", border: "1px solid #2A4A2A", borderRadius: 8 }}>
-        <div style={{ fontSize: 24, marginBottom: 8 }}>🎉</div>
+        <div style={{ fontSize: 24, marginBottom: 8 }}>ðŸŽ‰</div>
         <p style={{ margin: 0, fontSize: compact ? 12 : 14, color: "#7AB87A", fontWeight: 700 }}>{message}</p>
         <p style={{ margin: "4px 0 0", fontSize: 11, color: "#5A6A55" }}>We&apos;ll send you the best Minecraft guides.</p>
       </div>
@@ -63,7 +63,7 @@ export default function NewsletterForm({ compact = false }: Props) {
           border: status === "error" ? "1px solid #8A5A5A" : "1px solid #1A2E1A",
           borderRadius: 6,
           color: "#BDB5A0",
-          fontSize: 12,
+          fontSize: compact ? 12 : 16,
           boxSizing: "border-box",
           outline: "none",
         }}
@@ -94,3 +94,4 @@ export default function NewsletterForm({ compact = false }: Props) {
     </form>
   );
 }
+
