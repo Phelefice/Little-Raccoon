@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import NewsletterForm from "@/components/NewsletterForm";
 
 export const metadata: Metadata = {
   title: "Newsletter | The Little Raccoon",
@@ -14,14 +15,7 @@ export default function NewsletterPage() {
       <p style={{ fontSize: "1.1rem", color: "#c8b898", lineHeight: 1.8, marginBottom: "40px" }}>
         Get new Minecraft guides, cozy builds, and survival tips straight to your inbox. No spam, just adventures. 🦝
       </p>
-      <div id="mc_embed_signup">
-        <form action="https://gmail.us13.list-manage.com/subscribe/post?u=YOUR_U&amp;id=3af823423b" method="post" target="_blank" style={{ display: "flex", flexDirection: "column", gap: "16px", alignItems: "center" }}>
-          <input type="email" name="EMAIL" placeholder="Your email address" required style={{ width: "100%", maxWidth: "400px", padding: "14px 20px", borderRadius: "8px", border: "1px solid rgba(200,168,75,0.3)", background: "rgba(14,18,12,0.9)", color: "#e8d9a0", fontSize: "1rem", outline: "none" }} />
-          <button type="submit" style={{ padding: "14px 40px", borderRadius: "8px", background: "rgba(45,80,38,0.9)", border: "1px solid rgba(80,130,60,0.6)", color: "#c8d89a", fontSize: "1rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer" }}>
-            Subscribe
-          </button>
-        </form>
-      </div>
+      <NewsletterForm />
     </main>
   );
 }
