@@ -48,6 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={`${geist.variable} ${oswald.variable} ${bebasNeue.variable} h-full`}>
       <head>
         <meta name="google-adsense-account" content="ca-pub-5219702409402620" />
+        <meta name="msvalidate.01" content="76EE311F26EF52D8045CA871A9C70822" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5219702409402620" crossOrigin="anonymous"></script>
       </head>
       <body className="min-h-full flex flex-col antialiased" style={{ backgroundColor: "#0B1411", color: "#EDE6D6" }}>
