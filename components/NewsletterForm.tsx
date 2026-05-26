@@ -79,7 +79,7 @@ export default function NewsletterForm({ compact = false }: Props) {
           padding: compact ? "8px" : "14px",
           backgroundColor: status === "loading" ? "#8A7A50" : "#C4B47E",
           color: "#0B1410",
-          fontSize: 11,
+          fontSize: compact ? 11 : 15,
           fontWeight: 700,
           textTransform: "uppercase",
           letterSpacing: "0.12em",
@@ -94,5 +94,7 @@ export default function NewsletterForm({ compact = false }: Props) {
     </form>
   );
 }
+
+
 
 
