@@ -12,7 +12,8 @@ const oswald = Oswald({ variable: "--font-oswald", subsets: ["latin"], weight: [
 const bebasNeue = Bebas_Neue({ variable: "--font-bebas", subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://thelittleraccoon.com"),`r`n  verification: { other: { "msvalidate.01": "76EE311F26EF52D8045CA871A9C70822" } },
+  metadataBase: new URL("https://thelittleraccoon.com"),
+  verification: { other: { "msvalidate.01": "76EE311F26EF52D8045CA871A9C70822" } },
   title: {
     default: "The Little Raccoon | Minecraft Guides & Cozy Adventures",
     template: "%s | The Little Raccoon",
@@ -58,4 +59,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
+
 
