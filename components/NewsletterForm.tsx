@@ -76,7 +76,7 @@ export default function NewsletterForm({ compact = false }: Props) {
         disabled={status === "loading"}
         style={{
           width: "100%",
-          padding: compact ? "8px" : "10px",
+          padding: compact ? "8px" : "14px",
           backgroundColor: status === "loading" ? "#8A7A50" : "#C4B47E",
           color: "#0B1410",
           fontSize: 11,
@@ -94,4 +94,5 @@ export default function NewsletterForm({ compact = false }: Props) {
     </form>
   );
 }
+
 
