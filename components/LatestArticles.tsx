@@ -32,4 +32,6 @@ export default async function LatestArticles() {
       <div style={{ marginTop: 32, textAlign: "center" }}>
         <Link href="/articles" style={{ display: "inline-block", padding: "12px 36px", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.18em", color: "#C4B47E", border: "1px solid #1A2E1A", borderRadius: 8, textDecoration: "none", fontFamily: "var(--font-oswald)" }}>View All Articles</Link>
       </div>
-    <
+    </section>
+  );
+}

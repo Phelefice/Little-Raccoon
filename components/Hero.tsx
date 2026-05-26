@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
@@ -132,4 +132,132 @@ export default function Hero() {
           <span style={{ color: "#D6C7A1" }}>Starts Here</span>
         </h1>
 
-        <p className="text-base sm:text-lg mb-12 max-w-xl mx-auto" style={{ color: "rgba(245,238,220,0.78)", fontWeight: 400, fontSize: "1.1rem", lineHeight: "1.8", letterSpacing: "0.01em", textShadow: "0 1px 8px rgba(0
+        <p className="text-base sm:text-lg mb-12 max-w-xl mx-auto" style={{ color: "rgba(245,238,220,0.78)", fontWeight: 400, fontSize: "1.1rem", lineHeight: "1.8", letterSpacing: "0.01em", textShadow: "0 1px 8px rgba(0,0,0,0.35)" }}>
+          Survival strategies, mega builds, hidden seeds, Redstone contraptions and more — everything a true crafter needs.
+        </p>
+
+        {/* Search bar + dropdown */}
+        <div className="max-w-lg mx-auto mb-8" ref={wrapperRef} style={{ position: "relative" }}>
+          <div className="flex overflow-hidden" style={{ border: "1px solid rgba(245,238,220,0.12)", backgroundColor: "rgba(12,18,14,0.82)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", borderRadius: "20px", boxShadow: "0 8px 24px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.05)" }}>
+            <div className="flex items-center pl-4" style={{ color: "rgba(255,248,230,0.68)" }}>
+              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </div>
+            <input
+              ref={inputRef}
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onFocus={() => results.length > 0 && setIsOpen(true)}
+              placeholder="Search guides, builds, seeds..."
+              className="hero-search-input flex-1 px-4 py-3.5 bg-transparent text-sm"
+              style={{ color: "#EDE6D6", outline: "none", letterSpacing: "0.01em" }}
+              aria-label="Search articles"
+              aria-autocomplete="list"
+              aria-expanded={isOpen}
+            />
+            <button
+              className="px-6 py-3.5 text-[11px] font-bold uppercase"
+              style={{ backgroundColor: "#2F5D3A", color: "#EDE6D6", minWidth: "88px", letterSpacing: "0.12em", fontFamily: "var(--font-oswald)", borderRadius: "0 16px 16px 0", boxShadow: "0 4px 18px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08)" }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#3A7048")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#2F5D3A")}
+              onClick={() => {
+                if (query.trim()) {
+                  router.push(`/articles?q=${encodeURIComponent(query.trim())}`);
+                  setIsOpen(false);
+                }
+              }}
+            >
+              Search
+            </button>
+          </div>
+
+          {/* Dropdown */}
+          {isOpen && results.length > 0 && (
+            <div
+              role="listbox"
+              style={{
+                position: "absolute",
+                top: "calc(100% + 8px)",
+                left: 0,
+                right: 0,
+                backgroundColor: "#0C1810",
+                border: "1px solid #1A2E1A",
+                borderRadius: 12,
+                overflow: "hidden",
+                boxShadow: "0 16px 40px rgba(0,0,0,0.6)",
+                zIndex: 50,
+              }}
+            >
+              {results.map((article, i) => {
+                const tagColor = tagColors[article.tag] || "#5A8A70";
+                const isActive = i === activeIndex;
+                return (
+                  <Link
+                    key={article.slug}
+                    href={`/articles/${article.slug}`}
+                    role="option"
+                    aria-selected={isActive}
+                    onClick={() => { setIsOpen(false); setQuery(""); }}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 12,
+                      padding: "10px 14px",
+                      textDecoration: "none",
+                      backgroundColor: isActive ? "#0E1A10" : "transparent",
+                      borderBottom: "1px solid #1A2E1A20",
+                    }}
+                    onMouseEnter={() => setActiveIndex(i)}
+                  >
+                    {/* Thumbnail */}
+                    <div style={{ width: 44, height: 44, borderRadius: 6, overflow: "hidden", position: "relative", flexShrink: 0, backgroundColor: "#0A1208" }}>
+                      {article.image
+                        ? <Image src={article.image} alt={article.title} fill style={{ objectFit: "cover" }} />
+                        : <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg,#0E1A10,#162410)" }} />
+                      }
+                    </div>
+                    {/* Text */}
+                    <div style={{ flex: 1, minWidth: 0, textAlign: "left" }}>
+                      <p style={{ margin: "0 0 2px", fontSize: 13, color: "#EDE6D6", fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{article.title}</p>
+                      <span style={{ fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: tagColor }}>{article.tag}</span>
+                    </div>
+                    <svg width="12" height="12" fill="none" stroke="#3A4A35" strokeWidth="2" viewBox="0 0 24 24" style={{ flexShrink: 0 }}>
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </Link>
+                );
+              })}
+
+              {/* View all results link */}
+              <Link
+                href={`/articles?q=${encodeURIComponent(query)}`}
+                onClick={() => { setIsOpen(false); }}
+                style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, padding: "10px 14px", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "#5A6A55", textDecoration: "none", backgroundColor: "#0A1208" }}
+              >
+                View all results for &ldquo;{query}&rdquo; →
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* Popular tags */}
+        <div className="flex flex-wrap justify-center gap-2 items-center">
+          <span className="text-[10px] uppercase" style={{ color: "#4A4440", letterSpacing: "0.16em", textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>Popular:</span>
+          {popularTags.map((tag) => (
+            <Link key={tag.label} href={tag.href} className="px-4 py-1 text-[10px] font-semibold uppercase" style={{ backgroundColor: "rgba(20,28,18,0.55)", color: "#8A8268", border: "1px solid rgba(214,199,161,0.2)", borderRadius: "20px", letterSpacing: "0.1em", textShadow: "0 1px 4px rgba(0,0,0,0.8)", textDecoration: "none" }}
+              onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.color = "#D6C7A1"; el.style.borderColor = "#D6C7A140"; }}
+              onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.color = "#8A8268"; el.style.borderColor = "rgba(214,199,161,0.2)"; }}
+            >
+              {tag.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
