@@ -20,10 +20,19 @@ export default function Footer() {
         <p style={{ margin: "0 0 2px", textAlign: "center", fontSize: 13, color: "#8A7840" }}>Minecraft Guides &amp; Cozy Adventures</p>
         <p style={{ margin: "0 0 20px", textAlign: "center", fontSize: 13, color: "#4A4228" }}>Making Minecraft adventures cozy, creative and unforgettable</p>
 
-        <nav style={{ display: "flex", alignItems: "center", margin: "0 0 20px" }}>
+        <nav style={{ display: "flex", alignItems: "center", margin: "0 0 12px", flexWrap: "wrap" as const, justifyContent: "center", gap: "0" }}>
           {[{ label: "Guides", href: "/guides" },{ label: "Survival", href: "/survival" },{ label: "Builds", href: "/builds" },{ label: "Exploration", href: "/seeds" },{ label: "About", href: "/about" }].map((link, i, arr) => (
             <span key={link.href} style={{ display: "flex", alignItems: "center" }}>
               <Link href={link.href} style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.22em", color: "#2E2A1E", textDecoration: "none", padding: "0 14px", transition: "color 0.15s" }} onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#C4A840")} onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "#2E2A1E")}>{link.label}</Link>
+              {i < arr.length - 1 && <span style={{ color: "#1A1810", fontSize: 7 }}>&#9679;</span>}
+            </span>
+          ))}
+        </nav>
+
+        <nav style={{ display: "flex", alignItems: "center", margin: "0 0 16px", flexWrap: "wrap" as const, justifyContent: "center", gap: "0" }}>
+          {[{ label: "Contact", href: "/contact" },{ label: "Privacy Policy", href: "/privacy-policy" },{ label: "Terms of Use", href: "/terms-of-use" }].map((link, i, arr) => (
+            <span key={link.href} style={{ display: "flex", alignItems: "center" }}>
+              <Link href={link.href} style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase" as const, letterSpacing: "0.18em", color: "#1E1C12", textDecoration: "none", padding: "0 10px", transition: "color 0.15s" }} onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#C4A840")} onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "#1E1C12")}>{link.label}</Link>
               {i < arr.length - 1 && <span style={{ color: "#1A1810", fontSize: 7 }}>&#9679;</span>}
             </span>
           ))}
