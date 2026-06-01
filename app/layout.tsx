@@ -6,6 +6,7 @@ import "./globals.css";
 import Script from "next/script";
 import Header from "../components/Header";
 import Analytics from "../components/Analytics";
+import CookieBanner from "../components/CookieBanner";
 
 const geist = Geist({ variable: "--font-sans", subsets: ["latin"] });
 const oswald = Oswald({ variable: "--font-oswald", subsets: ["latin"], weight: ["500", "600", "700"] });
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5219702409402620" crossOrigin="anonymous" strategy="afterInteractive" />
         <Header />
         {children}
+        <CookieBanner />
       </body>
     </html>
   );
