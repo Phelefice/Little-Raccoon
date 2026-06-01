@@ -25,13 +25,6 @@ const faqs = [
   },
 ];
 
-const socials = [
-  { label: "YouTube", href: "https://youtube.com/@thelittleraccoon", icon: "▶" },
-  { label: "Discord", href: "https://discord.gg/thelittleraccoon", icon: "💬" },
-  { label: "Instagram", href: "https://instagram.com/thelittleraccoon", icon: "📷" },
-  { label: "Pinterest", href: "https://pinterest.com/thelittleraccoon", icon: "📌" },
-  { label: "X (Twitter)", href: "https://x.com/thelittleraccoon", icon: "✕" },
-];
 
 export default function ContactPage() {
   return (
@@ -141,37 +134,11 @@ export default function ContactPage() {
         >
           Follow Us
         </h2>
-        <p style={{ fontSize: "1rem", color: "#c8b898", lineHeight: 1.7, marginBottom: "24px" }}>
-          Stay up to date with the latest guides, Minecraft news, and behind-the-scenes content by
-          following us on social media.
+        <p style={{ fontSize: "1rem", color: "#c8b898", lineHeight: 1.7 }}>
+          We&apos;re just getting started! Social channels coming soon. In the meantime, subscribe to our{" "}
+          <a href="/newsletter" style={{ color: "#C4A840" }}>newsletter</a>{" "}
+          to stay updated.
         </p>
-        <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "12px" }}>
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "10px 20px",
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(196,168,64,0.15)",
-                borderRadius: "8px",
-                color: "#c8b898",
-                textDecoration: "none",
-                fontSize: "0.9rem",
-                fontWeight: 600,
-                transition: "all 0.2s",
-              }}
-            >
-              <span>{s.icon}</span>
-              {s.label}
-            </a>
-          ))}
-        </div>
       </main>
       <Footer />
     </>
