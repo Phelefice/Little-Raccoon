@@ -1,4 +1,4 @@
-﻿import fs from "fs";
+import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
@@ -42,7 +42,7 @@ export function getAllArticles(): Omit<Article, "content">[] {
         tag: data.tag || "Guide",
         tagColor: tagColors[data.tag] || "#5A8A70",
         description: data.description || "",
-        image: data.image || "",
+        image: data.coverImage || data.image || "",
       };
     });
   return articles.sort(
@@ -62,7 +62,7 @@ export function getArticleBySlug(slug: string): Article | null {
     tag: data.tag || "Guide",
     tagColor: tagColors[data.tag] || "#5A8A70",
     description: data.description || "",
-    image: data.image || "",
+    image: data.coverImage || data.image || "",
     content,
   };
 }
