@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -8,7 +8,7 @@ interface Category {
   label: string;
   sublabel: string;
   desc: string;
-  count: number;
+  key: string;
   href: string;
   accentColor: string;
   glowColor: string;
@@ -22,7 +22,7 @@ const categories: Category[] = [
     label: "Survival",
     sublabel: "Essentials",
     desc: "Tips & strategies",
-    count: 48,
+    key: "survival",
     href: "/category/survival",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.30)",
@@ -34,7 +34,7 @@ const categories: Category[] = [
     label: "Farms &",
     sublabel: "Automation",
     desc: "Automatic & manual",
-    count: 36,
+    key: "farms",
     href: "/category/farms",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.25)",
@@ -46,7 +46,7 @@ const categories: Category[] = [
     label: "Builds &",
     sublabel: "Designs",
     desc: "Architectural ideas",
-    count: 62,
+    key: "build",
     href: "/category/build",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.25)",
@@ -58,7 +58,7 @@ const categories: Category[] = [
     label: "Seeds &",
     sublabel: "Worlds",
     desc: "Best world seeds",
-    count: 29,
+    key: "seeds",
     href: "/category/seeds",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.25)",
@@ -70,7 +70,7 @@ const categories: Category[] = [
     label: "Redstone &",
     sublabel: "Mechanics",
     desc: "Circuits & machines",
-    count: 41,
+    key: "redstone",
     href: "/category/redstone",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.30)",
@@ -82,7 +82,7 @@ const categories: Category[] = [
     label: "Guides for",
     sublabel: "Beginners",
     desc: "Start your journey",
-    count: 24,
+    key: "guide",
     href: "/category/guide",
     accentColor: "#D4924A",
     glowColor: "rgba(212,146,74,0.25)",
@@ -91,7 +91,7 @@ const categories: Category[] = [
   },
 ];
 
-export default function Categories() {
+export default function Categories({ counts }: { counts: Record<string, number> }) {
   return (
     <section style={{ position: "relative", padding: "80px 0 96px", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 90% 70% at 50% 50%, rgba(14,22,10,0.98) 0%, rgba(6,10,5,1) 100%)", zIndex: 0 }} />
@@ -247,7 +247,7 @@ export default function Categories() {
                       margin: 0,
                       textShadow: "0 1px 4px rgba(0,0,0,0.8)",
                     }}>
-                      {cat.count} Guides
+                      {counts[cat.key] ?? 0} Guides
                     </p>
                   </div>
                 </div>
@@ -271,4 +271,3 @@ export default function Categories() {
     </section>
   );
 }
-
