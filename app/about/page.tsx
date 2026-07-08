@@ -29,7 +29,7 @@ export default function AboutPage() {
           Minecraft is one of the most creative, open-ended games ever made — but it can also be
           overwhelming. There is a lot to learn, and not all of it is obvious. Our mission at
           The Little Raccoon is simple: make Minecraft more enjoyable by explaining things clearly.
-          No filler, no vague tips. Just straightforward, well-tested guides that help you actually
+          No filler, no vague tips. Just straightforward, clear, accurate guides that help you actually
           accomplish what you want to do in the game.
         </p>
         <p style={{ fontSize: "1.05rem", color: "#c8b898", lineHeight: 1.8, marginBottom: "24px" }}>
@@ -42,15 +42,17 @@ export default function AboutPage() {
           Who We Are
         </h2>
         <p style={{ fontSize: "1.05rem", color: "#c8b898", lineHeight: 1.8, marginBottom: "20px" }}>
-          The Little Raccoon is run by a small team of passionate Minecraft players who have spent
-          thousands of hours in the game across every version and edition. We test everything we
-          write about. If a farm design is in one of our guides, we have built it ourselves and
-          verified that it works. If a strategy is in one of our survival articles, we have used it
-          in our own worlds.
+          The Little Raccoon is an independent, solo-run project built by a Minecraft player who
+          wanted a clear, no-nonsense hub for guides and tutorials. To keep up with a fast-moving
+          game and publish new content regularly, articles are researched and drafted with the help
+          of AI tools, then reviewed and edited before publishing. We rely on official Minecraft
+          update notes, the Minecraft Wiki, and community knowledge to keep guides accurate — and if
+          something looks outdated or doesn&apos;t match your experience in-game, reader feedback helps
+          us fix it fast.
         </p>
         <p style={{ fontSize: "1.05rem", color: "#c8b898", lineHeight: 1.8, marginBottom: "24px" }}>
-          We are not affiliated with Mojang Studios or Microsoft. We are just players who love this
-          game and want to share what we know with the rest of the community.
+          We are not affiliated with Mojang Studios or Microsoft. This is simply a fan project made
+          by someone who loves the game and wants to make it easier to learn.
         </p>
 
         <h2 style={{ fontSize: "1.4rem", fontWeight: 800, color: "#e8d9a0", marginBottom: "14px", textTransform: "uppercase", letterSpacing: "0.04em" }}>
