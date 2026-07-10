@@ -1,0 +1,84 @@
+---
+title: "How to Build an Automatic Cobblestone Generator in Minecraft"
+date: "2026-07-15"
+tag: "Farms"
+description: "Build a fully automatic cobblestone generator with pistons and observers — an unlimited, self-harvesting stone source for any early or late-game base."
+image: /images/articles/automatic-cobblestone-generator.png
+---
+
+Cobblestone is one of the most-used blocks in Minecraft, whether you're building walls, smelting furnaces, or crafting stone tools. A basic lava-and-water generator gives you unlimited cobblestone, but it requires manual mining every time. This guide shows you how to upgrade that setup into a fully automatic version that harvests itself, feeding cobblestone straight into a chest while you do literally anything else.
+
+## Why Automate Cobblestone
+
+A manual cobblestone generator still requires you to stand there and mine the stone as it forms, which gets old fast if you need large quantities for a big build or a stone-based farm elsewhere. An automatic version uses a piston to break the cobblestone the instant it forms, then a hopper carries it into storage. Once built, it runs forever with zero further input from you — no fuel, no manual mining, just a constant trickle of stone.
+
+## What You'll Need
+
+- 1 Lava bucket
+- 1 Water bucket
+- 1 Piston (a regular piston works fine, no need for sticky)
+- 1 Redstone repeater
+- 1 Observer block
+- 1 Redstone dust
+- 1 Hopper
+- 1 Chest
+- A handful of any solid blocks (cobblestone or stone works) for the frame
+
+## Step 1: Set Up the Lava and Water Source
+
+Place your lava source block and a water source block so that flowing water touches the flowing lava at a single point, one block apart. When water meets lava, it can generate cobblestone, obsidian, or stone depending on the exact flow direction — for a generator, you want the classic diagonal setup where water flows across the top of the lava source, converting it to cobblestone every time you harvest it.
+
+The simplest reliable layout: dig a small 1x2 hole, put lava in the far block, and let water flow in from an adjacent higher block so it constantly meets the lava at the generation point.
+
+## Step 2: Place the Piston
+
+Position a piston so its face points directly at the block where cobblestone forms. When triggered, the piston will push into that spot — but pistons can't break blocks by pushing into them from directly in front in this setup, so instead you want the piston oriented to knock the cobblestone out sideways into a collection channel, or use the piston to push a block that displaces the newly formed cobblestone into a hopper's reach. Many designs place the piston above or beside the generation point, pushing the cobblestone one block over into a hole where a hopper waits below.
+
+## Step 3: Add the Observer for Automatic Triggering
+
+This is what makes the farm automatic rather than manual. Place an observer block facing the spot where the cobblestone forms. Observers detect block updates — when cobblestone appears, the observer immediately pulses a redstone signal.
+
+Wire that pulse through a short redstone line (a repeater helps stabilize the timing) directly into the piston. The moment cobblestone forms, the observer fires, the piston pushes, and the cobblestone gets knocked into your collection area — all without you touching anything.
+
+## Step 4: Collect the Output
+
+Place a hopper beneath the spot where the piston pushes the cobblestone, and connect that hopper to a chest. The hopper automatically sucks up any cobblestone that lands on top of it and feeds it into the chest below. Once this is wired up correctly, the entire cycle — generate, detect, push, collect — repeats indefinitely on its own.
+
+## Step 5: Test and Adjust Timing
+
+Watch the farm run for a minute. If the piston fires before the cobblestone fully forms, or fires late and misses it, adjust the repeater's delay setting (right-click it to cycle through tick delays). A slightly longer delay usually fixes farms that fire too early relative to the water-lava interaction.
+
+## Scaling It Up
+
+Once you have one generation point working, you can duplicate the entire setup side by side, each with its own observer and piston, all feeding into a shared row of hoppers leading to one central chest. A bank of four or six of these side by side produces enough cobblestone for major stone-heavy builds without ever running dry.
+
+## Tips for a Cleaner Build
+
+### Silence the Piston Sound
+
+Automatic cobblestone farms placed near a base can get noisy since pistons fire constantly. Building the generator a short distance underground or behind a soundproofed wall (any solid blocks work, since sound in Minecraft doesn't fully block through walls but is muffled by distance) keeps the noise from being distracting.
+
+### Convert to a Stone Generator Instead
+
+If you'd rather generate stone instead of cobblestone, you can add a furnace to the hopper line — cobblestone passing through a hopper into a furnace and smelting it produces stone automatically, giving you a stone farm instead with one extra step.
+
+### Use It to Feed a Stonecutter Setup
+
+Some players connect the output chest to an item sorter or directly to a stonecutter station, turning raw cobblestone output into stone bricks, stairs, or slabs automatically as part of a larger automation project.
+
+## FAQ
+
+**Q: Do I need a specific Minecraft version for this design?**
+A: No, lava-water cobblestone generation and observer-piston automation have worked the same way since observers were added in 1.11, so this design works on any modern version.
+
+**Q: Can I use a dispenser instead of a bucket to refill lava or water?**
+A: The lava and water sources in this design are permanent — as long as you don't remove the source blocks, they regenerate infinitely and never need refilling.
+
+**Q: Is this farm AFK-able?**
+A: Yes, since it requires no player input once built. Just make sure you're within the chunk's simulation distance for it to keep running, and check back periodically to empty the chest.
+
+## Conclusion
+
+An automatic cobblestone generator is one of the simplest and most useful early automation projects in Minecraft. With just a piston, an observer, and the classic lava-water interaction, you get a constant supply of stone that never requires you to lift a pickaxe again. It's a small build with a big return on time saved.
+
+For another automation project that runs itself around the clock, check out our guide to building an automatic bamboo farm.
