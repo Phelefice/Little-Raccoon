@@ -1,0 +1,76 @@
+---
+title: "How to Build an Automatic Melon and Pumpkin Farm"
+slug: "automatic-melon-pumpkin-farm"
+category: "farm"
+date: "2026-07-10"
+coverImage: "/images/articles/automatic-melon-pumpkin-farm.png"
+excerpt: "Build a fully automatic melon and pumpkin farm that harvests itself using pistons, so you never have to swing an axe again."
+---
+
+Melons and pumpkins are two of the most useful crops in Minecraft — melons for a quick, renewable food source and healing in glistening melon potions, pumpkins for jack o'lanterns, pumpkin pie, and even summoning Snow Golems and Iron Golems. Unlike wheat or carrots, though, melons and pumpkins grow as a stem-and-fruit system: the stem stays put while the fruit grows on an adjacent block. That quirk is exactly what makes them perfect for a fully automatic, self-harvesting farm.
+
+## How Melon and Pumpkin Growth Works
+
+Understanding the growth mechanic is the key to this whole build:
+
+- You plant a **melon seed** or **pumpkin seed** on farmland, which grows into a **stem**.
+- Once mature, the stem randomly pushes out a fruit block onto an **adjacent** empty space (never on top of itself).
+- The stem stays alive and keeps producing new fruit over and over, as long as there's open space next to it.
+
+Since the fruit appears next to the stem rather than replacing it, you can break the fruit repeatedly without ever needing to replant. This is what makes automation possible — we just need something to break the fruit for us the moment it appears.
+
+## Materials You'll Need
+
+- Melon or pumpkin seeds (or both, if you want a dual farm)
+- Farmland and a water source for irrigation
+- Pistons (regular, not sticky)
+- Redstone dust, a redstone torch or observer, and repeaters
+- Hoppers and chests for collection
+- Any solid blocks for the frame
+
+## Step 1: Lay Out the Growing Row
+
+1. Dig a trench and place farmland along one long row, with a water source at one end (or a channel running underneath) to keep it hydrated.
+2. Plant melon or pumpkin seeds every other block, leaving the block directly beside each stem empty — this is where the fruit will grow.
+3. Place a piston facing into each of those empty spaces, positioned to punch the fruit block the moment it appears.
+
+## Step 2: Wire Up the Automatic Trigger
+
+The simplest and most reliable version of this farm uses an **observer block**:
+
+1. Place an observer block facing the empty space where the fruit will grow, right behind each piston.
+2. Connect the observer's output directly to the piston (or through a quick pulse circuit if you're chaining several).
+3. When a melon or pumpkin block appears in that space, the observer detects the block update and fires the piston, instantly knocking the fruit off.
+
+If you don't have observers unlocked yet, an alternative is a **redstone clock** running a slow pulse into all the pistons at once — less elegant, but functional, and pistons only fire when there's actually a fruit to hit (empty air isn't affected).
+
+## Step 3: Collect the Drops
+
+Once the piston knocks the fruit block loose, it breaks and drops as an item that needs collecting.
+
+1. Dig a small collection channel running along the base of the farm, one block below the piston line.
+2. Use flowing water to sweep the dropped melon or pumpkin items toward one end.
+3. At the end of the channel, place a hopper leading into a chest to catch everything automatically.
+
+For larger farms, you can run multiple rows into a shared water channel, all draining into one central hopper-chest collection point.
+
+## Step 4: Scaling It Up
+
+Once your first row works, this design scales easily:
+
+- Duplicate the row design side by side, each with its own line of stems, pistons, and observers.
+- Feed every row's collection channel into a single central hopper line for one convenient pickup chest.
+- If you want both melons and pumpkins, just build two separate farms — they use the same mechanic but should not be planted in the same row, since intermixed stems can block each other's fruit space.
+
+## Tips for a Better Farm
+
+- **Space stems one block apart** with fruit space in between — this is the most compact and efficient layout.
+- **Light the area well.** Poorly lit farms can spawn hostile mobs that damage crops or attack you mid-harvest.
+- **Bonemeal your stems** for a faster initial setup, though growth after that point happens automatically over time.
+- **Use villager farmers** as an alternative or supplement — villagers with farmer jobs can also harvest and replant certain crops, though melons and pumpkins work best with the piston method described here.
+
+## Why This Farm Is Worth Building
+
+An automatic melon and pumpkin farm means a completely passive, endless supply of two versatile resources. Melons keep your hunger bar full without needing to hunt or farm animals, while pumpkins support crafting recipes, decorations, and even mob-summoning recipes. Once it's running, you'll never need to swing an axe on a pumpkin patch again — just walk up, open the chest, and collect however much you need.
+
+Pair this build with your other automatic farms for a fully self-sufficient base where food and crafting materials practically farm themselves.

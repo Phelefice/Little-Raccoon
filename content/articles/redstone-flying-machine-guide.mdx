@@ -1,0 +1,77 @@
+---
+title: "How to Build a Redstone Flying Machine"
+slug: "redstone-flying-machine-guide"
+category: "redstone"
+date: "2026-07-10"
+coverImage: "/images/articles/redstone-flying-machine-guide.png"
+excerpt: "Learn how to build a classic redstone flying machine using slime blocks, honey blocks, and pistons to create moving contraptions."
+---
+
+Flying machines are one of the most impressive tricks in redstone engineering. At their core, they're deceptively simple: a small chain of pistons and slime (or honey) blocks that pushes itself through the air, dragging along anything attached to it. Once you understand the basic loop, you can use flying machines for TNT duplicators, block breakers, moving farms, and even actual rideable contraptions. This guide covers the fundamentals so you can build your first one from scratch.
+
+## The Core Concept
+
+A flying machine works because of how sticky blocks interact with pistons:
+
+- **Slime blocks** stick to any block touching them (except honey blocks touch differently — more on that below).
+- **Honey blocks** stick to slime blocks but not to other honey blocks, which prevents unwanted chain reactions.
+- When a piston pushes a slime block, everything stuck to that slime block moves with it.
+
+By arranging pistons and slime blocks in a small loop that alternates firing, you can create a self-propelling unit that "walks" forward one block at a time, over and over, as long as it has open space ahead.
+
+## Materials You'll Need
+
+- 2 pistons (regular, non-sticky is fine since slime blocks will act sticky on their own)
+- 2 slime blocks
+- 1 observer block
+- A small amount of redstone dust or a redstone block for initial power (optional depending on design)
+
+## Step 1: Build the Basic Frame
+
+The simplest flying machine (a 2-piston horizontal design) is built like this:
+
+1. Place a piston facing the direction you want the machine to travel.
+2. Place a slime block directly on top of that piston.
+3. Place a second piston on top of the slime block, facing the opposite direction of the first piston.
+4. Place a second slime block on top of the second piston.
+5. Add an observer block facing into the first slime block, positioned to detect the piston's movement and re-trigger the cycle.
+
+This creates a loop: piston one extends, pushing itself and the second piston forward. The observer detects that movement, fires a pulse into piston two, which retracts and pulls the whole assembly along. The cycle repeats indefinitely as long as there's open air ahead.
+
+## Step 2: Starting the Machine
+
+Flying machines don't start moving on their own — they need an initial nudge:
+
+1. Once your frame is fully built, give the first piston a single redstone pulse (a button or lever works fine).
+2. This kicks off the extend-retract cycle, and from that point on, the observer keeps the loop running automatically.
+3. The machine will now travel in a straight line until it runs into a solid block or you manually break part of the loop.
+
+## Step 3: Attaching Something to Carry
+
+The real fun begins when you attach blocks to the slime faces so the machine drags them along:
+
+- **TNT duplicators** use a flying machine to repeatedly push a TNT block against a dispenser that keeps replacing it, creating unlimited TNT from a single source (with a Ghast/Nether Star or minecart with TNT, depending on your version's specifics).
+- **Block breakers** attach a row of blocks to the front of the machine so it smashes through terrain as it travels — useful for tunnel-boring machines.
+- **Mob crushers** stick the flying machine above a mob grinding area, moving crushing blocks back and forth.
+- **Rideable platforms** carry a boat or floor the player can stand on, though this is an advanced build requiring careful timing.
+
+## Step 4: Stopping the Machine
+
+Since flying machines run in an endless loop once started, you need a way to stop them:
+
+- **Remove a block in its path**, forcing it to run into something solid, which stalls the piston cycle.
+- **Break part of the loop manually**, such as removing the observer, which halts the auto-triggering.
+- **Use a comparator-based kill switch** wired into the loop so a lever or button can interrupt the redstone signal on command.
+
+## Tips for Reliable Flying Machines
+
+- **Test in a flat, open area first.** Flying machines can behave unpredictably near existing redstone or uneven terrain.
+- **Double-check slime vs. honey placement.** Mixing them up is the most common reason a flying machine fails to start.
+- **Keep the loop compact.** Larger flying machines are harder to debug — get the 2-piston version working before attempting bigger designs.
+- **Watch out for chunk borders.** Flying machines can behave oddly crossing unloaded chunks in some game versions, especially in older releases.
+
+## Why Learn Flying Machines?
+
+Flying machines are a gateway into advanced redstone engineering. Once you understand the extend-retract-observer loop, you unlock a huge category of builds: automatic tree farms that move a harvesting arm, self-mining tunnel borers, TNT cannons, and elaborate contraptions used in technical Minecraft servers. It's one of those mechanics that looks like magic the first time you see it, but becomes second nature once you've built one yourself.
+
+Start small, get the basic loop moving reliably, and then start experimenting with what you attach to it. Redstone flying machines are as close as vanilla Minecraft gets to real engineering — and they're endlessly fun to tinker with.
