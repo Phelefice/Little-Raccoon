@@ -2,45 +2,88 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { getAllArticles } from "@/lib/articles";
 
-const hero = {
-  category: "Survival Guide",
-  categoryColor: "#D4924A",
-  title: "How to Build\nan Iron Farm",
-  subtitle: "Efficient, easy, and works in 1.21+",
-  description: "Step-by-step guide to building the most efficient iron farm in Minecraft. Works on Java and Bedrock, no complex redstone required.",
-  cta: "Read Guide",
-  href: "/articles/how-to-build-an-iron-farm",
-  image: "/images/category-survival.png",
-};
+// Função para gerar seed baseado em data (muda a cada dia)
+function getDailySeed(): number {
+  const today = new Date();
+  const dateString = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+  return parseInt(dateString.replace(/-/g, "")) % 2147483647;
+}
 
-const minis = [
-  {
-    category: "Guide",
-    title: "Villager Trading Hall Step-by-Step",
-    href: "/articles/villager-trading-hall-guide",
-    image: "/images/category-farms.png",
-    objectPosition: "center top",
-    overlayStrength: "rgba(4,8,4,0.92)",
-  },
-  {
-    category: "Tutorial",
-    title: "Best Starter House for Survival",
-    href: "/articles/best-starter-house-survival",
-    image: "/images/category_builds.webp",
-    objectPosition: "center",
-    overlayStrength: "rgba(4,8,4,0.88)",
-  },
-  {
-    category: "Guide",
-    title: "How to Find Diamonds Fast",
-    href: "/articles/how-to-find-diamonds",
-    image: "/images/category-seeds.png",
-    objectPosition: "center bottom",
-    overlayStrength: "rgba(4,8,4,0.90)",
-  },
+// Shuffle com seed consistente
+function seededShuffle<T>(array: T[], seed: number): T[] {
+  const arr = [...array];
+  let random = seed;
+
+  for (let i = arr.length - 1; i > 0; i--) {
+    random = (random * 9301 + 49297) % 233280;
+    const j = Math.floor((random / 233280) * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Artigos prioritários (high-quality e recent)
+const priorityArticles = [
+  "how-to-find-diamonds-fast-minecraft-1-21",
+  "best-enchantments-minecraft-1-21-guide",
+  "how-to-beat-ender-dragon-minecraft-1-21",
+  "trial-chambers-complete-guide",
+  "warden-guide-defeat-or-avoid",
+  "minecraft-1-21-best-mods-without-optifine",
+  "minecraft-starter-base-efficient-and-beautiful",
+  "minecraft-1-21-speedrun-seeds-guide",
 ];
+
+function getFeaturedArticles() {
+  const allArticles = getAllArticles();
+  const seed = getDailySeed();
+
+  // Separar artigos por prioridade
+  const featured = allArticles.filter(a => priorityArticles.includes(a.slug));
+  const other = allArticles.filter(a => !priorityArticles.includes(a.slug));
+
+  // Misturar com seed para rotação diária consistente
+  const shuffledFeatured = seededShuffle(featured, seed);
+  const shuffledOther = seededShuffle(other, seed);
+
+  // Pegar 4 artigos: preferir featured, completar com outros se necessário
+  const selected = [
+    ...shuffledFeatured.slice(0, 4),
+    ...shuffledOther.slice(0, Math.max(0, 4 - shuffledFeatured.length))
+  ].slice(0, 4);
+
+  return selected.length >= 4 ? selected : [...shuffledFeatured, ...shuffledOther].slice(0, 4);
+}
+
+function createHeroFromArticle(article: any) {
+  return {
+    category: article.tag,
+    categoryColor: article.tagColor || "#D4924A",
+    title: article.title,
+    subtitle: article.description.substring(0, 60) + "...",
+    description: article.description,
+    cta: "Read Guide",
+    href: `/articles/${article.slug}`,
+    image: article.image || "/images/category-survival.png",
+  };
+}
+
+function createMiniFromArticle(article: any, index: number) {
+  const positions = ["center top", "center", "center bottom"];
+  const overlays = ["rgba(4,8,4,0.92)", "rgba(4,8,4,0.88)", "rgba(4,8,4,0.90)"];
+
+  return {
+    category: article.tag,
+    title: article.title,
+    href: `/articles/${article.slug}`,
+    image: article.image || "/images/category-survival.png",
+    objectPosition: positions[index % 3],
+    overlayStrength: overlays[index % 3],
+  };
+}
 
 function MiniCard({ mini, index }: { mini: typeof minis[0]; index: number }) {
   const [hovered, setHovered] = useState(false);
@@ -106,6 +149,27 @@ function MiniCard({ mini, index }: { mini: typeof minis[0]; index: number }) {
 
 export default function FeaturedGuide() {
   const [heroHovered, setHeroHovered] = useState(false);
+
+  // Pegar artigos featured dinamicamente
+  const featuredArticles = useMemo(() => {
+    const articles = getFeaturedArticles();
+    return {
+      hero: articles[0] ? createHeroFromArticle(articles[0]) : {
+        category: "Guide",
+        categoryColor: "#D4924A",
+        title: "Minecraft Guides",
+        subtitle: "Explore our latest guides",
+        description: "Discover the best Minecraft strategies and tutorials.",
+        cta: "Read Guide",
+        href: "/articles",
+        image: "/images/category-survival.png",
+      },
+      minis: articles.slice(1, 4).map((article, i) => createMiniFromArticle(article, i)),
+    };
+  }, []);
+
+  const hero = featuredArticles.hero;
+  const minis = featuredArticles.minis;
 
   return (
     <div style={{ position: "relative", overflow: "hidden" }}>
